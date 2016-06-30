@@ -10,12 +10,12 @@
 
 @implementation CKComponent (HostingView)
 
-+ (CKComponentHostingView *)hostingViewWithFrame:(CGRect)frame {
-    static id<CKComponentSizeRangeProviding> sizeRangeProvider = [CKComponentFlexibleSizeRangeProvider providerWithFlexibility:CKComponentSizeRangeFlexibleHeight];
++ (CKComponentHostingView *)hostingView:(const CKComponentHostingViewConfig &)config {
+    static id<CKComponentSizeRangeProviding> sizeRangeProvider = [CKComponentFlexibleSizeRangeProvider providerWithFlexibility:config.sizeRangeFlexibility];
     CKComponentHostingView *hostingView = [[CKComponentHostingView alloc] initWithComponentProvider:[self class]
                                                                                   sizeRangeProvider:sizeRangeProvider];
     hostingView.delegate = self;
-    hostingView.frame = frame;
+    hostingView.frame = config.frame;
     return hostingView;
 }
 

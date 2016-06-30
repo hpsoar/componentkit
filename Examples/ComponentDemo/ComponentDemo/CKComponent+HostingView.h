@@ -10,8 +10,13 @@
 #import <ComponentKit/CKComponentHostingView.h>
 #import <ComponentKit/CKComponentProvider.h>
 
+struct CKComponentHostingViewConfig {
+    CKComponentSizeRangeFlexibility sizeRangeFlexibility;
+    CGRect frame;
+};
+
 @interface CKComponent (HostingView) <CKComponentProvider, CKComponentHostingViewDelegate>
 
-+ (CKComponentHostingView *)hostingViewWithFrame:(CGRect)frame;
++ (CKComponentHostingView *)hostingView:(const CKComponentHostingViewConfig &)config;
 
 @end
