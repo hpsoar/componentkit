@@ -83,4 +83,8 @@
     }]]];
 }
 
++ (CKComponent *)componentForModel:(id<NSObject>)doctor context:(id<NSObject>)context {
+    return [self newWithDoctor:doctor];
+}
+
 @end

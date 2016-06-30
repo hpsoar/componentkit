@@ -18,6 +18,7 @@
 		126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCC1D24C29300421358 /* HostViewVC.mm */; };
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
 		126E2FD21D24C52C00421358 /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126E2FD11D24C52C00421358 /* ComponentKit.framework */; };
+		126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		126E2FCE1D24C33F00421358 /* DoctorInfoComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoComponent.h; sourceTree = "<group>"; };
 		126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorInfoComponent.mm; sourceTree = "<group>"; };
 		126E2FD11D24C52C00421358 /* ComponentKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ComponentKit.framework; path = "../../build/Debug-iphoneos/ComponentKit.framework"; sourceTree = "<group>"; };
+		126E2FEE1D25677B00421358 /* CKComponent+HostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKComponent+HostingView.h"; sourceTree = "<group>"; };
+		126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKComponent+HostingView.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				126E2FCC1D24C29300421358 /* HostViewVC.mm */,
 				126E2FCE1D24C33F00421358 /* DoctorInfoComponent.h */,
 				126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */,
+				126E2FEE1D25677B00421358 /* CKComponent+HostingView.h */,
+				126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */,
 			);
 			path = ComponentDemo;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			files = (
 				126E2FA01D24C0FD00421358 /* ViewController.m in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
+				126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */,
 				126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */,
 				126E2F9D1D24C0FD00421358 /* AppDelegate.m in Sources */,
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,

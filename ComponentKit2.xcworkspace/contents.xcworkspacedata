@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Examples/WildeGuess/WildeGuess.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Examples/ComponentDemo/ComponentDemo.xcodeproj">
    </FileRef>
    <FileRef
