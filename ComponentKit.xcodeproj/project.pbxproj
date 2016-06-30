@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126E2F431D24B77300421358 /* AAStackNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 126E2F411D24B77300421358 /* AAStackNode.h */; };
+		126E2F441D24B77300421358 /* AAStackNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F421D24B77300421358 /* AAStackNode.mm */; };
+		126E2F471D24B7A900421358 /* AALabelNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 126E2F451D24B7A900421358 /* AALabelNode.h */; };
+		126E2F481D24B7A900421358 /* AALabelNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F461D24B7A900421358 /* AALabelNode.mm */; };
 		18644AE51B3CB8E60028AF87 /* CKStatefulViewComponentControllerTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18644AE11B3CB8E60028AF87 /* CKStatefulViewComponentControllerTests.mm */; };
 		18644AE61B3CB8E60028AF87 /* CKStatefulViewReusePoolTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18644AE21B3CB8E60028AF87 /* CKStatefulViewReusePoolTests.mm */; };
 		18644AE71B3CB8E60028AF87 /* CKTestStatefulViewComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18644AE41B3CB8E60028AF87 /* CKTestStatefulViewComponent.mm */; };
@@ -475,6 +479,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		126E2F411D24B77300421358 /* AAStackNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAStackNode.h; sourceTree = "<group>"; };
+		126E2F421D24B77300421358 /* AAStackNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAStackNode.mm; sourceTree = "<group>"; };
+		126E2F451D24B7A900421358 /* AALabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALabelNode.h; sourceTree = "<group>"; };
+		126E2F461D24B7A900421358 /* AALabelNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AALabelNode.mm; sourceTree = "<group>"; };
 		18644AE11B3CB8E60028AF87 /* CKStatefulViewComponentControllerTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKStatefulViewComponentControllerTests.mm; sourceTree = "<group>"; };
 		18644AE21B3CB8E60028AF87 /* CKStatefulViewReusePoolTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKStatefulViewReusePoolTests.mm; sourceTree = "<group>"; };
 		18644AE31B3CB8E60028AF87 /* CKTestStatefulViewComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTestStatefulViewComponent.h; sourceTree = "<group>"; };
@@ -891,6 +899,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		126E2F401D24B75100421358 /* AAKitExt */ = {
+			isa = PBXGroup;
+			children = (
+				126E2F411D24B77300421358 /* AAStackNode.h */,
+				126E2F421D24B77300421358 /* AAStackNode.mm */,
+				126E2F451D24B7A900421358 /* AALabelNode.h */,
+				126E2F461D24B7A900421358 /* AALabelNode.mm */,
+			);
+			path = AAKitExt;
+			sourceTree = "<group>";
+		};
 		18644AE01B3CB8E60028AF87 /* StatefulViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1085,6 +1104,7 @@
 		D0B47AC21CBD926700BB33CE /* ComponentKit */ = {
 			isa = PBXGroup;
 			children = (
+				126E2F401D24B75100421358 /* AAKitExt */,
 				D0B47ACB1CBD926700BB33CE /* ComponentKit.h */,
 				D0B47B451CBD926700BB33CE /* Info.plist */,
 				D0B47D7D1CBD9C6600BB33CE /* ComponentKit.xcconfig */,
@@ -1583,6 +1603,7 @@
 				D0B47D2C1CBD948E00BB33CE /* CKComponentHostingViewDelegate.h in Headers */,
 				D0B47D641CBD948E00BB33CE /* CKTextComponentView.h in Headers */,
 				D0B47D4C1CBD948E00BB33CE /* CKTransactionalComponentDataSourceReloadModification.h in Headers */,
+				126E2F431D24B77300421358 /* AAStackNode.h in Headers */,
 				D0B47D171CBD948E00BB33CE /* CKComponentAnnouncerBaseInternal.h in Headers */,
 				D0B47D4D1CBD948E00BB33CE /* CKTransactionalComponentDataSourceStateModifying.h in Headers */,
 				D0B47D511CBD948E00BB33CE /* CKArrayControllerChangeType.h in Headers */,
@@ -1683,6 +1704,7 @@
 				D0B47CF51CBD948E00BB33CE /* CKComponentInternal.h in Headers */,
 				D0B47D6D1CBD948E00BB33CE /* CKTextKitRendererCache.h in Headers */,
 				D0B47D751CBD948E00BB33CE /* CKAsyncTransactionContainer+Private.h in Headers */,
+				126E2F471D24B7A900421358 /* AALabelNode.h in Headers */,
 				D0B47CFD1CBD948E00BB33CE /* CKComponentSubclass.h in Headers */,
 				D0B47D6F1CBD948E00BB33CE /* CKTextKitTailTruncater.h in Headers */,
 				D0B47D761CBD948E00BB33CE /* CKAsyncTransactionContainer.h in Headers */,
@@ -2139,6 +2161,7 @@
 				D0B47CA81CBD943400BB33CE /* CKComponentDataSourceInputItem.mm in Sources */,
 				D0B47CA91CBD943400BB33CE /* CKComponentDataSourceOutputItem.mm in Sources */,
 				D0B47CAA1CBD943400BB33CE /* CKComponentPreparationQueue.mm in Sources */,
+				126E2F481D24B7A900421358 /* AALabelNode.mm in Sources */,
 				D0B47CAB1CBD943400BB33CE /* CKComponentPreparationQueueListenerAnnouncer.mm in Sources */,
 				D0B47CAC1CBD943400BB33CE /* CKComponentFlexibleSizeRangeProvider.mm in Sources */,
 				D0B47CAD1CBD943400BB33CE /* CKComponentHostingView.mm in Sources */,
@@ -2175,6 +2198,7 @@
 				D0B47CCC1CBD943400BB33CE /* CKEqualityHashHelpers.mm in Sources */,
 				D0B47CCD1CBD943400BB33CE /* CKInternalHelpers.mm in Sources */,
 				D0B47CCE1CBD943400BB33CE /* CKOptimisticViewMutations.mm in Sources */,
+				126E2F441D24B77300421358 /* AAStackNode.mm in Sources */,
 				D0B47CCF1CBD943400BB33CE /* CKSectionedArrayController.mm in Sources */,
 				D0B47CD01CBD943400BB33CE /* CKWeakObjectContainer.m in Sources */,
 				D0B47CD11CBD943400BB33CE /* CKLabelComponent.mm in Sources */,
