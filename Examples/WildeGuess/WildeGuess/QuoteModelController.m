@@ -83,6 +83,10 @@ static NSArray *quotesList()
   dispatch_once(&once, ^{
     quotes = @[
                @{
+                   @"text": @"hello",
+                   @"author": @"world",
+                   },
+               @{
                  @"text": @"I have the simplest tastes. I am always satisfied with the best.",
                  @"author": @"Oscar Wilde",
                  },

@@ -40,6 +40,9 @@
                             .font = [UIFont systemFontOfSize:12],
                             .color = [UIColor blueColor],
                         }viewAttributes:{} size:{}],
+                    },
+                    {
+                        
                     }
                 }
             }],
@@ -75,9 +78,9 @@
                 .string = doctor.goodAt,
                 .font = [UIFont systemFontOfSize:12],
                 .color = [UIColor grayColor],
-                .maximumNumberOfLines = 2,
+                .maximumNumberOfLines = 4,
                 .truncationString = @"...",
-                .lineHeightMultiple = 1.2,
+                .lineHeightMultiple = 1.2,                
             }viewAttributes:{} size:{}],
         }
     }]]];

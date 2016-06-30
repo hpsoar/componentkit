@@ -30,12 +30,12 @@
     _doctor.title = @"主任医师";
     _doctor.clinic = @"内科";
     _doctor.hospital = @"北医三院";
-    _doctor.goodAt = @"你好SD罚点啥发生的发生的发生的发撒的发水电费撒旦法的说法的说法艺术硕士艺术硕士艺术硕士爱迪生发生的发撒的发水电费大师发生的发生的发生的发生的发生的4333333333";
+    _doctor.goodAt = @"你好SD罚点啥发生的发生sdfsdfasdfsadf的发生的发撒的发sadfdsafdsfsadf水电费撒旦法的说法的说法艺dafasdsdfsadfs术硕士艺术硕士艺术硕士爱迪生发生的发撒的发水电费大师发生的发生的发生的发生的发生的4333333333sdfsadfsadfsadfsad";
     
     CKComponentHostingView *hostingView = [DoctorInfoComponent hostingView:{
-        .frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), FLT_MAX),
+        .frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), 60),
         .sizeRangeFlexibility = CKComponentSizeRangeFlexibleHeight,
-    }];
+    }];    
     
     [self.view addSubview:hostingView];
     [hostingView updateModel:_doctor mode:CKUpdateModeAsynchronous];
