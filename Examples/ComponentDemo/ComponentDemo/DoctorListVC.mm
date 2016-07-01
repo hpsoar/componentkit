@@ -26,21 +26,18 @@
     [self addSection];
     
     [self loadDoctors];
+    
+    [self enableFooterRefresh];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if( scrollView.contentSize.height == 0 ) {
-        return ;
-    }
-    
-    if (scrolledToBottomWithBuffer(scrollView.contentOffset, scrollView.contentSize, scrollView.contentInset, scrollView.bounds)) {
-        [self loadDoctors];
-    }
+- (void)beginFooterRefreshing {
+    [self loadDoctors];
 }
 
 - (void)loadDoctors {
     [self.doctorModelController fetchDoctors:self.doctorListOptions callback:^(NSArray *doctors, NSError *error) {
+        [self endFooterRefreshing];
+        
         if (error) {
             
         }

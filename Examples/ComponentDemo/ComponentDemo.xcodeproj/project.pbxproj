@@ -12,6 +12,7 @@
 		12605C441D2675D600396DC0 /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12605C431D2675D600396DC0 /* DoctorModel.m */; };
 		12605C471D267CD400396DC0 /* AACollectionModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C461D267CD400396DC0 /* AACollectionModel.mm */; };
 		12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C491D267D9000396DC0 /* AAComponentExt.mm */; };
+		12605C511D26886700396DC0 /* CKCollectionVC+Refresh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C501D26886700396DC0 /* CKCollectionVC+Refresh.mm */; };
 		126E2F9A1D24C0FD00421358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F991D24C0FD00421358 /* main.m */; };
 		126E2F9D1D24C0FD00421358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F9C1D24C0FD00421358 /* AppDelegate.m */; };
 		126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F9F1D24C0FD00421358 /* ViewController.mm */; };
@@ -54,6 +55,8 @@
 		12605C461D267CD400396DC0 /* AACollectionModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AACollectionModel.mm; sourceTree = "<group>"; };
 		12605C481D267D9000396DC0 /* AAComponentExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponentExt.h; sourceTree = "<group>"; };
 		12605C491D267D9000396DC0 /* AAComponentExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAComponentExt.mm; sourceTree = "<group>"; };
+		12605C4F1D26886700396DC0 /* CKCollectionVC+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKCollectionVC+Refresh.h"; sourceTree = "<group>"; };
+		12605C501D26886700396DC0 /* CKCollectionVC+Refresh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKCollectionVC+Refresh.mm"; sourceTree = "<group>"; };
 		126E2F951D24C0FD00421358 /* ComponentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126E2F991D24C0FD00421358 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		126E2F9B1D24C0FD00421358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */,
 				12605C481D267D9000396DC0 /* AAComponentExt.h */,
 				12605C491D267D9000396DC0 /* AAComponentExt.mm */,
+				12605C4F1D26886700396DC0 /* CKCollectionVC+Refresh.h */,
+				12605C501D26886700396DC0 /* CKCollectionVC+Refresh.mm */,
 			);
 			name = ComponentKitExt;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12605C511D26886700396DC0 /* CKCollectionVC+Refresh.mm in Sources */,
 				12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */,
 				120527D81D2662DE00AB64E5 /* CKCollectionVC.mm in Sources */,
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
