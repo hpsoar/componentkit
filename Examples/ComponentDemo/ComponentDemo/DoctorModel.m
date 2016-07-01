@@ -23,19 +23,22 @@
     return [propertyName mj_underlineFromCamel];
 }
 
-@end
+- (Class)modelClass {
+    return [DoctorModel class];
+}
 
-@implementation DoctorModelController
-
-- (void)fetchDoctors:(DoctorListOptions *)options callback:(void (^)(NSArray *, NSError *))callback {
-    
+- (void)reset {
+    [super reset];
+    self.page = 0;
 }
 
 @end
 
-@implementation MockDoctorModelController
+@implementation MockDoctorModelDataSource
 
-- (void)fetchDoctors:(DoctorListOptions *)options callback:(void (^)(NSArray *, NSError *))callback {
+- (void)fetch:(AAModelOptions *)options callback:(void (^)(id, NSError *))callback {
+    DoctorListOptions *doctorListOptions = (DoctorListOptions *)options;
+    
     NSArray *names = @[@"张三", @"李四", @"王麻子", ];
     NSArray *titles = @[ @"主任医师", @"副主任医师", @"院长" ];
     NSArray *clinics = @[ @"内科", @"外科", @"骨科", @"神经科", @"内分泌科", @"眼科", @"牙科" ];
@@ -43,9 +46,9 @@
     NSArray *goodAts = @[ @"吃饭、睡觉、打豆豆", @"无所不会、无所不能", @"什么都不会。" ];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:20];
     NSInteger dataCount = names.count * titles.count * clinics.count * goodAts.count * 5;
-    if (options.pageSize * options.page < dataCount) {
-        for (NSInteger i = 0; i < options.pageSize; ++i) {
-            NSDictionary *d = @{ @"id": @(options.page * 20 + i),
+    if (doctorListOptions.pageSize * doctorListOptions.page < dataCount) {
+        for (NSInteger i = 0; i < doctorListOptions.pageSize; ++i) {
+            NSDictionary *d = @{ @"id": @(doctorListOptions.page * 20 + i),
                                  @"name": names[arc4random() % 3],
                                  @"title": titles[arc4random() % 3],
                                  @"clinic": clinics[arc4random() % 7],
@@ -55,9 +58,29 @@
             [result addObject:d];
         }
     }
+    
     if (callback) {
-        callback([DoctorModel mj_objectArrayWithKeyValuesArray:result], nil);
+        callback(result, nil);
     }
+}
+
+@end
+
+@implementation DoctorModel (API)
+
++ (DoctorListOptions *)doctorListOptions {
+    DoctorListOptions *options = [DoctorListOptions new];
+    options.pageSize = 20;
+    return options;
+}
+
++ (AAModelController *)mockDoctorListController {
+    return [[AAModelController alloc] initWithDataSource:[MockDoctorModelDataSource new]];
+}
+
++ (AAModelController *)doctorListController {
+    AAURLModelDataSource *dataSource = [[AAURLModelDataSource alloc] initWithAPI:@"/api/doctor/list/"];
+    return [[AAModelController alloc] initWithDataSource:dataSource];
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @implementation CKCollectionVC (Refresh)
 
+#pragma mark - header
+
 - (void)enableHeaderRefresh {
     [self disableHeaderRefresh];
     
@@ -30,7 +32,7 @@
     [self.collectionView.mj_header endRefreshing];
 }
 
-#pragma mark -
+#pragma mark - footer
 
 - (void)enableFooterRefresh {
     [self disableFooterRefresh];
@@ -51,6 +53,8 @@
 - (void)endFooterRefreshing {
     [self.collectionView.mj_footer endRefreshing];
 }
+
+#pragma mark - customization
 
 - (Class)headerRefreshViewClass {
     return [MJRefreshNormalHeader class];

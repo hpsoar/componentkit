@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MJExtension.h>
+#import "AAModelOptions.h"
 
 @interface DoctorModel : NSObject
 
@@ -20,18 +21,19 @@
 
 @end
 
-@interface DoctorListOptions : NSObject
+@interface DoctorListOptions : AAModelOptions
 @property (nonatomic) NSInteger page;
 @property (nonatomic) NSInteger pageSize;
 @end
 
-@interface DoctorModelController : NSObject
-
-- (void)fetchDoctors:(DoctorListOptions *)options
-            callback:(void (^)(NSArray *doctors, NSError *error))callback;
+@interface MockDoctorModelDataSource : NSObject <AAModelDataSource>
 
 @end
 
-@interface MockDoctorModelController : DoctorModelController
+@interface DoctorModel (API)
 
++ (DoctorListOptions *)doctorListOptions;
++ (AAModelController *)mockDoctorListController;
++ (AAModelController *)doctorListController;
+   
 @end

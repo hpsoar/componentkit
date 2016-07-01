@@ -6,8 +6,8 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "CKCollectionVC+Refresh.h"
+#import "ModelCollectionVC.h"
 
-@interface DoctorListVC : CKCollectionVC
+@interface DoctorListVC : ModelCollectionVC
 
 @end
