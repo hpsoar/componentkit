@@ -33,6 +33,14 @@
     [self.dataSource enqueueChangeset:{sections, {}} constrainedSize:{}];
 }
 
+- (void)clearSection {
+    CKArrayControllerSections sections;
+    sections.remove(0);
+    [self.dataSource enqueueChangeset:{ sections, {} } constrainedSize:{}];
+    
+    [self addSection];
+}
+
 - (void)addModels:(NSArray *)models atIndex:(NSInteger)index {
     // Convert the array of quotes to a valid changeset
     CKArrayControllerInputItems items;

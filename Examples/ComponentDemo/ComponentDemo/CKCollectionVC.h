@@ -23,6 +23,7 @@
 @interface CKCollectionVC : UIViewController <UICollectionViewDelegate>
 
 - (void)addSection;
+- (void)clearSection;
 - (void)addModels:(NSArray *)models atIndex:(NSInteger)index;
 - (UICollectionViewLayout *)createLayout;
 

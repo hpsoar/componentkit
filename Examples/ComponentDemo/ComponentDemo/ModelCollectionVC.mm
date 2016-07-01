@@ -25,15 +25,18 @@
 }
 
 - (void)beginFooterRefreshing {
-    [self loadModel:^{
-        [self endFooterRefreshing];
-    }];
+    if ([self.modelOptions canLoad]) {
+        [self loadModel:^{
+            [self endFooterRefreshing];
+        }];
+    }
 }
 
 - (void)loadModel:(dispatch_block_t)callback {
     self.modelOptions.loadingStatus = AAModelLoadingStatusLoading;
     
     [self.modelController fetch:self.modelOptions callback:^(AAModelResult *result) {
+        self.modelOptions.loadingStatus = result.error ? AAModelLoadingStatusFailed : AAModelLoadingStatusSucceed;
         if (callback) {
             callback();
         }
