@@ -39,7 +39,7 @@
     
     Class cls = [self footerRefreshViewClass];
     
-    self.collectionView.mj_footer = [cls footerWithRefreshingTarget:self refreshingAction:@selector(beginFooterRefreshing)];
+    self.collectionView.mj_footer = [cls footerWithRefreshingTarget:self refreshingAction:@selector(beginFooterRefreshing)];    
 }
 
 - (void)disableFooterRefresh {
@@ -61,7 +61,7 @@
 }
 
 - (Class)footerRefreshViewClass {
-    return [MJRefreshBackNormalFooter class];
+    return [MJRefreshAutoNormalFooter class];
 }
 
 @end
