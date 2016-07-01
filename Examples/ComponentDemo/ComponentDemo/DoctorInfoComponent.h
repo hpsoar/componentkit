@@ -6,21 +6,17 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import <ComponentKit/ComponentKit.h>
+#import "DoctorModel.h"
 
-@interface DoctorModel : NSObject
-
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *clinic;
-@property (nonatomic, copy) NSString *hospital;
-@property (nonatomic, copy) NSString *goodAt;
-
-@end
+#import "AAComponentExt.h"
 
 @interface DoctorInfoComponent : CKCompositeComponent
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor;
 
+
+@end
+
+@interface DoctorModel (ComponentFactory) <ComponentModelProtocol>
 
 @end

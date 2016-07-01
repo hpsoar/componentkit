@@ -8,11 +8,6 @@
 
 #import "DoctorInfoComponent.h"
 
-@implementation DoctorModel
-
-
-@end
-
 @implementation DoctorInfoComponent
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
@@ -88,6 +83,14 @@
 
 + (CKComponent *)componentForModel:(id<NSObject>)doctor context:(id<NSObject>)context {
     return [self newWithDoctor:doctor];
+}
+
+@end
+
+@implementation DoctorModel (ComponentFactory)
+
+- (CKComponent *)componentWithContext:(id<NSObject>)context {
+    return [DoctorInfoComponent componentForModel:self context:context];
 }
 
 @end

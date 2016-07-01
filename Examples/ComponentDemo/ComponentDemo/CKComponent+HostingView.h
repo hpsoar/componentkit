@@ -7,8 +7,6 @@
 //
 
 #import <ComponentKit/ComponentKit.h>
-#import <ComponentKit/CKComponentHostingView.h>
-#import <ComponentKit/CKComponentProvider.h>
 
 struct CKComponentHostingViewConfig {
     CKComponentSizeRangeFlexibility sizeRangeFlexibility;

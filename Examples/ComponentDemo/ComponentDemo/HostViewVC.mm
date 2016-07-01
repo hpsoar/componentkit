@@ -35,8 +35,8 @@
     CKComponentHostingView *hostingView = [DoctorInfoComponent hostingView:{
         .frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), 60),
         .sizeRangeFlexibility = CKComponentSizeRangeFlexibleHeight,
-    }];    
-    
+    }];
+            
     [self.view addSubview:hostingView];
     [hostingView updateModel:_doctor mode:CKUpdateModeAsynchronous];
 }
