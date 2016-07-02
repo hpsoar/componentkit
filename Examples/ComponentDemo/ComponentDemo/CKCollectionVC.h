@@ -51,6 +51,12 @@
 - (void)registerHeaderClass:(Class<CKCollectionReusableView>)cls;
 - (void)registerFooterClass:(Class<CKCollectionReusableView>)cls;
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+                           headerAtIndexPath:(NSIndexPath *)indexPath;
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+                           footerAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 BOOL scrolledToBottomWithBuffer(CGPoint contentOffset, CGSize contentSize, UIEdgeInsets contentInset, CGRect bounds);

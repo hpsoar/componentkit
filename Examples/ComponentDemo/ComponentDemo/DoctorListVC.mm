@@ -60,16 +60,10 @@
     }
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *reusableview = nil;
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView headerAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[TestHeaderView identifier] forIndexPath:indexPath];
     
-    /* This is trick to get the right height for header, it would be better if we can reuse self.headerView, rather than to create a new on by deque...
-     * one way to surpass this overhead, is to use a UIView for @"header", and add self.headerView to the @"header" view
-     */
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[TestHeaderView identifier] forIndexPath:indexPath];
-        reusableview.backgroundColor = [UIColor greenColor];
-    }
+    reusableview.backgroundColor = [UIColor greenColor];
     return reusableview;
 }
 

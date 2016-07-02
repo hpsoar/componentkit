@@ -159,6 +159,22 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        
+    }
+    return nil;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+                           headerAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+                           footerAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 
