@@ -26,14 +26,6 @@
     [self.view addSubview:self.collectionView];
 }
 
-- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier {
-    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:identifier];
-}
-
-- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier {
-    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:identifier];
-}
-
 - (void)addSection {
     // Insert the initial section
     CKArrayControllerSections sections;
@@ -129,6 +121,34 @@
         }
     }
     return nil;
+}
+
+@end
+
+@implementation CKCollectionReusableView
+
++ (NSString *)identifier {
+    return NSStringFromClass(self);
+}
+
+@end
+
+@implementation CKCollectionVC (Supplementary)
+
+- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier {
+    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:identifier];
+}
+
+- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier {
+    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:identifier];
+}
+
+- (void)registerFooterClass:(Class<CKCollectionReusableView>)cls {
+    [self registerFooterClass:cls identifier:[cls identifier]];
+}
+
+- (void)registerHeaderClass:(Class<CKCollectionReusableView>)cls {
+    [self registerHeaderClass:cls identifier:[cls identifier]];
 }
 
 #pragma mark - supplementary view

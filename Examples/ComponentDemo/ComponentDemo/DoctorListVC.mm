@@ -9,12 +9,11 @@
 #import "DoctorListVC.h"
 #import "DoctorModel.h"
 
-@interface TestHeaderView : UICollectionReusableView
+@interface TestHeaderView : CKCollectionReusableView
 
 @end
 
 @implementation TestHeaderView
-
 
 @end
 
@@ -35,7 +34,7 @@
     
     [self addSection];
     
-    [self registerHeaderClass:[TestHeaderView class] identifier:@"header"];
+    [self registerHeaderClass:[TestHeaderView class]];
     
     [self loadModel:nil];    
 }
@@ -68,7 +67,7 @@
      * one way to surpass this overhead, is to use a UIView for @"header", and add self.headerView to the @"header" view
      */
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[TestHeaderView identifier] forIndexPath:indexPath];
         reusableview.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 50);
         reusableview.backgroundColor = [UIColor greenColor];
     }

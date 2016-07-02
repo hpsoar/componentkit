@@ -20,19 +20,36 @@
  *  8. show
  */
 
-@interface CKCollectionVC : UIViewController <UICollectionViewDelegate, CKSupplementaryViewDataSource>
+
+@interface CKCollectionVC : UIViewController <UICollectionViewDelegate>
 
 - (void)addSection;
 - (void)clearSection;
 - (void)addModels:(NSArray *)models atIndex:(NSInteger)index;
 - (UICollectionViewLayout *)createLayout;
 
-- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier;
-- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier;
-
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewLayout *layout;
 @property (nonatomic, strong) CKCollectionViewDataSource *dataSource;
+
+@end
+
+@protocol CKCollectionReusableView <NSObject>
+
++ (NSString *)identifier;
+
+@end
+
+@interface CKCollectionReusableView : UICollectionReusableView <CKCollectionReusableView>
+
+@end
+
+@interface CKCollectionVC (Supplementary) <CKSupplementaryViewDataSource>
+
+- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier;
+- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier;
+- (void)registerHeaderClass:(Class<CKCollectionReusableView>)cls;
+- (void)registerFooterClass:(Class<CKCollectionReusableView>)cls;
 
 @end
 
