@@ -33,6 +33,78 @@
 
 @end
 
+@interface DoctorNameTitleComponent : CKCompositeComponent
+
++ (instancetype)newWithDoctor:(DoctorModel *)doctor;
+
+@end
+
+@implementation DoctorNameTitleComponent
+
++ (instancetype)newWithDoctor:(DoctorModel *)doctor {
+    return [super newWithChild:{
+        [CKStackLayoutComponent newWithView:{} size:{} style:{
+            .direction = CKStackLayoutDirectionHorizontal,
+            .spacing = 5,
+            .alignItems = CKStackLayoutAlignItemsEnd,
+        } children:{
+            {   // name
+                .component = [CKLabelComponent newWithLabelAttributes:{
+                    .string = [NSString stringWithFormat:@"%zi %@", doctor.Id, doctor.name],
+                    .font = [UIFont systemFontOfSize:16],
+                    .color = [UIColor redColor],
+                } viewAttributes:{} size:{}],
+            },
+            {   // title
+                .component = [CKLabelComponent newWithLabelAttributes:{
+                    .string = doctor.title,
+                    .font = [UIFont systemFontOfSize:12],
+                    .color = [UIColor blueColor],
+                }viewAttributes:{} size:{}],
+            }
+        }],
+    }];
+}
+
+@end
+
+@interface DoctorClinicHospitalComponent : CKCompositeComponent
+
++ (instancetype)newWithDoctor:(DoctorModel *)doctor;
+
+@end
+
+@implementation DoctorClinicHospitalComponent
+
++ (instancetype)newWithDoctor:(DoctorModel *)doctor {
+    return [super newWithChild:{
+        [CKStackLayoutComponent newWithView:{} size:{} style:{
+            .direction = CKStackLayoutDirectionHorizontal,
+            .spacing = 5,
+            .alignItems = CKStackLayoutAlignItemsEnd,
+        }children:{
+            {
+                // clinic
+                .component = [CKLabelComponent newWithLabelAttributes:{
+                    .string = doctor.clinic,
+                    .font = [UIFont systemFontOfSize:12],
+                    .color = [UIColor blackColor],
+                }viewAttributes:{} size:{}],
+            },
+            {
+                // hospital
+                .component = [CKLabelComponent newWithLabelAttributes:{
+                    .string = doctor.hospital,
+                    .font = [UIFont systemFontOfSize:12],
+                    .color = [UIColor blackColor],
+                }viewAttributes:{} size:{}]
+            }
+        }],
+    }];
+}
+
+@end
+
 @implementation DoctorInfoComponent
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
@@ -42,51 +114,11 @@
                 .spacing = 8,
             }children:{
                 {   // name & title
-                    .component = [CKStackLayoutComponent newWithView:{} size:{} style:{
-                        .direction = CKStackLayoutDirectionHorizontal,
-                        .spacing = 5,
-                        .alignItems = CKStackLayoutAlignItemsEnd,
-                    } children:{
-                        {   // name
-                            .component = [CKLabelComponent newWithLabelAttributes:{
-                                .string = [NSString stringWithFormat:@"%zi %@", doctor.Id, doctor.name],
-                                .font = [UIFont systemFontOfSize:16],
-                                .color = [UIColor redColor],
-                            } viewAttributes:{} size:{}],
-                        },
-                        {   // title
-                            .component = [CKLabelComponent newWithLabelAttributes:{
-                                .string = doctor.title,
-                                .font = [UIFont systemFontOfSize:12],
-                                .color = [UIColor blueColor],
-                            }viewAttributes:{} size:{}],
-                        }
-                    }],
+                    .component = [DoctorNameTitleComponent newWithDoctor:doctor],
                 },
                 {
                     // clinic & hospital
-                    .component = [CKStackLayoutComponent newWithView:{} size:{} style:{
-                        .direction = CKStackLayoutDirectionHorizontal,
-                        .spacing = 5,
-                        .alignItems = CKStackLayoutAlignItemsEnd,
-                    }children:{
-                        {
-                            // clinic
-                            .component = [CKLabelComponent newWithLabelAttributes:{
-                                .string = doctor.clinic,
-                                .font = [UIFont systemFontOfSize:12],
-                                .color = [UIColor blackColor],
-                            }viewAttributes:{} size:{}],
-                        },
-                        {
-                            // hospital
-                            .component = [CKLabelComponent newWithLabelAttributes:{
-                                .string = doctor.hospital,
-                                .font = [UIFont systemFontOfSize:12],
-                                .color = [UIColor blackColor],
-                            }viewAttributes:{} size:{}]
-                        }
-                    }],
+                    .component = [DoctorClinicHospitalComponent newWithDoctor:doctor],
                 },
                 {
                     // good at
@@ -98,6 +130,17 @@
                         .truncationString = @"...",
                         .lineHeightMultiple = 1.2,
                     }viewAttributes:{} size:{}],
+                },
+                {
+                    .component = [CKComponent newWithView:{
+                        [UITextField class],
+                        {
+                            {@selector(setBackgroundColor:), [UIColor greenColor] },
+                        }
+                        } size:{
+                            .width = 300,
+                            .height = 40,
+                        }],
                 }
             }]
         }]

@@ -160,10 +160,10 @@
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        
+        return [self collectionView:collectionView headerAtIndexPath:indexPath];
     }
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        
+        return [self collectionView:collectionView footerAtIndexPath:indexPath];
     }
     return nil;
 }

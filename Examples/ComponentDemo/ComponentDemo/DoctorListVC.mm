@@ -8,6 +8,8 @@
 
 #import "DoctorListVC.h"
 #import "DoctorModel.h"
+#import "DoctorInfoComponent.h"
+#import <CKComponentSubclass.h>
 
 @interface TestHeaderView : CKCollectionReusableView
 
@@ -56,8 +58,17 @@
             self.doctorListOptions.page += 1;
         }
         
+        [self test:doctors.firstObject];
+        
         [self enableFooterRefresh];
     }
+}
+
+- (void)test:(DoctorModel *)doctor {
+    DoctorInfoComponent *c = (DoctorInfoComponent *)[doctor componentWithContext:nil];
+    CKSizeRange contrainedSize = CKSizeRange(CGSizeMake(CGRectGetWidth(self.view.frame), 0),
+                                             CGSizeMake(CGRectGetWidth(self.view.frame), INFINITY));
+    CKComponentLayout layout = [c layoutThatFits:contrainedSize parentSize:contrainedSize.max];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView headerAtIndexPath:(NSIndexPath *)indexPath {
