@@ -125,6 +125,8 @@
 
 @end
 
+#pragma mark - CKCollectionReusableView
+
 @implementation CKCollectionReusableView
 
 + (NSString *)identifier {

@@ -67,7 +67,7 @@
      * one way to surpass this overhead, is to use a UIView for @"header", and add self.headerView to the @"header" view
      */
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[TestHeaderView identifier] forIndexPath:indexPath];        
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[TestHeaderView identifier] forIndexPath:indexPath];
         reusableview.backgroundColor = [UIColor greenColor];
     }
     return reusableview;
