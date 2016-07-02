@@ -26,6 +26,14 @@
     [self.view addSubview:self.collectionView];
 }
 
+- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier {
+    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:identifier];
+}
+
+- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier {
+    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:identifier];
+}
+
 - (void)addSection {
     // Insert the initial section
     CKArrayControllerSections sections;
@@ -55,7 +63,7 @@
 - (CKCollectionViewDataSource *)dataSource {
     if (_dataSource == nil) {
         _dataSource = [[CKCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                     supplementaryViewDataSource:nil
+                                                     supplementaryViewDataSource:self
                                                                componentProvider:[self class]
                                                                          context:nil
                                                        cellConfigurationFunction:nil];
@@ -120,6 +128,15 @@
             return [componentModel componentWithContext:context];
         }
     }
+    return nil;
+}
+
+#pragma mark - supplementary view
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 

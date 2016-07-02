@@ -20,12 +20,15 @@
  *  8. show
  */
 
-@interface CKCollectionVC : UIViewController <UICollectionViewDelegate>
+@interface CKCollectionVC : UIViewController <UICollectionViewDelegate, CKSupplementaryViewDataSource>
 
 - (void)addSection;
 - (void)clearSection;
 - (void)addModels:(NSArray *)models atIndex:(NSInteger)index;
 - (UICollectionViewLayout *)createLayout;
+
+- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier;
+- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewLayout *layout;

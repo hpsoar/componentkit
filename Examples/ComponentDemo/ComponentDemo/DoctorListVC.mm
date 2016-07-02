@@ -9,6 +9,23 @@
 #import "DoctorListVC.h"
 #import "DoctorModel.h"
 
+@interface TestHeaderView : UICollectionReusableView
+
+@end
+
+@implementation TestHeaderView
+
+
+@end
+
+@interface TestLayout : UICollectionViewFlowLayout
+
+@end
+
+@implementation TestLayout
+
+@end
+
 @interface DoctorListVC ()
 @property (nonatomic, strong) DoctorListOptions *doctorListOptions;
 @end
@@ -26,7 +43,18 @@
     
     [self addSection];
     
-    [self loadModel:nil];
+    [self registerHeaderClass:[TestHeaderView class] identifier:@"header"];
+    
+    [self loadModel:nil];    
+}
+
+- (UICollectionViewLayout *)createLayout {
+    TestLayout *flowLayout = [TestLayout new];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumInteritemSpacing:0];
+    [flowLayout setMinimumLineSpacing:0];
+    flowLayout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.view.frame), 50);
+    return flowLayout;
 }
 
 - (void)didLoadModel:(AAModelResult *)result {
@@ -48,6 +76,25 @@
         
         [self enableFooterRefresh];
     }
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableview = nil;
+    
+    /* This is trick to get the right height for header, it would be better if we can reuse self.headerView, rather than to create a new on by deque...
+     * one way to surpass this overhead, is to use a UIView for @"header", and add self.headerView to the @"header" view
+     */
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+        reusableview.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 50);
+        reusableview.backgroundColor = [UIColor greenColor];
+    }
+    return reusableview;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    CGSize headerSize = CGSizeMake(320, 44);
+    return headerSize;
 }
 
 @end
