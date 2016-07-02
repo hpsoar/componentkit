@@ -18,14 +18,6 @@
 
 @end
 
-@interface TestLayout : UICollectionViewFlowLayout
-
-@end
-
-@implementation TestLayout
-
-@end
-
 @interface DoctorListVC ()
 @property (nonatomic, strong) DoctorListOptions *doctorListOptions;
 @end
@@ -46,15 +38,6 @@
     [self registerHeaderClass:[TestHeaderView class] identifier:@"header"];
     
     [self loadModel:nil];    
-}
-
-- (UICollectionViewLayout *)createLayout {
-    TestLayout *flowLayout = [TestLayout new];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [flowLayout setMinimumInteritemSpacing:0];
-    [flowLayout setMinimumLineSpacing:0];
-    flowLayout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.view.frame), 50);
-    return flowLayout;
 }
 
 - (void)didLoadModel:(AAModelResult *)result {
@@ -93,7 +76,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize headerSize = CGSizeMake(320, 44);
+    CGSize headerSize = CGSizeMake(320, 104);
     return headerSize;
 }
 
