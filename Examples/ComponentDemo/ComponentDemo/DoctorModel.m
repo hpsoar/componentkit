@@ -43,17 +43,17 @@
     NSArray *titles = @[ @"主任医师", @"副主任医师", @"院长" ];
     NSArray *clinics = @[ @"内科", @"外科", @"骨科", @"神经科", @"内分泌科", @"眼科", @"牙科" ];
     NSArray *hospitals = @[ @"北医三院", @"校医院", @"协和医院", @"同济医院" ];
-    NSArray *goodAts = @[ @"吃饭、睡觉、打豆豆", @"无所不会、无所不能", @"什么都不会。" ];
+    NSArray *goodAts = @[ @"吃饭、睡觉、打豆豆", @"无所不会、无所不能", @"什么都不会。", @"发斯蒂芬森的大沙发垫是发撒的发水电费是打发撒的发水电费点撒辅导书发撒的发水电费撒东方时代发撒撒旦法算法大师安师大发撒的发水电费撒旦法" ];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:20];
-    NSInteger dataCount = names.count * titles.count * clinics.count * goodAts.count * 5;
+    NSInteger dataCount = names.count * titles.count * clinics.count * goodAts.count;
     if (doctorListOptions.pageSize * doctorListOptions.page < dataCount) {
         for (NSInteger i = 0; i < doctorListOptions.pageSize; ++i) {
-            NSDictionary *d = @{ @"id": @(doctorListOptions.page * 20 + i),
+            NSDictionary *d = @{ @"_id": @(doctorListOptions.page * doctorListOptions.pageSize + i),
                                  @"name": names[arc4random() % 3],
                                  @"title": titles[arc4random() % 3],
                                  @"clinic": clinics[arc4random() % 7],
                                  @"hospital": hospitals[arc4random() % 4],
-                                 @"good_at": goodAts[arc4random() % 3],
+                                 @"good_at": goodAts[arc4random() % 4],
                                 };
             [result addObject:d];
         }

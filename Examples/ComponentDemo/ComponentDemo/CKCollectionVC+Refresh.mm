@@ -13,7 +13,9 @@
 #pragma mark - header
 
 - (void)enableHeaderRefresh {
-    [self disableHeaderRefresh];
+    if (self.collectionView.mj_header) {
+        return;
+    }
     
     Class cls = [self headerRefreshViewClass];
     
@@ -35,11 +37,14 @@
 #pragma mark - footer
 
 - (void)enableFooterRefresh {
-    [self disableFooterRefresh];
+    if (self.collectionView.mj_footer) {
+        return;
+    }
     
     Class cls = [self footerRefreshViewClass];
     
-    self.collectionView.mj_footer = [cls footerWithRefreshingTarget:self refreshingAction:@selector(beginFooterRefreshing)];    
+    self.collectionView.mj_footer = [cls footerWithRefreshingTarget:self refreshingAction:@selector(beginFooterRefreshing)];
+    self.collectionView.mj_footer.layer.zPosition = -1000;
 }
 
 - (void)disableFooterRefresh {

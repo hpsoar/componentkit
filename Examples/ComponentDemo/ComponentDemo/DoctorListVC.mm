@@ -19,7 +19,6 @@
     [super viewDidLoad];
     
     [self enableHeaderRefresh];
-    [self enableFooterRefresh];
     
     self.doctorListOptions = [DoctorModel doctorListOptions];
     self.modelOptions = self.doctorListOptions;
@@ -41,13 +40,13 @@
         NSArray *doctors = result.model;
         if (doctors.count > 0) {
             [self addModels:doctors atIndex:self.doctorListOptions.page * self.doctorListOptions.pageSize];
-            
-            [self.collectionView reloadData];
         }
         
         if (doctors.count == self.doctorListOptions.pageSize) {
             self.doctorListOptions.page += 1;
         }
+        
+        [self enableFooterRefresh];
     }
 }
 
