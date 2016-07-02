@@ -33,84 +33,33 @@
 
 @end
 
-struct CKInsetComponentConfig {
-    CKComponentViewConfiguration viewConfig;
-    UIEdgeInsets insets;
-    CKComponent *component;
-};
-
-@interface CKInsetComponent (Util)
-
-+ (instancetype)newWithConfig:(const CKInsetComponentConfig &)config;
-
-@end
-
-@implementation CKInsetComponent (Util)
-
-+ (instancetype)newWithConfig:(const CKInsetComponentConfig &)config {
-    return [self newWithView:config.viewConfig insets:config.insets component:config.component];
-}
-
-@end
-
-struct CKCompositeComponentConfig {
-    CKComponent *component;
-};
-
-@interface CKCompositeComponent (Util)
-
-+ (instancetype)newWithConfig:(const CKCompositeComponentConfig &)config;
-
-@end
-
-@implementation CKCompositeComponent (Util)
-
-+ (instancetype)newWithConfig:(const CKCompositeComponentConfig &)config {
-    return [self newWithComponent:config.component];
-}
-
-@end
-
 @implementation DoctorInfoComponent
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
-    return [super newWithConfig:{
-        [CKInsetComponent newWithConfig:{
-            .viewConfig = {
-                [UIView class],
-                {
-                    {@selector(setBackgroundColor:), [UIColor whiteColor] },
-                }
-            },
-            .insets = UIEdgeInsetsMake(5, 10, 5, 10),
-            .component = [CKStackLayoutComponent newWithView:{} size:{} style:{
+    return [super newWithChild:{
+        [CKInsetComponent newWithView:{} insets:UIEdgeInsetsMake(5, 10, 5, 10) child:{
+            [CKStackLayoutComponent newWithView:{} size:{} style:{
                 .spacing = 8,
-            } children:{
-                {
-                    // name & title
+            }children:{
+                {   // name & title
                     .component = [CKStackLayoutComponent newWithView:{} size:{} style:{
                         .direction = CKStackLayoutDirectionHorizontal,
                         .spacing = 5,
                         .alignItems = CKStackLayoutAlignItemsEnd,
                     } children:{
-                        {
-                            {   // name
-                                .component = [CKLabelComponent newWithLabelAttributes:{
-                                    .string = [NSString stringWithFormat:@"%zi %@", doctor.Id, doctor.name],
-                                    .font = [UIFont systemFontOfSize:16],
-                                    .color = [UIColor redColor],
-                                } viewAttributes:{} size:{}],
-                            },
-                            {   // title
-                                .component = [CKLabelComponent newWithLabelAttributes:{
-                                    .string = doctor.title,
-                                    .font = [UIFont systemFontOfSize:12],
-                                    .color = [UIColor blueColor],
-                                }viewAttributes:{} size:{}],
-                            },
-                            {
-                                
-                            }
+                        {   // name
+                            .component = [CKLabelComponent newWithLabelAttributes:{
+                                .string = [NSString stringWithFormat:@"%zi %@", doctor.Id, doctor.name],
+                                .font = [UIFont systemFontOfSize:16],
+                                .color = [UIColor redColor],
+                            } viewAttributes:{} size:{}],
+                        },
+                        {   // title
+                            .component = [CKLabelComponent newWithLabelAttributes:{
+                                .string = doctor.title,
+                                .font = [UIFont systemFontOfSize:12],
+                                .color = [UIColor blueColor],
+                            }viewAttributes:{} size:{}],
                         }
                     }],
                 },
@@ -147,7 +96,7 @@ struct CKCompositeComponentConfig {
                         .color = [UIColor grayColor],
                         .maximumNumberOfLines = 4,
                         .truncationString = @"...",
-                        .lineHeightMultiple = 1.2,                
+                        .lineHeightMultiple = 1.2,
                     }viewAttributes:{} size:{}],
                 }
             }]
