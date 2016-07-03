@@ -26,16 +26,18 @@
 @property (nonatomic) NSInteger pageSize;
 @end
 
-@interface MockDoctorModelDataSource : NSObject <AAModelDataSource>
-
-+ (NSString *)randomGoodAt;
-
-@end
-
 @interface DoctorModel (API)
 
 + (DoctorListOptions *)doctorListOptions;
 + (AAURLModelDataSource *)doctorListDataSource;
    
+@end
+
+#pragma mark - mock
+
+@interface MockDoctorModelDataSource : NSObject <AAModelDataSource>
+
++ (NSString *)randomGoodAt;
+
 @end
 

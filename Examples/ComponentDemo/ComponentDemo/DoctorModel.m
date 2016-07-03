@@ -34,6 +34,23 @@
 
 @end
 
+@implementation DoctorModel (API)
+
++ (DoctorListOptions *)doctorListOptions {
+    DoctorListOptions *options = [DoctorListOptions new];
+    options.pageSize = 20;
+    return options;
+}
+
++ (AAURLModelDataSource *)doctorListDataSource {
+    AAURLModelDataSource *dataSource = [AAURLModelDataSource newWithKit:nil API:@"/api/doctor/list/"];
+    return dataSource;
+}
+
+@end
+
+#pragma mark - mock
+
 @implementation MockDoctorModelDataSource
 
 - (void)fetch:(AAModelOptions *)options callback:(void (^)(id, NSError *))callback {
@@ -54,7 +71,7 @@
                                  @"clinic": clinics[arc4random() % 7],
                                  @"hospital": hospitals[arc4random() % 4],
                                  @"good_at": [[self class] randomGoodAt],
-                                };
+                                 };
             [result addObject:d];
         }
     }
@@ -72,21 +89,6 @@
     static int r = 0;
     r = r == 0 ? 3 : 0;
     return [self goodAts][r];
-}
-
-@end
-
-@implementation DoctorModel (API)
-
-+ (DoctorListOptions *)doctorListOptions {
-    DoctorListOptions *options = [DoctorListOptions new];
-    options.pageSize = 20;
-    return options;
-}
-
-+ (AAURLModelDataSource *)doctorListDataSource {
-    AAURLModelDataSource *dataSource = [AAURLModelDataSource newWithKit:nil API:@"/api/doctor/list/"];
-    return dataSource;
 }
 
 @end
