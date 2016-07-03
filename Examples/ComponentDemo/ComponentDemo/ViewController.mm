@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HostViewVC.h"
 #import "DoctorListVC.h"
+#import "TestCollectionVC.h"
 
 @interface ViewController ()
 
@@ -32,6 +33,12 @@
     [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [self.view addSubview:btn2];
     [btn2 addTarget:self action:@selector(collectionViewDemo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 120, 30)];
+    [btn3 setTitle:@"collection vc" forState:UIControlStateNormal];
+    [btn3 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.view addSubview:btn3];
+    [btn3 addTarget:self action:@selector(collectionViewDemo2:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)hostViewDemo:(id)sender {
@@ -41,6 +48,11 @@
 
 - (void)collectionViewDemo:(id)sender {
     DoctorListVC *vc = [DoctorListVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)collectionViewDemo2:(id)sender {
+    TestCollectionVC *vc = [TestCollectionVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

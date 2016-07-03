@@ -26,6 +26,7 @@
 		126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCC1D24C29300421358 /* HostViewVC.mm */; };
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
 		126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */; };
+		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,8 @@
 		126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorInfoComponent.mm; sourceTree = "<group>"; };
 		126E2FEE1D25677B00421358 /* CKComponent+HostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKComponent+HostingView.h"; sourceTree = "<group>"; };
 		126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKComponent+HostingView.mm"; sourceTree = "<group>"; };
+		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
+		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		732FF15DCC274761B4B6F489 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C436BBCC0092F787C8B4E5B0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				12605C561D26B10900396DC0 /* AAModelOptions.m */,
 				12605C5B1D26C5A000396DC0 /* ModelCollectionVC.h */,
 				12605C5C1D26C5A000396DC0 /* ModelCollectionVC.mm */,
+				12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */,
+				12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */,
 			);
 			path = ComponentDemo;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				12605C441D2675D600396DC0 /* DoctorModel.m in Sources */,
 				12605C571D26B10900396DC0 /* AAModelOptions.m in Sources */,
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,
+				12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
