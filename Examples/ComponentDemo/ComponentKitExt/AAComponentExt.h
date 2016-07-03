@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "AACollectionModel.h"
 #import "CKComponent+HostingView.h"
+
+/**
+ *  model -> CKComponent
+ */
+
+@protocol ComponentModelProtocol <NSObject>
+
+- (CKComponent *)componentWithContext:(id<NSObject>)context;
+
+@end
 
 #pragma mark - CKInsetComponent
 

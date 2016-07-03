@@ -20,7 +20,6 @@
 		126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCC1D24C29300421358 /* HostViewVC.mm */; };
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
 		12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */; };
-		12AF542F1D2955F1006B1729 /* AACollectionModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541A1D2955F1006B1729 /* AACollectionModel.mm */; };
 		12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541C1D2955F1006B1729 /* AAComponentExt.mm */; };
 		12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */; };
 		12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54201D2955F1006B1729 /* CKComponent+HostingView.mm */; };
@@ -78,8 +77,6 @@
 		126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorInfoComponent.mm; sourceTree = "<group>"; };
 		12AF54111D28EAB8006B1729 /* DoctorListVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC2.h; sourceTree = "<group>"; };
 		12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC2.mm; sourceTree = "<group>"; };
-		12AF54191D2955F1006B1729 /* AACollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACollectionModel.h; sourceTree = "<group>"; };
-		12AF541A1D2955F1006B1729 /* AACollectionModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AACollectionModel.mm; sourceTree = "<group>"; };
 		12AF541B1D2955F1006B1729 /* AAComponentExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponentExt.h; sourceTree = "<group>"; };
 		12AF541C1D2955F1006B1729 /* AAComponentExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAComponentExt.mm; sourceTree = "<group>"; };
 		12AF541D1D2955F1006B1729 /* CKCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCollectionVC.h; sourceTree = "<group>"; };
@@ -213,8 +210,6 @@
 		12AF54181D2955F1006B1729 /* ComponentKitExt */ = {
 			isa = PBXGroup;
 			children = (
-				12AF54191D2955F1006B1729 /* AACollectionModel.h */,
-				12AF541A1D2955F1006B1729 /* AACollectionModel.mm */,
 				12AF541B1D2955F1006B1729 /* AAComponentExt.h */,
 				12AF541C1D2955F1006B1729 /* AAComponentExt.mm */,
 				12AF541D1D2955F1006B1729 /* CKCollectionVC.h */,
@@ -461,7 +456,6 @@
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,
 				12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */,
 				12AF54341D2955F1006B1729 /* CKModelTableVC.mm in Sources */,
-				12AF542F1D2955F1006B1729 /* AACollectionModel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
