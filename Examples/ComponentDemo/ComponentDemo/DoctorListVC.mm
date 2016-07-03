@@ -38,7 +38,14 @@
     
     [self registerHeaderClass:[TestHeaderView class]];
     
-    [self loadModel:nil];    
+    [self loadModel:nil];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"test" style:UIBarButtonItemStyleDone target:self action:@selector(getTextField:)];
+}
+
+
+- (void)getTextField:(id)sender {
+    
 }
 
 - (void)didLoadModel:(AAModelResult *)result {

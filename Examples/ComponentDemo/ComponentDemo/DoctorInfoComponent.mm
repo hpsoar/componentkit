@@ -7,31 +7,7 @@
 //
 
 #import "DoctorInfoComponent.h"
-
-@interface TestButton : UIButton
-
-
-@end
-
-@implementation TestButton
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-    }
-    return self;
-}
-
-@end
+#import <ComponentKit/CKComponentSubclass.h>
 
 @interface DoctorNameTitleComponent : CKCompositeComponent
 
@@ -39,7 +15,9 @@
 
 @end
 
-@implementation DoctorNameTitleComponent
+@implementation DoctorNameTitleComponent {
+    
+}
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
     return [super newWithChild:{
@@ -74,10 +52,18 @@
 
 @end
 
-@implementation DoctorClinicHospitalComponent
+@implementation DoctorClinicHospitalComponent {
+    DoctorModel *_doctor;
+}
+
++ (id)initialState {
+    return @NO;
+}
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
-    return [super newWithChild:{
+    CKComponentScope scope(self);
+    
+    DoctorClinicHospitalComponent *c = [super newWithChild:{
         [CKStackLayoutComponent newWithView:{} size:{} style:{
             .direction = CKStackLayoutDirectionHorizontal,
             .spacing = 5,
@@ -98,9 +84,33 @@
                     .font = [UIFont systemFontOfSize:12],
                     .color = [UIColor blackColor],
                 }viewAttributes:{} size:{}]
+            },           
+            {
+                .component = [CKButtonComponent newWithTitles:{
+                    { UIControlStateNormal, @"hello" },
+                }titleColors:{
+                    { UIControlStateNormal, [UIColor greenColor], }
+                }images:{} backgroundImages:{} titleFont:{} selected:NO enabled:YES action:@selector(tap:) size:{
+                    .width = 80,
+                    .height = 30
+                } attributes:{
+                    { @selector(setBackgroundColor:), [UIColor lightGrayColor] },
+                    { CKComponentViewAttribute::LayerAttribute(@selector(setCornerRadius:)), @4 },
+                } accessibilityConfiguration:{}]
             }
         }],
     }];
+    
+    c->_doctor = doctor;
+    
+    return c;
+}
+
+- (void)tap:(id)sender {
+    _doctor.goodAt = [MockDoctorModelDataSource randomGoodAt];
+    [self updateState:^id(id oldState) {
+        return [oldState boolValue] ? @NO : @YES;
+    } mode:CKUpdateModeAsynchronous];
 }
 
 @end
@@ -108,7 +118,15 @@
 @implementation DoctorInfoComponent
 
 + (instancetype)newWithDoctor:(DoctorModel *)doctor {
-    return [super newWithChild:{
+    CKComponentScope scope(self);
+    
+    return [super newWithView:{
+        [UIView class],
+        {
+            { @selector(setBackgroundColor:), [UIColor whiteColor] },
+            { @selector(setClipsToBounds:), YES },
+        }
+    } child:{
         [CKInsetComponent newWithView:{} insets:UIEdgeInsetsMake(5, 10, 5, 10) child:{
             [CKStackLayoutComponent newWithView:{} size:{} style:{
                 .spacing = 8,
@@ -133,9 +151,13 @@
                 },
                 {
                     .component = [CKComponent newWithView:{
-                        [UITextField class],
+                        [UIView class],
                         {
                             {@selector(setBackgroundColor:), [UIColor greenColor] },
+                        },
+                        {
+                            .isAccessibilityElement = @(YES),
+                            .accessibilityIdentifier = [NSString stringWithFormat:@"%@ %zi", doctor.name, doctor.Id],
                         }
                         } size:{
                             .width = 300,
@@ -145,6 +167,20 @@
             }]
         }]
     }];
+}
+
+- (std::vector<CKComponentAnimation>)animationsFromPreviousComponent:(DoctorInfoComponent *)previousComponent
+{
+    return {{ previousComponent, scaleToAppear() }};
+}
+
+static CAAnimation *scaleToAppear()
+{
+    CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
+    scale.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)];
+    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    scale.duration = 0.2;
+    return scale;
 }
 
 + (CKComponent *)componentForModel:(id)doctor context:(id<NSObject>)context {

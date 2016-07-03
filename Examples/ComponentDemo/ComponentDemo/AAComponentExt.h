@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CKComponent+HostingView.h"
 #import "AACollectionModel.h"
+#import "CKComponent+HostingView.h"
 
 #pragma mark - CKInsetComponent
 
@@ -26,7 +26,9 @@ struct CKInsetComponentConfig {
 @interface CKInsetComponent (Util)
 
 + (instancetype)newWithConfig:(const CKInsetComponentConfig &)config;
-+ (instancetype)newWithView:(const CKComponentViewConfiguration &)view insets:(UIEdgeInsets)insets child:(const CKComponentChild &)child;
++ (instancetype)newWithView:(const CKComponentViewConfiguration &)view
+                     insets:(UIEdgeInsets)insets
+                      child:(const CKComponentChild &)child;
 
 @end
 
@@ -35,9 +37,10 @@ struct CKInsetComponentConfig {
 @interface CKCompositeComponent (Util)
 
 + (instancetype)newWithChild:(const CKComponentChild &)child;
++ (instancetype)newWithView:(const CKComponentViewConfiguration &)view
+                      child:(const CKComponentChild &)child;
 
 @end
-
 
 #pragma mark - CKStackLayoutComponent
 
@@ -61,4 +64,24 @@ struct CKStackLayoutComponentConfig {
 
 @end
 
+struct CKButtonComponentConfig {
+    std::unordered_map<UIControlState, NSString *> titles;
+    std::unordered_map<UIControlState, UIColor *> titleColors;
+    std::unordered_map<UIControlState, UIImage *> images;
+    std::unordered_map<UIControlState, NSString *> imageNames;
+    std::unordered_map<UIControlState, UIImage *> backgroundImages;
+    std::unordered_map<UIControlState, NSString *> backgroundImageNames;
+    CKViewComponentAttributeValueMap view;
+    CKComponentAction action;
+    CKComponentSize size;
+    CKButtonComponentAccessibilityConfiguration accessibility;
+    UIFont *titleFont;
+    BOOL disabled;
+    BOOL selected;
+};
 
+@interface CKButtonComponent (Util)
+
++ (instancetype)newWithConfig:(const CKButtonComponentConfig &)config;
+
+@end

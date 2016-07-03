@@ -28,6 +28,8 @@
 
 @interface MockDoctorModelDataSource : NSObject <AAModelDataSource>
 
++ (NSString *)randomGoodAt;
+
 @end
 
 @interface DoctorModel (API)
