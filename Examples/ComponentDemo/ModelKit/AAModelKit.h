@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APIKit.h"
 
 /**
  *  Loading status
@@ -107,20 +108,6 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 @end
 
-/**
- *  model api options
- */
-
-@interface AAModelAPIOptions : NSObject
-
-+ (instancetype)newWithAPI:(NSString *)API;
-+ (instancetype)newWithAPI:(NSString *)API method:(NSString *)method timeout:(NSTimeInterval)timeout;
-
-@property (nonatomic, copy) NSString *API;
-@property (nonatomic, copy) NSString *method;
-@property (nonatomic) NSTimeInterval timeout;
-
-@end
 
 /**
  *  remote API model options
@@ -128,7 +115,7 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 @interface AAURLModelOptions : AAModelOptions
 
-@property (nonatomic, strong) AAModelAPIOptions *apiOptions;;
+@property (nonatomic, strong) APIOptions *apiOptions;;
 
 @end
 
@@ -143,10 +130,12 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
  */
 @interface AAURLModelDataSource : NSObject <AAModelDataSource>
 
-+ (instancetype)newWithAPI:(NSString *)API;
-+ (instancetype)newWithAPI:(NSString *)API method:(NSString *)method;
-+ (instancetype)newWithOptions:(AAModelAPIOptions *)apiOptions;
++ (instancetype)newWithKit:(id<APIKit>)kit;
++ (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API;
++ (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API method:(NSString *)method;
++ (instancetype)newWithKit:(id<APIKit>)kit options:(APIOptions *)apiOptions;
 
-@property (nonatomic, strong) AAModelAPIOptions *apiOptions;
+@property (nonatomic, strong) APIOptions *apiOptions;
+@property (nonatomic, strong) id<APIKit> kit;
 
 @end

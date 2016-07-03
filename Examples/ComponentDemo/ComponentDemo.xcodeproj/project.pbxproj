@@ -31,6 +31,7 @@
 		12AF54381D2955F1006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF542D1D2955F1006B1729 /* RefreshController.m */; };
 		12AF543C1D2960CE006B1729 /* AATableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543B1D2960CE006B1729 /* AATableVC.m */; };
 		12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543E1D2960D9006B1729 /* AACollectionVC.m */; };
+		12AF54421D296411006B1729 /* APIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54411D296411006B1729 /* APIKit.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,8 @@
 		12AF543B1D2960CE006B1729 /* AATableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATableVC.m; sourceTree = "<group>"; };
 		12AF543D1D2960D9006B1729 /* AACollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACollectionVC.h; sourceTree = "<group>"; };
 		12AF543E1D2960D9006B1729 /* AACollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACollectionVC.m; sourceTree = "<group>"; };
+		12AF54401D296411006B1729 /* APIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKit.h; sourceTree = "<group>"; };
+		12AF54411D296411006B1729 /* APIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIKit.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +246,8 @@
 				12AF542C1D2955F1006B1729 /* RefreshController.h */,
 				12AF542D1D2955F1006B1729 /* RefreshController.m */,
 				12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */,
+				12AF54401D296411006B1729 /* APIKit.h */,
+				12AF54411D296411006B1729 /* APIKit.m */,
 			);
 			path = ModelKit;
 			sourceTree = SOURCE_ROOT;
@@ -465,6 +470,7 @@
 				12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */,
 				12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */,
 				12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */,
+				12AF54421D296411006B1729 /* APIKit.m in Sources */,
 				12AF543C1D2960CE006B1729 /* AATableVC.m in Sources */,
 				12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */,
 				12AF54331D2955F1006B1729 /* CKModelCollectionVC.mm in Sources */,

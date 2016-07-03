@@ -94,45 +94,48 @@
 
 @end
 
-@implementation AAModelAPIOptions
-
-+ (instancetype)newWithAPI:(NSString *)API {
-    return [self newWithAPI:API method:@"GET" timeout:10];
-}
-
-+ (instancetype)newWithAPI:(NSString *)API method:(NSString *)method timeout:(NSTimeInterval)timeout {
-    AAModelAPIOptions *options = [self new];
-    options.API = API;
-    options.method = method;
-    options.timeout = timeout;
-    return options;
-}
-
-@end
-
 @implementation AAURLModelOptions
 
 @end
 
 @implementation AAURLModelDataSource
 
-+ (instancetype)newWithAPI:(NSString *)API {
-    return [self newWithAPI:API method:@"GET"];
++ (instancetype)newWithKit:(id<APIKit>)kit {
+    return [self newWithKit:kit options:nil];
 }
 
-+ (instancetype)newWithAPI:(NSString *)API method:(NSString *)method {
-    return [self newWithOptions:[AAModelAPIOptions newWithAPI:API method:method timeout:10]];
++ (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API {
+    return [self newWithKit:kit API:API method:@"GET"];
 }
 
-+ (instancetype)newWithOptions:(AAModelAPIOptions *)apiOptions {
++ (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API method:(NSString *)method {
+    return [self newWithKit:kit options:[APIOptions newWithAPI:API method:method timeout:10]];
+}
+
++ (instancetype)newWithKit:(id<APIKit>)kit options:(APIOptions *)apiOptions {
     AAURLModelDataSource *dataSource = [self new];
     dataSource.apiOptions = apiOptions;
+    dataSource.kit = kit;
     return dataSource;        
 }
 
 - (void)fetch:(AAModelOptions *)options callback:(void (^)(id, NSError *))callback {
+    APIOptions *apiOptions = self.apiOptions;
+    if ([options isKindOfClass:[AAURLModelOptions class]]) {
+        AAURLModelOptions *modelOptions = (AAURLModelOptions *)options;
+        if (modelOptions.apiOptions) {
+            apiOptions = modelOptions.apiOptions;
+        }
+    }
+    NSAssert(self.kit, @"you need to provide a APIKit object");
+    NSAssert(apiOptions, @"you need to provide `APIOptions` other for `%@` or `%@`", [self class], [options class]);
+    
     NSDictionary *parameters = [options mj_keyValues];
-    // send request
+    [self.kit request:apiOptions parameters:parameters callback:^(APIResult *result) {
+        if (callback) {
+            callback(result.JSON, result.error);
+        }
+    }];
 }
 
 @end

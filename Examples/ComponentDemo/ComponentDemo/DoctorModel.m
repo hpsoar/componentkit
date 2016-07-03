@@ -85,7 +85,7 @@
 }
 
 + (AAURLModelDataSource *)doctorListDataSource {
-    AAURLModelDataSource *dataSource = [AAURLModelDataSource newWithAPI:@"/api/doctor/list/"];
+    AAURLModelDataSource *dataSource = [AAURLModelDataSource newWithKit:nil API:@"/api/doctor/list/"];
     return dataSource;
 }
 
