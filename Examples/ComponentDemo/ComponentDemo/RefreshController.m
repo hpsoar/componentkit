@@ -13,6 +13,7 @@
 @interface RefreshController ()
 
 @property(nonatomic, strong) UIScrollView *scrollView;
+@property(nonatomic, strong) NSMutableSet *delegates;
 
 @end
 
@@ -24,9 +25,20 @@
     self = [super init];
     if (self) {
         self.scrollView = scrollView;
-        self.delegate = delegate;
+        self.delegates = (__bridge_transfer NSMutableSet *)CFSetCreateMutable(nil, 0, nil);
+        [self forwardingTo:delegate];
     }
     return self;
+}
+
+- (void)forwardingTo:(id<RefreshControllerDelegate>)delegate {
+    if (delegate) {
+        [self.delegates addObject:delegate];
+    }
+}
+
+- (void)removeForwarding:(id<RefreshControllerDelegate>)delegate {
+    [self.delegates removeObject:delegate];
 }
 
 #pragma mark - header
@@ -44,7 +56,9 @@
 }
 
 - (void)endHeaderRefreshing {
-    [self.scrollView.mj_header endRefreshing];
+    if (self.scrollView.mj_header) {
+        [self.scrollView.mj_header endRefreshing];
+    }
 }
 
 #pragma mark - footer
@@ -62,25 +76,42 @@
 }
 
 - (void)endFooterRefreshing {
-    [self.scrollView.mj_footer endRefreshing];
+    if (self.scrollView.mj_footer) {
+        [self.scrollView.mj_footer endRefreshing];
+    }
 }
 
 #pragma mark - create
 
 - (MJRefreshFooter *)footerView {
-    NSAssert(self.delegate, @"please set delegate first");
+    
     MJRefreshFooter *footer = [MJRefreshAutoNormalFooter
-        footerWithRefreshingTarget:self.delegate
+        footerWithRefreshingTarget:self
                   refreshingAction:@selector(beginFooterRefreshing)];
     footer.layer.zPosition = -1000;
     return footer;
 }
 
 - (MJRefreshHeader *)headerView {
-    NSAssert(self.delegate, @"please set delegate first");
     return [MJRefreshNormalHeader
-        headerWithRefreshingTarget:self.delegate
+        headerWithRefreshingTarget:self
                   refreshingAction:@selector(beginHeaderRefreshing)];
+}
+
+- (void)beginHeaderRefreshing {
+    for (id delegate in self.delegates) {
+        if ([delegate respondsToSelector:@selector(beginHeaderRefreshing)]) {
+            [delegate beginHeaderRefreshing];
+        }
+    }
+}
+
+- (void)beginFooterRefreshing {
+    for (id delegate in self.delegates) {
+        if ([delegate respondsToSelector:@selector(beginFooterRefreshing)]) {
+            [delegate beginFooterRefreshing];
+        }
+    }
 }
 
 @end

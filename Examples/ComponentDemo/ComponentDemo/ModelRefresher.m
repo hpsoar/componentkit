@@ -12,6 +12,15 @@ BOOL isTopRefresh(ModelRefreshType type) { return type == ModelRefreshTypeTop; }
 
 @implementation ModelRefresher
 
+- (instancetype)initWithRefreshController:(RefreshController *)refreshController {
+    self = [super init];
+    if (self) {
+        self.refreshController = refreshController;
+        [refreshController forwardingTo:self];
+    }
+    return self;
+}
+
 - (void)beginHeaderRefreshing {
     [self refresh:ModelRefreshTypeTop];
 }

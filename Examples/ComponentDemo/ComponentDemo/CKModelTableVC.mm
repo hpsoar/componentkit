@@ -12,10 +12,8 @@
 
 - (ModelRefresher *)modelRefresher {
     if (_modelRefresher == nil) {
-        _modelRefresher = [ModelRefresher new];
-        _modelRefresher.delegate = self;
-        
-        self.refreshController.delegate = _modelRefresher;
+        _modelRefresher = [[ModelRefresher alloc] initWithRefreshController:self.refreshController];
+        _modelRefresher.delegate = self;                
     }
     return _modelRefresher;
 }

@@ -35,6 +35,8 @@ BOOL isTopRefresh(ModelRefreshType type);
 
 @interface ModelRefresher : NSObject <RefreshControllerDelegate>
 
+- (instancetype)initWithRefreshController:(RefreshController *)refreshController;
+
 - (void)refresh:(ModelRefreshType)type;
 
 - (BOOL)shouldBeginLoadModel:(ModelRefreshType)type;

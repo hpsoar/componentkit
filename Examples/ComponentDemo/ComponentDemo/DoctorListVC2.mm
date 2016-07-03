@@ -45,6 +45,7 @@
     else {
         if (self.doctorListOptions.page == 0) {
             [self clearSection];
+            [self addSection];
         }
         NSArray *doctors = result.model;
         if (doctors.count > 0) {

@@ -40,6 +40,8 @@
     return _refreshController;
 }
 
+#pragma mark - data source
+
 - (void)addSection {
     CKTransactionalComponentDataSourceChangesetBuilder *builder = [CKTransactionalComponentDataSourceChangesetBuilder new];
     [builder withInsertedSections:[NSIndexSet indexSetWithIndex:0]];
@@ -58,7 +60,7 @@
         dictionary[[NSIndexPath indexPathForItem:i + index inSection:0]] = models[i];
     }
     CKTransactionalComponentDataSourceChangesetBuilder *builder = [CKTransactionalComponentDataSourceChangesetBuilder new];
-    [builder withInsertedSections:[NSIndexSet indexSetWithIndex:0]];
+//    [builder withInsertedSections:[NSIndexSet indexSetWithIndex:0]];
     [builder withInsertedItems:dictionary];
     [self.dataSource applyChangeset:builder.build mode:CKUpdateModeSynchronous userInfo:nil];
 }
