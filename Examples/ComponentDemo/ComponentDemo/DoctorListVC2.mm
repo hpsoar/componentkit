@@ -20,15 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.refreshController enableHeaderRefresh];
-    
     self.doctorListOptions = [DoctorModel doctorListOptions];
-    self.modelOptions = self.doctorListOptions;
-    self.modelController = [DoctorModel mockDoctorListController];
+    self.modelRefresher.modelOptions = self.doctorListOptions;
+    self.modelRefresher.modelController = [DoctorModel mockDoctorListController];
+    
+    [self.refreshController enableHeaderRefresh];
     
     [self addSection];
     
-    [self loadModel:nil];
+    [self.modelRefresher refresh:ModelRefreshTypeTop];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"test" style:UIBarButtonItemStyleDone target:self action:@selector(getTextField:)];
 }
@@ -38,7 +38,7 @@
     
 }
 
-- (void)didLoadModel:(AAModelResult *)result {
+- (void)refresher:(ModelRefresher *)refresher didFinishLoadWithType:(ModelRefreshType)type result:(AAModelResult *)result {
     if (result.error) {
         
     }

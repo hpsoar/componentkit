@@ -29,6 +29,7 @@
 		12AF540D1D28E35B006B1729 /* CKModelTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */; };
 		12AF54101D28E4C9006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540F1D28E4C9006B1729 /* RefreshController.m */; };
 		12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */; };
+		12AF54171D2901CB006B1729 /* ModelRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54161D2901CB006B1729 /* ModelRefresher.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,8 @@
 		12AF54111D28EAB8006B1729 /* DoctorListVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC2.h; sourceTree = "<group>"; };
 		12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC2.mm; sourceTree = "<group>"; };
 		12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController_SubClass.h; sourceTree = "<group>"; };
+		12AF54151D2901CB006B1729 /* ModelRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelRefresher.h; sourceTree = "<group>"; };
+		12AF54161D2901CB006B1729 /* ModelRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelRefresher.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +154,8 @@
 				12AF540E1D28E4C9006B1729 /* RefreshController.h */,
 				12AF540F1D28E4C9006B1729 /* RefreshController.m */,
 				12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */,
+				12AF54151D2901CB006B1729 /* ModelRefresher.h */,
+				12AF54161D2901CB006B1729 /* ModelRefresher.m */,
 			);
 			name = ComponentKitExt;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 			files = (
 				12605C5D1D26C5A000396DC0 /* CKModelCollectionVC.mm in Sources */,
 				12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */,
+				12AF54171D2901CB006B1729 /* ModelRefresher.m in Sources */,
 				120527D81D2662DE00AB64E5 /* CKCollectionVC.mm in Sources */,
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
 				12AF53FE1D28D8A8006B1729 /* CKTableVC.mm in Sources */,

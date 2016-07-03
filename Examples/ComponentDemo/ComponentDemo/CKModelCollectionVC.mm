@@ -10,43 +10,14 @@
 
 @implementation CKModelCollectionVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];        
-}
-
-- (void)beginHeaderRefreshing {
-    if ([self.modelOptions canLoad]) {
-        [self.modelOptions reset];
+- (ModelRefresher *)modelRefresher {
+    if (_modelRefresher == nil) {
+        _modelRefresher = [ModelRefresher new];
+        _modelRefresher.delegate = self;
         
-        [self loadModel:^{
-            [self.refreshController endHeaderRefreshing];
-        }];
+        self.refreshController.delegate = _modelRefresher;
     }
-}
-
-- (void)beginFooterRefreshing {
-    if ([self.modelOptions canLoad]) {
-        [self loadModel:^{
-            [self.refreshController endFooterRefreshing];
-        }];
-    }
-}
-
-- (void)loadModel:(dispatch_block_t)callback {
-    self.modelOptions.loadingStatus = AAModelLoadingStatusLoading;
-    
-    [self.modelController fetch:self.modelOptions callback:^(AAModelResult *result) {
-        self.modelOptions.loadingStatus = result.error ? AAModelLoadingStatusFailed : AAModelLoadingStatusSucceed;
-        if (callback) {
-            callback();
-        }
-        
-        [self didLoadModel:result];
-    }];
-}
-
-- (void)didLoadModel:(AAModelResult *)result {
-    
+    return _modelRefresher;
 }
 
 @end

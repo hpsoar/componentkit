@@ -7,14 +7,10 @@
 //
 
 #import "CKCollectionVC.h"
-#import "AAModelOptions.h"
+#import "ModelRefresher.h"
 
-@interface CKModelCollectionVC : CKCollectionVC
+@interface CKModelCollectionVC : CKCollectionVC <ModelRefresherDelegate>
 
-@property (nonatomic, strong) AAModelController *modelController;
-@property (nonatomic, strong) AAModelOptions *modelOptions;
-
-- (void)loadModel:(dispatch_block_t)callback;
-- (void)didLoadModel:(AAModelResult *)result;
+@property (nonatomic, strong) ModelRefresher *modelRefresher;
 
 @end

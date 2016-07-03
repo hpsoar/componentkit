@@ -10,6 +10,7 @@
 
 @protocol RefreshControllerDelegate <NSObject>
 
+@optional
 - (void)beginHeaderRefreshing;
 - (void)beginFooterRefreshing;
 
