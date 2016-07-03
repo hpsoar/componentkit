@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		120527D81D2662DE00AB64E5 /* CKCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120527D71D2662DE00AB64E5 /* CKCollectionVC.mm */; };
 		12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C401D2674BF00396DC0 /* DoctorListVC.mm */; };
 		12605C441D2675D600396DC0 /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12605C431D2675D600396DC0 /* DoctorModel.m */; };
-		12605C471D267CD400396DC0 /* AACollectionModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C461D267CD400396DC0 /* AACollectionModel.mm */; };
-		12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C491D267D9000396DC0 /* AAComponentExt.mm */; };
-		12605C571D26B10900396DC0 /* AAModelOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 12605C561D26B10900396DC0 /* AAModelOptions.m */; };
-		12605C5D1D26C5A000396DC0 /* CKModelCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C5C1D26C5A000396DC0 /* CKModelCollectionVC.mm */; };
 		126E2F9A1D24C0FD00421358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F991D24C0FD00421358 /* main.m */; };
 		126E2F9D1D24C0FD00421358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F9C1D24C0FD00421358 /* AppDelegate.m */; };
 		126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F9F1D24C0FD00421358 /* ViewController.mm */; };
@@ -24,12 +19,17 @@
 		126E2FBE1D24C0FD00421358 /* ComponentDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FBD1D24C0FD00421358 /* ComponentDemoUITests.m */; };
 		126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCC1D24C29300421358 /* HostViewVC.mm */; };
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
-		126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */; };
-		12AF53FE1D28D8A8006B1729 /* CKTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */; };
-		12AF540D1D28E35B006B1729 /* CKModelTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */; };
-		12AF54101D28E4C9006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540F1D28E4C9006B1729 /* RefreshController.m */; };
 		12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */; };
-		12AF54171D2901CB006B1729 /* ModelRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54161D2901CB006B1729 /* ModelRefresher.m */; };
+		12AF542F1D2955F1006B1729 /* AACollectionModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541A1D2955F1006B1729 /* AACollectionModel.mm */; };
+		12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541C1D2955F1006B1729 /* AAComponentExt.mm */; };
+		12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */; };
+		12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54201D2955F1006B1729 /* CKComponent+HostingView.mm */; };
+		12AF54331D2955F1006B1729 /* CKModelCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54221D2955F1006B1729 /* CKModelCollectionVC.mm */; };
+		12AF54341D2955F1006B1729 /* CKModelTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54241D2955F1006B1729 /* CKModelTableVC.mm */; };
+		12AF54351D2955F1006B1729 /* CKTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54261D2955F1006B1729 /* CKTableVC.mm */; };
+		12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54291D2955F1006B1729 /* AAModelKit.m */; };
+		12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF542B1D2955F1006B1729 /* ModelRefresher.m */; };
+		12AF54381D2955F1006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF542D1D2955F1006B1729 /* RefreshController.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -52,20 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		120527D61D2662DE00AB64E5 /* CKCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCollectionVC.h; sourceTree = "<group>"; };
-		120527D71D2662DE00AB64E5 /* CKCollectionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKCollectionVC.mm; sourceTree = "<group>"; };
 		12605C3F1D2674BF00396DC0 /* DoctorListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC.h; sourceTree = "<group>"; };
 		12605C401D2674BF00396DC0 /* DoctorListVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC.mm; sourceTree = "<group>"; };
 		12605C421D2675D600396DC0 /* DoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorModel.h; sourceTree = "<group>"; };
 		12605C431D2675D600396DC0 /* DoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorModel.m; sourceTree = "<group>"; };
-		12605C451D267CD400396DC0 /* AACollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACollectionModel.h; sourceTree = "<group>"; };
-		12605C461D267CD400396DC0 /* AACollectionModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AACollectionModel.mm; sourceTree = "<group>"; };
-		12605C481D267D9000396DC0 /* AAComponentExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponentExt.h; sourceTree = "<group>"; };
-		12605C491D267D9000396DC0 /* AAComponentExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAComponentExt.mm; sourceTree = "<group>"; };
-		12605C551D26B10900396DC0 /* AAModelOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAModelOptions.h; sourceTree = "<group>"; };
-		12605C561D26B10900396DC0 /* AAModelOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAModelOptions.m; sourceTree = "<group>"; };
-		12605C5B1D26C5A000396DC0 /* CKModelCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKModelCollectionVC.h; sourceTree = "<group>"; };
-		12605C5C1D26C5A000396DC0 /* CKModelCollectionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKModelCollectionVC.mm; sourceTree = "<group>"; };
 		126E2F951D24C0FD00421358 /* ComponentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		126E2F991D24C0FD00421358 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		126E2F9B1D24C0FD00421358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,19 +76,29 @@
 		126E2FCC1D24C29300421358 /* HostViewVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HostViewVC.mm; sourceTree = "<group>"; };
 		126E2FCE1D24C33F00421358 /* DoctorInfoComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoComponent.h; sourceTree = "<group>"; };
 		126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorInfoComponent.mm; sourceTree = "<group>"; };
-		126E2FEE1D25677B00421358 /* CKComponent+HostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKComponent+HostingView.h"; sourceTree = "<group>"; };
-		126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKComponent+HostingView.mm"; sourceTree = "<group>"; };
-		12AF53FC1D28D8A8006B1729 /* CKTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTableVC.h; sourceTree = "<group>"; };
-		12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKTableVC.mm; sourceTree = "<group>"; };
-		12AF540B1D28E35A006B1729 /* CKModelTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKModelTableVC.h; sourceTree = "<group>"; };
-		12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKModelTableVC.mm; sourceTree = "<group>"; };
-		12AF540E1D28E4C9006B1729 /* RefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController.h; sourceTree = "<group>"; };
-		12AF540F1D28E4C9006B1729 /* RefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshController.m; sourceTree = "<group>"; };
 		12AF54111D28EAB8006B1729 /* DoctorListVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC2.h; sourceTree = "<group>"; };
 		12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC2.mm; sourceTree = "<group>"; };
-		12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController_SubClass.h; sourceTree = "<group>"; };
-		12AF54151D2901CB006B1729 /* ModelRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelRefresher.h; sourceTree = "<group>"; };
-		12AF54161D2901CB006B1729 /* ModelRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelRefresher.m; sourceTree = "<group>"; };
+		12AF54191D2955F1006B1729 /* AACollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACollectionModel.h; sourceTree = "<group>"; };
+		12AF541A1D2955F1006B1729 /* AACollectionModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AACollectionModel.mm; sourceTree = "<group>"; };
+		12AF541B1D2955F1006B1729 /* AAComponentExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponentExt.h; sourceTree = "<group>"; };
+		12AF541C1D2955F1006B1729 /* AAComponentExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAComponentExt.mm; sourceTree = "<group>"; };
+		12AF541D1D2955F1006B1729 /* CKCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCollectionVC.h; sourceTree = "<group>"; };
+		12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKCollectionVC.mm; sourceTree = "<group>"; };
+		12AF541F1D2955F1006B1729 /* CKComponent+HostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKComponent+HostingView.h"; sourceTree = "<group>"; };
+		12AF54201D2955F1006B1729 /* CKComponent+HostingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKComponent+HostingView.mm"; sourceTree = "<group>"; };
+		12AF54211D2955F1006B1729 /* CKModelCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKModelCollectionVC.h; sourceTree = "<group>"; };
+		12AF54221D2955F1006B1729 /* CKModelCollectionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKModelCollectionVC.mm; sourceTree = "<group>"; };
+		12AF54231D2955F1006B1729 /* CKModelTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKModelTableVC.h; sourceTree = "<group>"; };
+		12AF54241D2955F1006B1729 /* CKModelTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKModelTableVC.mm; sourceTree = "<group>"; };
+		12AF54251D2955F1006B1729 /* CKTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTableVC.h; sourceTree = "<group>"; };
+		12AF54261D2955F1006B1729 /* CKTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKTableVC.mm; sourceTree = "<group>"; };
+		12AF54281D2955F1006B1729 /* AAModelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAModelKit.h; sourceTree = "<group>"; };
+		12AF54291D2955F1006B1729 /* AAModelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAModelKit.m; sourceTree = "<group>"; };
+		12AF542A1D2955F1006B1729 /* ModelRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelRefresher.h; sourceTree = "<group>"; };
+		12AF542B1D2955F1006B1729 /* ModelRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelRefresher.m; sourceTree = "<group>"; };
+		12AF542C1D2955F1006B1729 /* RefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController.h; sourceTree = "<group>"; };
+		12AF542D1D2955F1006B1729 /* RefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshController.m; sourceTree = "<group>"; };
+		12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController_SubClass.h; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,34 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12605C4B1D267DE100396DC0 /* ComponentKitExt */ = {
-			isa = PBXGroup;
-			children = (
-				12605C551D26B10900396DC0 /* AAModelOptions.h */,
-				12605C561D26B10900396DC0 /* AAModelOptions.m */,
-				12605C5B1D26C5A000396DC0 /* CKModelCollectionVC.h */,
-				12605C5C1D26C5A000396DC0 /* CKModelCollectionVC.mm */,
-				120527D61D2662DE00AB64E5 /* CKCollectionVC.h */,
-				120527D71D2662DE00AB64E5 /* CKCollectionVC.mm */,
-				12605C451D267CD400396DC0 /* AACollectionModel.h */,
-				12605C461D267CD400396DC0 /* AACollectionModel.mm */,
-				126E2FEE1D25677B00421358 /* CKComponent+HostingView.h */,
-				126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */,
-				12605C481D267D9000396DC0 /* AAComponentExt.h */,
-				12605C491D267D9000396DC0 /* AAComponentExt.mm */,
-				12AF53FC1D28D8A8006B1729 /* CKTableVC.h */,
-				12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */,
-				12AF540B1D28E35A006B1729 /* CKModelTableVC.h */,
-				12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */,
-				12AF540E1D28E4C9006B1729 /* RefreshController.h */,
-				12AF540F1D28E4C9006B1729 /* RefreshController.m */,
-				12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */,
-				12AF54151D2901CB006B1729 /* ModelRefresher.h */,
-				12AF54161D2901CB006B1729 /* ModelRefresher.m */,
-			);
-			name = ComponentKitExt;
-			sourceTree = "<group>";
-		};
 		126E2F8C1D24C0FD00421358 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +157,8 @@
 		126E2F971D24C0FD00421358 /* ComponentDemo */ = {
 			isa = PBXGroup;
 			children = (
+				12AF54181D2955F1006B1729 /* ComponentKitExt */,
+				12AF54271D2955F1006B1729 /* ModelKit */,
 				126E2F9B1D24C0FD00421358 /* AppDelegate.h */,
 				126E2F9C1D24C0FD00421358 /* AppDelegate.m */,
 				126E2F9E1D24C0FD00421358 /* ViewController.h */,
@@ -202,7 +176,6 @@
 				12605C401D2674BF00396DC0 /* DoctorListVC.mm */,
 				12605C421D2675D600396DC0 /* DoctorModel.h */,
 				12605C431D2675D600396DC0 /* DoctorModel.m */,
-				12605C4B1D267DE100396DC0 /* ComponentKitExt */,
 				12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */,
 				12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */,
 				12AF54111D28EAB8006B1729 /* DoctorListVC2.h */,
@@ -236,6 +209,41 @@
 			);
 			path = ComponentDemoUITests;
 			sourceTree = "<group>";
+		};
+		12AF54181D2955F1006B1729 /* ComponentKitExt */ = {
+			isa = PBXGroup;
+			children = (
+				12AF54191D2955F1006B1729 /* AACollectionModel.h */,
+				12AF541A1D2955F1006B1729 /* AACollectionModel.mm */,
+				12AF541B1D2955F1006B1729 /* AAComponentExt.h */,
+				12AF541C1D2955F1006B1729 /* AAComponentExt.mm */,
+				12AF541D1D2955F1006B1729 /* CKCollectionVC.h */,
+				12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */,
+				12AF541F1D2955F1006B1729 /* CKComponent+HostingView.h */,
+				12AF54201D2955F1006B1729 /* CKComponent+HostingView.mm */,
+				12AF54211D2955F1006B1729 /* CKModelCollectionVC.h */,
+				12AF54221D2955F1006B1729 /* CKModelCollectionVC.mm */,
+				12AF54231D2955F1006B1729 /* CKModelTableVC.h */,
+				12AF54241D2955F1006B1729 /* CKModelTableVC.mm */,
+				12AF54251D2955F1006B1729 /* CKTableVC.h */,
+				12AF54261D2955F1006B1729 /* CKTableVC.mm */,
+			);
+			path = ComponentKitExt;
+			sourceTree = SOURCE_ROOT;
+		};
+		12AF54271D2955F1006B1729 /* ModelKit */ = {
+			isa = PBXGroup;
+			children = (
+				12AF54281D2955F1006B1729 /* AAModelKit.h */,
+				12AF54291D2955F1006B1729 /* AAModelKit.m */,
+				12AF542A1D2955F1006B1729 /* ModelRefresher.h */,
+				12AF542B1D2955F1006B1729 /* ModelRefresher.m */,
+				12AF542C1D2955F1006B1729 /* RefreshController.h */,
+				12AF542D1D2955F1006B1729 /* RefreshController.m */,
+				12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */,
+			);
+			path = ModelKit;
+			sourceTree = SOURCE_ROOT;
 		};
 		1D73C1D7BDADD461418967E5 /* Pods */ = {
 			isa = PBXGroup;
@@ -435,25 +443,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12605C5D1D26C5A000396DC0 /* CKModelCollectionVC.mm in Sources */,
-				12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */,
-				12AF54171D2901CB006B1729 /* ModelRefresher.m in Sources */,
-				120527D81D2662DE00AB64E5 /* CKCollectionVC.mm in Sources */,
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
-				12AF53FE1D28D8A8006B1729 /* CKTableVC.mm in Sources */,
 				126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */,
-				12AF540D1D28E35B006B1729 /* CKModelTableVC.mm in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
-				126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */,
+				12AF54351D2955F1006B1729 /* CKTableVC.mm in Sources */,
+				12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */,
+				12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */,
+				12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */,
+				12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */,
+				12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */,
+				12AF54331D2955F1006B1729 /* CKModelCollectionVC.mm in Sources */,
 				126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */,
 				12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */,
 				126E2F9D1D24C0FD00421358 /* AppDelegate.m in Sources */,
-				12605C471D267CD400396DC0 /* AACollectionModel.mm in Sources */,
-				12AF54101D28E4C9006B1729 /* RefreshController.m in Sources */,
 				12605C441D2675D600396DC0 /* DoctorModel.m in Sources */,
-				12605C571D26B10900396DC0 /* AAModelOptions.m in Sources */,
+				12AF54381D2955F1006B1729 /* RefreshController.m in Sources */,
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,
 				12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */,
+				12AF54341D2955F1006B1729 /* CKModelTableVC.mm in Sources */,
+				12AF542F1D2955F1006B1729 /* AACollectionModel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

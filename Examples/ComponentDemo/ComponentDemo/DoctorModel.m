@@ -84,13 +84,9 @@
     return options;
 }
 
-+ (AAModelController *)mockDoctorListController {
-    return [[AAModelController alloc] initWithDataSource:[MockDoctorModelDataSource new]];
-}
-
-+ (AAModelController *)doctorListController {
-    AAURLModelDataSource *dataSource = [[AAURLModelDataSource alloc] initWithAPI:@"/api/doctor/list/"];
-    return [[AAModelController alloc] initWithDataSource:dataSource];
++ (AAURLModelDataSource *)doctorListDataSource {
+    AAURLModelDataSource *dataSource = [AAURLModelDataSource newWithAPI:@"/api/doctor/list/"];
+    return dataSource;
 }
 
 @end

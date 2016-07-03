@@ -6,7 +6,7 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "AAModelOptions.h"
+#import "AAModelKit.h"
 #import "RefreshController.h"
 #import <Foundation/Foundation.h>
 

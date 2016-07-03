@@ -22,7 +22,7 @@
     
     self.doctorListOptions = [DoctorModel doctorListOptions];
     self.modelRefresher.modelOptions = self.doctorListOptions;
-    self.modelRefresher.modelController = [DoctorModel mockDoctorListController];
+    self.modelRefresher.modelController = [AAModelController newWithDataSource:[MockDoctorModelDataSource new]];
     
     [self.refreshController enableHeaderRefresh];
     

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MJExtension.h>
-#import "AAModelOptions.h"
+#import "AAModelKit.h"
 
 @interface DoctorModel : NSObject
 
@@ -35,7 +35,7 @@
 @interface DoctorModel (API)
 
 + (DoctorListOptions *)doctorListOptions;
-+ (AAModelController *)mockDoctorListController;
-+ (AAModelController *)doctorListController;
++ (AAURLModelDataSource *)doctorListDataSource;
    
 @end
+

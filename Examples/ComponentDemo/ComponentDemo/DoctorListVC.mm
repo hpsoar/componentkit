@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     self.doctorListOptions = [DoctorModel doctorListOptions];
-    self.modelRefresher.modelController = [DoctorModel mockDoctorListController];
+    self.modelRefresher.modelController = [AAModelController newWithDataSource:[MockDoctorModelDataSource new]];
     self.modelRefresher.modelOptions = self.doctorListOptions;
     
     [self.refreshController enableHeaderRefresh];
