@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AAComponentExt.h"
+#import "UIViewController+Refresh.h"
 
 /*
  *  1. create your Model & ModelController

@@ -10,6 +10,7 @@
 #import "HostViewVC.h"
 #import "DoctorListVC.h"
 #import "TestCollectionVC.h"
+#import "DoctorListVC2.h"
 
 @interface ViewController ()
 
@@ -22,23 +23,27 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(10, 100, 120, 30)];
-    [btn setTitle:@"HostingView" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.view addSubview:btn];
-    [btn addTarget:self action:@selector(hostViewDemo:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:[self btnWithTitle:@"ck hosting view" sel:@selector(hostViewDemo:)]];
+    [self.view addSubview:[self btnWithTitle:@"ck collection" sel:@selector(collectionViewDemo:)]];
+    [self.view addSubview:[self btnWithTitle:@"normal collection" sel:@selector(collectionViewDemo2:)]];
+    [self.view addSubview:[self btnWithTitle:@"ck table" sel:@selector(ckTableVCDemo:)]];
     
-    UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(10, 150, 120, 30)];
-    [btn2 setTitle:@"collection view" forState:UIControlStateNormal];
-    [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.view addSubview:btn2];
-    [btn2 addTarget:self action:@selector(collectionViewDemo:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 120, 30)];
-    [btn3 setTitle:@"collection vc" forState:UIControlStateNormal];
+}
+
+- (UIButton *)btnWithTitle:(NSString *)title sel:(SEL)sel {
+    static NSInteger i = 0;
+    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(10, 100 + i * 40, 120, 30)];
+    [btn3 setTitle:title forState:UIControlStateNormal];
     [btn3 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.view addSubview:btn3];
-    [btn3 addTarget:self action:@selector(collectionViewDemo2:) forControlEvents:UIControlEventTouchUpInside];
+    [btn3 addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+    
+    i += 1;
+    return btn3;
+}
+
+- (void)ckTableVCDemo:(id)sender {
+    DoctorListVC2 *vc = [DoctorListVC2 new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)hostViewDemo:(id)sender {

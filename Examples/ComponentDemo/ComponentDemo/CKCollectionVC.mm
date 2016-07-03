@@ -9,21 +9,57 @@
 #import "CKCollectionVC.h"
 
 @interface CKCollectionVC () <CKComponentProvider, UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) CKComponentFlexibleSizeRangeProvider *sizeRangeProvider;
 @end
 
 @implementation CKCollectionVC
 {
-    CKComponentFlexibleSizeRangeProvider *_sizeRangeProvider;
+
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    _sizeRangeProvider = [CKComponentFlexibleSizeRangeProvider providerWithFlexibility:CKComponentSizeRangeFlexibleHeight];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
+}
+
+- (UIScrollView *)mj_scrollView {
+    return self.collectionView;
+}
+
+- (UICollectionView *)collectionView {
+    if (_collectionView == nil) {
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
+        _collectionView.delegate = self;
+        _collectionView.backgroundColor = [UIColor clearColor];
+    }
+    return _collectionView;
+}
+
+- (UICollectionViewLayout *)layout {
+    if (_layout == nil) {
+        _layout = [self createLayout];
+    }
+    return _layout;
+}
+
+- (UICollectionViewLayout *)createLayout {
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumInteritemSpacing:0];
+    [flowLayout setMinimumLineSpacing:0];
+    return flowLayout;
+}
+
+#pragma mark - CKComponent
+
+- (CKComponentFlexibleSizeRangeProvider *)sizeRangeProvider {
+    if (_sizeRangeProvider == nil) {
+        _sizeRangeProvider = [CKComponentFlexibleSizeRangeProvider providerWithFlexibility:CKComponentSizeRangeFlexibleHeight];
+    }
+    return _sizeRangeProvider;
 }
 
 - (void)addSection {
@@ -49,7 +85,7 @@
     }
     
     [self.dataSource enqueueChangeset:{{}, items}
-                  constrainedSize:[_sizeRangeProvider sizeRangeForBoundingSize:self.collectionView.bounds.size]];
+                      constrainedSize:[self.sizeRangeProvider sizeRangeForBoundingSize:self.collectionView.bounds.size]];
 }
 
 - (CKCollectionViewDataSource *)dataSource {
@@ -63,30 +99,6 @@
     return _dataSource;
 }
 
-
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
-        _collectionView.delegate = self;
-        _collectionView.backgroundColor = [UIColor clearColor];
-    }
-    return _collectionView;
-}
-
-- (UICollectionViewLayout *)layout {
-    if (_layout == nil) {
-        _layout = [self createLayout];
-    }
-    return _layout;
-}
-
-- (UICollectionViewLayout *)createLayout {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [flowLayout setMinimumInteritemSpacing:0];
-    [flowLayout setMinimumLineSpacing:0];
-    return flowLayout;
-}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 

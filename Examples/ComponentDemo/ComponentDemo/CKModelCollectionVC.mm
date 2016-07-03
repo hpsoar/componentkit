@@ -6,9 +6,9 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "ModelCollectionVC.h"
+#import "CKModelCollectionVC.h"
 
-@implementation ModelCollectionVC
+@implementation CKModelCollectionVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];        

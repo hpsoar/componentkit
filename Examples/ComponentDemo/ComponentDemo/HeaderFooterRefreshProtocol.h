@@ -1,15 +1,14 @@
 //
-//  CKCollectionVC+Refresh.h
+//  HeaderFooterRefreshProtocol.h
 //  ComponentDemo
 //
-//  Created by HuangPeng on 7/1/16.
+//  Created by HuangPeng on 7/3/16.
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "CKCollectionVC.h"
-#import <MJRefresh.h>
+#import <Foundation/Foundation.h>
 
-@interface CKCollectionVC (Refresh)
+@protocol HeaderFooterRefreshProtocol <NSObject>
 
 - (void)enableHeaderRefresh;
 - (void)disableHeaderRefresh;

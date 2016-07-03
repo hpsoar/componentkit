@@ -1,15 +1,15 @@
 //
-//  ModelCollectionVC.h
+//  ModelTableVC.h
 //  ComponentDemo
 //
-//  Created by HuangPeng on 7/1/16.
+//  Created by HuangPeng on 7/3/16.
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "CKCollectionVC+Refresh.h"
+#import "CKTableVC.h"
 #import "AAModelOptions.h"
 
-@interface ModelCollectionVC : CKCollectionVC
+@interface CKModelTableVC : CKTableVC
 
 @property (nonatomic, strong) AAModelController *modelController;
 @property (nonatomic, strong) AAModelOptions *modelOptions;

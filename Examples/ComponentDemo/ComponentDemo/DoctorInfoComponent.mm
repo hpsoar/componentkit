@@ -28,7 +28,7 @@
         } children:{
             {   // name
                 .component = [CKLabelComponent newWithLabelAttributes:{
-                    .string = [NSString stringWithFormat:@"%zi %@", doctor.Id, doctor.name],
+                    .string = [NSString stringWithFormat:@"%@", doctor.name],
                     .font = [UIFont systemFontOfSize:16],
                     .color = [UIColor redColor],
                 } viewAttributes:{} size:{}],
@@ -167,20 +167,6 @@
             }]
         }]
     }];
-}
-
-- (std::vector<CKComponentAnimation>)animationsFromPreviousComponent:(DoctorInfoComponent *)previousComponent
-{
-    return {{ previousComponent, scaleToAppear() }};
-}
-
-static CAAnimation *scaleToAppear()
-{
-    CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scale.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0)];
-    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    scale.duration = 0.2;
-    return scale;
 }
 
 + (CKComponent *)componentForModel:(id)doctor context:(id<NSObject>)context {
