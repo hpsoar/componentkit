@@ -29,6 +29,8 @@
 		12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54291D2955F1006B1729 /* AAModelKit.m */; };
 		12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF542B1D2955F1006B1729 /* ModelRefresher.m */; };
 		12AF54381D2955F1006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF542D1D2955F1006B1729 /* RefreshController.m */; };
+		12AF543C1D2960CE006B1729 /* AATableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543B1D2960CE006B1729 /* AATableVC.m */; };
+		12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543E1D2960D9006B1729 /* AACollectionVC.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -96,6 +98,10 @@
 		12AF542C1D2955F1006B1729 /* RefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController.h; sourceTree = "<group>"; };
 		12AF542D1D2955F1006B1729 /* RefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshController.m; sourceTree = "<group>"; };
 		12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController_SubClass.h; sourceTree = "<group>"; };
+		12AF543A1D2960CE006B1729 /* AATableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATableVC.h; sourceTree = "<group>"; };
+		12AF543B1D2960CE006B1729 /* AATableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATableVC.m; sourceTree = "<group>"; };
+		12AF543D1D2960D9006B1729 /* AACollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACollectionVC.h; sourceTree = "<group>"; };
+		12AF543E1D2960D9006B1729 /* AACollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACollectionVC.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +160,7 @@
 		126E2F971D24C0FD00421358 /* ComponentDemo */ = {
 			isa = PBXGroup;
 			children = (
+				12AF54391D2960C1006B1729 /* Controllers */,
 				12AF54181D2955F1006B1729 /* ComponentKitExt */,
 				12AF54271D2955F1006B1729 /* ModelKit */,
 				126E2F9B1D24C0FD00421358 /* AppDelegate.h */,
@@ -212,10 +219,10 @@
 			children = (
 				12AF541B1D2955F1006B1729 /* AAComponentExt.h */,
 				12AF541C1D2955F1006B1729 /* AAComponentExt.mm */,
-				12AF541D1D2955F1006B1729 /* CKCollectionVC.h */,
-				12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */,
 				12AF541F1D2955F1006B1729 /* CKComponent+HostingView.h */,
 				12AF54201D2955F1006B1729 /* CKComponent+HostingView.mm */,
+				12AF541D1D2955F1006B1729 /* CKCollectionVC.h */,
+				12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */,
 				12AF54211D2955F1006B1729 /* CKModelCollectionVC.h */,
 				12AF54221D2955F1006B1729 /* CKModelCollectionVC.mm */,
 				12AF54231D2955F1006B1729 /* CKModelTableVC.h */,
@@ -238,6 +245,17 @@
 				12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */,
 			);
 			path = ModelKit;
+			sourceTree = SOURCE_ROOT;
+		};
+		12AF54391D2960C1006B1729 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				12AF543A1D2960CE006B1729 /* AATableVC.h */,
+				12AF543B1D2960CE006B1729 /* AATableVC.m */,
+				12AF543D1D2960D9006B1729 /* AACollectionVC.h */,
+				12AF543E1D2960D9006B1729 /* AACollectionVC.m */,
+			);
+			path = Controllers;
 			sourceTree = SOURCE_ROOT;
 		};
 		1D73C1D7BDADD461418967E5 /* Pods */ = {
@@ -440,12 +458,14 @@
 			files = (
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
 				126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */,
+				12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
 				12AF54351D2955F1006B1729 /* CKTableVC.mm in Sources */,
 				12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */,
 				12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */,
 				12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */,
 				12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */,
+				12AF543C1D2960CE006B1729 /* AATableVC.m in Sources */,
 				12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */,
 				12AF54331D2955F1006B1729 /* CKModelCollectionVC.mm in Sources */,
 				126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */,

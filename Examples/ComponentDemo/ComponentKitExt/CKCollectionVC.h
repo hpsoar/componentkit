@@ -6,9 +6,8 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AACollectionVC.h"
 #import "AAComponentExt.h"
-#import "RefreshController.h"
 
 /*
  *  1. create your Model & ModelController
@@ -22,42 +21,17 @@
  */
 
 
-@interface CKCollectionVC : UIViewController <UICollectionViewDelegate, RefreshControllerDelegate>
+@interface CKCollectionVC :  AACollectionVC
 
 - (void)addSection;
 - (void)clearSection;
 - (void)addModels:(NSArray *)models atIndex:(NSInteger)index;
-- (UICollectionViewLayout *)createLayout;
 
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewLayout *layout;
 @property (nonatomic, strong) CKCollectionViewDataSource *dataSource;
-@property (nonatomic, strong) RefreshController *refreshController;
-
-@end
-
-@protocol CKCollectionReusableView <NSObject>
-
-+ (NSString *)identifier;
-
-@end
-
-@interface CKCollectionReusableView : UICollectionReusableView <CKCollectionReusableView>
 
 @end
 
 @interface CKCollectionVC (Supplementary) <CKSupplementaryViewDataSource>
-
-- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier;
-- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier;
-- (void)registerHeaderClass:(Class<CKCollectionReusableView>)cls;
-- (void)registerFooterClass:(Class<CKCollectionReusableView>)cls;
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-                           headerAtIndexPath:(NSIndexPath *)indexPath;
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-                           footerAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

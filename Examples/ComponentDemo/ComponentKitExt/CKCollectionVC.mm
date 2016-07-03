@@ -13,48 +13,6 @@
 @end
 
 @implementation CKCollectionVC
-{
-
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.collectionView];
-}
-
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
-        _collectionView.delegate = self;
-        _collectionView.backgroundColor = [UIColor clearColor];
-    }
-    return _collectionView;
-}
-
-- (UICollectionViewLayout *)layout {
-    if (_layout == nil) {
-        _layout = [self createLayout];
-    }
-    return _layout;
-}
-
-- (UICollectionViewLayout *)createLayout {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [flowLayout setMinimumInteritemSpacing:0];
-    [flowLayout setMinimumLineSpacing:0];
-    return flowLayout;
-}
-
-- (RefreshController *)refreshController {
-    if (_refreshController == nil) {
-        _refreshController = [[RefreshController alloc] initWithScrollView:self.collectionView delegate:self];
-    }
-    return _refreshController;
-}
 
 #pragma mark - CKComponent
 
@@ -140,36 +98,9 @@
 
 @end
 
-#pragma mark - CKCollectionReusableView
-
-@implementation CKCollectionReusableView
-
-+ (NSString *)identifier {
-    return NSStringFromClass(self);
-}
-
-@end
-
-@implementation CKCollectionVC (Supplementary)
-
-- (void)registerFooterClass:(Class)cls identifier:(NSString *)identifier {
-    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:identifier];
-}
-
-- (void)registerHeaderClass:(Class)cls identifier:(NSString *)identifier {
-    [self.collectionView registerClass:cls forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:identifier];
-}
-
-- (void)registerFooterClass:(Class<CKCollectionReusableView>)cls {
-    [self registerFooterClass:cls identifier:[cls identifier]];
-}
-
-- (void)registerHeaderClass:(Class<CKCollectionReusableView>)cls {
-    [self registerHeaderClass:cls identifier:[cls identifier]];
-}
-
 #pragma mark - supplementary view
 
+@implementation CKCollectionVC (Supplementary)
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
@@ -180,16 +111,6 @@
     else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         return [self collectionView:collectionView footerAtIndexPath:indexPath];
     }
-    return nil;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-                           headerAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-                           footerAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 

@@ -11,7 +11,7 @@
 #import "DoctorInfoComponent.h"
 #import <CKComponentSubclass.h>
 
-@interface TestHeaderView : CKCollectionReusableView
+@interface TestHeaderView : AACollectionReusableView
 
 @end
 
