@@ -25,10 +25,6 @@
     [self.view addSubview:self.collectionView];
 }
 
-- (UIScrollView *)mj_scrollView {
-    return self.collectionView;
-}
-
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
@@ -51,6 +47,13 @@
     [flowLayout setMinimumInteritemSpacing:0];
     [flowLayout setMinimumLineSpacing:0];
     return flowLayout;
+}
+
+- (RefreshController *)refreshController {
+    if (_refreshController == nil) {
+        _refreshController = [[RefreshController alloc] initWithScrollView:self.collectionView delegate:self];
+    }
+    return _refreshController;
 }
 
 #pragma mark - CKComponent

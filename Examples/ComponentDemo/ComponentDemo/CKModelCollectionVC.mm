@@ -19,7 +19,7 @@
         [self.modelOptions reset];
         
         [self loadModel:^{
-            [self endHeaderRefreshing];
+            [self.refreshController endHeaderRefreshing];
         }];
     }
 }
@@ -27,7 +27,7 @@
 - (void)beginFooterRefreshing {
     if ([self.modelOptions canLoad]) {
         [self loadModel:^{
-            [self endFooterRefreshing];
+            [self.refreshController endFooterRefreshing];
         }];
     }
 }

@@ -26,8 +26,6 @@
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
 		126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */; };
 		12AF53FE1D28D8A8006B1729 /* CKTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */; };
-		12AF54071D28E10B006B1729 /* HeaderFooterRefreshProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54061D28E10B006B1729 /* HeaderFooterRefreshProtocol.m */; };
-		12AF540A1D28E1CB006B1729 /* UIViewController+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54091D28E1CB006B1729 /* UIViewController+Refresh.m */; };
 		12AF540D1D28E35B006B1729 /* CKModelTableVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */; };
 		12AF54101D28E4C9006B1729 /* RefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF540F1D28E4C9006B1729 /* RefreshController.m */; };
 		12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */; };
@@ -91,16 +89,13 @@
 		126E2FEF1D25677B00421358 /* CKComponent+HostingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CKComponent+HostingView.mm"; sourceTree = "<group>"; };
 		12AF53FC1D28D8A8006B1729 /* CKTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTableVC.h; sourceTree = "<group>"; };
 		12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKTableVC.mm; sourceTree = "<group>"; };
-		12AF54051D28E10B006B1729 /* HeaderFooterRefreshProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderFooterRefreshProtocol.h; sourceTree = "<group>"; };
-		12AF54061D28E10B006B1729 /* HeaderFooterRefreshProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderFooterRefreshProtocol.m; sourceTree = "<group>"; };
-		12AF54081D28E1CB006B1729 /* UIViewController+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Refresh.h"; sourceTree = "<group>"; };
-		12AF54091D28E1CB006B1729 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
 		12AF540B1D28E35A006B1729 /* CKModelTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKModelTableVC.h; sourceTree = "<group>"; };
 		12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKModelTableVC.mm; sourceTree = "<group>"; };
 		12AF540E1D28E4C9006B1729 /* RefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController.h; sourceTree = "<group>"; };
 		12AF540F1D28E4C9006B1729 /* RefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshController.m; sourceTree = "<group>"; };
 		12AF54111D28EAB8006B1729 /* DoctorListVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC2.h; sourceTree = "<group>"; };
 		12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC2.mm; sourceTree = "<group>"; };
+		12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshController_SubClass.h; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,14 +146,11 @@
 				12605C491D267D9000396DC0 /* AAComponentExt.mm */,
 				12AF53FC1D28D8A8006B1729 /* CKTableVC.h */,
 				12AF53FD1D28D8A8006B1729 /* CKTableVC.mm */,
-				12AF54051D28E10B006B1729 /* HeaderFooterRefreshProtocol.h */,
-				12AF54061D28E10B006B1729 /* HeaderFooterRefreshProtocol.m */,
-				12AF54081D28E1CB006B1729 /* UIViewController+Refresh.h */,
-				12AF54091D28E1CB006B1729 /* UIViewController+Refresh.m */,
 				12AF540B1D28E35A006B1729 /* CKModelTableVC.h */,
 				12AF540C1D28E35A006B1729 /* CKModelTableVC.mm */,
 				12AF540E1D28E4C9006B1729 /* RefreshController.h */,
 				12AF540F1D28E4C9006B1729 /* RefreshController.m */,
+				12AF54141D28FEF8006B1729 /* RefreshController_SubClass.h */,
 			);
 			name = ComponentKitExt;
 			sourceTree = "<group>";
@@ -439,14 +431,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				12605C5D1D26C5A000396DC0 /* CKModelCollectionVC.mm in Sources */,
-				12AF54071D28E10B006B1729 /* HeaderFooterRefreshProtocol.m in Sources */,
 				12605C4A1D267D9000396DC0 /* AAComponentExt.mm in Sources */,
 				120527D81D2662DE00AB64E5 /* CKCollectionVC.mm in Sources */,
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
 				12AF53FE1D28D8A8006B1729 /* CKTableVC.mm in Sources */,
 				126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */,
 				12AF540D1D28E35B006B1729 /* CKModelTableVC.mm in Sources */,
-				12AF540A1D28E1CB006B1729 /* UIViewController+Refresh.m in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
 				126E2FF01D25677B00421358 /* CKComponent+HostingView.mm in Sources */,
 				126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AAComponentExt.h"
-#import "UIViewController+Refresh.h"
+#import "RefreshController.h"
 
 /*
  *  1. create your Model & ModelController
@@ -22,7 +22,7 @@
  */
 
 
-@interface CKCollectionVC : UIViewController <UICollectionViewDelegate>
+@interface CKCollectionVC : UIViewController <UICollectionViewDelegate, RefreshControllerDelegate>
 
 - (void)addSection;
 - (void)clearSection;
@@ -32,6 +32,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewLayout *layout;
 @property (nonatomic, strong) CKCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) RefreshController *refreshController;
 
 @end
 

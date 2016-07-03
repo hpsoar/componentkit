@@ -8,7 +8,7 @@
 
 #import "CKTableVC.h"
 
-@interface CKTableVC () 
+@interface CKTableVC () <CKComponentProvider>
 @end
 
 @implementation CKTableVC {
@@ -33,8 +33,11 @@
 
 #pragma mark - support for refresh
 
-- (UIScrollView *)mj_scrollView {
-    return self.tableView;
+- (RefreshController *)refreshController {
+    if (_refreshController == nil) {
+        _refreshController = [[RefreshController alloc] initWithScrollView:self.tableView delegate:self];
+    }
+    return _refreshController;
 }
 
 - (void)addSection {

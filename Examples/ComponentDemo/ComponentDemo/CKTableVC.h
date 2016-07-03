@@ -11,9 +11,9 @@
 #import <CKToolbox/CKTableViewTransactionalDataSource.h>
 #import <CKToolbox/CKTableViewSupplementaryDataSource.h>
 #import <CKToolbox/CKTableViewTransactionalDataSourceCellConfiguration.h>
-#import "UIViewController+Refresh.h"
+#import "RefreshController.h"
 
-@interface CKTableVC : UIViewController <CKComponentProvider, CKTableViewSupplementaryDataSource, UITableViewDelegate>
+@interface CKTableVC : UIViewController <CKTableViewSupplementaryDataSource, UITableViewDelegate, RefreshControllerDelegate>
 
 - (void)addSection;
 - (void)clearSection;
@@ -22,5 +22,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CKTableViewTransactionalDataSource *dataSource;
 @property (nonatomic, strong) CKTableViewTransactionalDataSourceCellConfiguration *cellConfiguration;
+@property (nonatomic, strong) RefreshController *refreshController;
 
 @end

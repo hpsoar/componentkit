@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self enableHeaderRefresh];
+    [self.refreshController enableHeaderRefresh];
     
     self.doctorListOptions = [DoctorModel doctorListOptions];
     self.modelOptions = self.doctorListOptions;
@@ -57,7 +57,7 @@
         
         [self test:doctors.firstObject];
         
-        [self enableFooterRefresh];
+        [self.refreshController enableFooterRefresh];
     }
 }
 
