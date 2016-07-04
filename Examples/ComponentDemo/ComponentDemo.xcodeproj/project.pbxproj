@@ -19,6 +19,7 @@
 		126E2FBE1D24C0FD00421358 /* ComponentDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FBD1D24C0FD00421358 /* ComponentDemoUITests.m */; };
 		126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCC1D24C29300421358 /* HostViewVC.mm */; };
 		126E2FD01D24C33F00421358 /* DoctorInfoComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */; };
+		127E14441D2AC56900F3B819 /* AALabelComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 127E14431D2AC56900F3B819 /* AALabelComponent.mm */; };
 		12AF54131D28EAB8006B1729 /* DoctorListVC2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */; };
 		12AF54301D2955F1006B1729 /* AAComponentExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541C1D2955F1006B1729 /* AAComponentExt.mm */; };
 		12AF54311D2955F1006B1729 /* CKCollectionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF541E1D2955F1006B1729 /* CKCollectionVC.mm */; };
@@ -36,6 +37,8 @@
 		12AF54991D2A5D14006B1729 /* CKTableViewUpdater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54981D2A5D14006B1729 /* CKTableViewUpdater.mm */; };
 		12AF549C1D2A6809006B1729 /* CKCollectionViewUpdater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF549B1D2A6809006B1729 /* CKCollectionViewUpdater.mm */; };
 		12CCDED71D2A7429000CF3F1 /* NIModelUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CCDED61D2A7429000CF3F1 /* NIModelUpdater.m */; };
+		12CCDEDE1D2AA858000CF3F1 /* DoctorListVC3.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CCDEDD1D2AA858000CF3F1 /* DoctorListVC3.m */; };
+		12CCDEE11D2AA970000CF3F1 /* AATableObjectCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CCDEE01D2AA970000CF3F1 /* AATableObjectCatalog.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -82,6 +85,8 @@
 		126E2FCC1D24C29300421358 /* HostViewVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HostViewVC.mm; sourceTree = "<group>"; };
 		126E2FCE1D24C33F00421358 /* DoctorInfoComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoComponent.h; sourceTree = "<group>"; };
 		126E2FCF1D24C33F00421358 /* DoctorInfoComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorInfoComponent.mm; sourceTree = "<group>"; };
+		127E14421D2AC56900F3B819 /* AALabelComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALabelComponent.h; sourceTree = "<group>"; };
+		127E14431D2AC56900F3B819 /* AALabelComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AALabelComponent.mm; sourceTree = "<group>"; };
 		12AF54111D28EAB8006B1729 /* DoctorListVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC2.h; sourceTree = "<group>"; };
 		12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC2.mm; sourceTree = "<group>"; };
 		12AF541B1D2955F1006B1729 /* AAComponentExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponentExt.h; sourceTree = "<group>"; };
@@ -118,6 +123,10 @@
 		12CCDED41D2A7429000CF3F1 /* AAModelViewUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAModelViewUpdater.h; sourceTree = "<group>"; };
 		12CCDED51D2A7429000CF3F1 /* NIModelUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIModelUpdater.h; sourceTree = "<group>"; };
 		12CCDED61D2A7429000CF3F1 /* NIModelUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIModelUpdater.m; sourceTree = "<group>"; };
+		12CCDEDC1D2AA858000CF3F1 /* DoctorListVC3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC3.h; sourceTree = "<group>"; };
+		12CCDEDD1D2AA858000CF3F1 /* DoctorListVC3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListVC3.m; sourceTree = "<group>"; };
+		12CCDEDF1D2AA970000CF3F1 /* AATableObjectCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATableObjectCatalog.h; sourceTree = "<group>"; };
+		12CCDEE01D2AA970000CF3F1 /* AATableObjectCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATableObjectCatalog.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +209,8 @@
 				12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */,
 				12AF54111D28EAB8006B1729 /* DoctorListVC2.h */,
 				12AF54121D28EAB8006B1729 /* DoctorListVC2.mm */,
+				12CCDEDC1D2AA858000CF3F1 /* DoctorListVC3.h */,
+				12CCDEDD1D2AA858000CF3F1 /* DoctorListVC3.m */,
 			);
 			path = ComponentDemo;
 			sourceTree = "<group>";
@@ -249,6 +260,8 @@
 				12AF54981D2A5D14006B1729 /* CKTableViewUpdater.mm */,
 				12AF549A1D2A6809006B1729 /* CKCollectionViewUpdater.h */,
 				12AF549B1D2A6809006B1729 /* CKCollectionViewUpdater.mm */,
+				127E14421D2AC56900F3B819 /* AALabelComponent.h */,
+				127E14431D2AC56900F3B819 /* AALabelComponent.mm */,
 			);
 			path = ComponentKitExt;
 			sourceTree = SOURCE_ROOT;
@@ -268,6 +281,8 @@
 				12AF542E1D2955F1006B1729 /* RefreshController_SubClass.h */,
 				12AF54401D296411006B1729 /* APIKit.h */,
 				12AF54411D296411006B1729 /* APIKit.m */,
+				12CCDEDF1D2AA970000CF3F1 /* AATableObjectCatalog.h */,
+				12CCDEE01D2AA970000CF3F1 /* AATableObjectCatalog.m */,
 			);
 			path = ModelKit;
 			sourceTree = SOURCE_ROOT;
@@ -489,6 +504,8 @@
 				126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */,
 				12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
+				127E14441D2AC56900F3B819 /* AALabelComponent.mm in Sources */,
+				12CCDEE11D2AA970000CF3F1 /* AATableObjectCatalog.m in Sources */,
 				12AF54351D2955F1006B1729 /* CKTableVC.mm in Sources */,
 				12CCDED71D2A7429000CF3F1 /* NIModelUpdater.m in Sources */,
 				12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */,
@@ -508,6 +525,7 @@
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,
 				12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */,
 				12AF54341D2955F1006B1729 /* CKModelTableVC.mm in Sources */,
+				12CCDEDE1D2AA858000CF3F1 /* DoctorListVC3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
