@@ -25,7 +25,7 @@
 @interface CKCollectionVC :  AACollectionVC
 
 @property (nonatomic, strong) CKCollectionViewDataSource *dataSource;
-@property (nonatomic, strong) NIModelUpdater *tableViewUpdater;
+@property (nonatomic, strong) NIModelUpdater *modelViewUpdater;
 
 @end
 

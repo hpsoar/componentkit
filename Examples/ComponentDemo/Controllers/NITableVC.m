@@ -30,8 +30,8 @@
         self.tableView.dataSource = self.tableViewModel;
     }
     
-    if (_tableViewUpdater != nil) {
-        _tableViewUpdater.mutableTableViewModel = self.mutableTableViewModel;
+    if (_modelViewUpdater != nil) {
+        _modelViewUpdater.mutableTableViewModel = self.mutableTableViewModel;
     }
 }
 
@@ -65,12 +65,12 @@
     return _tableViewActions;
 }
 
-- (NIModelUpdater *)tableViewUpdater {
-    if (_tableViewUpdater == nil) {
+- (NIModelUpdater *)modelViewUpdater {
+    if (_modelViewUpdater == nil) {
         TableUpdater *updater = [TableUpdater newWithTableView:self.tableView];
-        _tableViewUpdater = [NIModelUpdater newWithTableViewModel:self.mutableTableViewModel updater:updater];                        
+        _modelViewUpdater = [NIModelUpdater newWithTableViewModel:self.mutableTableViewModel updater:updater];                        
     }
-    return _tableViewUpdater;
+    return _modelViewUpdater;
 }
 
 @end

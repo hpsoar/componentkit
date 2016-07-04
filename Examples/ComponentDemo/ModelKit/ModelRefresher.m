@@ -31,6 +31,10 @@ BOOL isTopRefresh(ModelRefreshType type) { return type == ModelRefreshTypeTop; }
 
 - (void)refresh:(ModelRefreshType)type {
     if ([self.modelController canLoad] && [self shouldBeginLoadModel:type]) {
+        
+        if (isTopRefresh(type)) {
+            [self.modelOptions reset];
+        }
 
         [self willBeginRefresh:type];
 

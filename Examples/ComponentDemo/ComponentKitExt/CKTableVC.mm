@@ -39,12 +39,12 @@
             sizeRange:sizeRange];
 }
 
-- (NIModelUpdater *)tableViewUpdater {
-    if (_tableViewUpdater == nil) {
+- (NIModelUpdater *)modelViewUpdater {
+    if (_modelViewUpdater == nil) {
         CKTableViewUpdater *updater = [CKTableViewUpdater newWithDataSource:self.dataSource];
-        _tableViewUpdater = [NIModelUpdater newWithTableViewModel:nil updater:updater];
+        _modelViewUpdater = [NIModelUpdater newWithTableViewModel:nil updater:updater];
     }
-    return _tableViewUpdater;
+    return _modelViewUpdater;
 }
 
 #pragma mark - Component Provider

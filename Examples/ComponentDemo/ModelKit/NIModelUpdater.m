@@ -93,7 +93,7 @@
 }
 
 - (BOOL)sectionExist:(NSUInteger)section {
-    return index < [self.mutableTableViewModel numberOfSectionsInTableView:nil];
+    return section < [self.mutableTableViewModel numberOfSectionsInTableView:nil];
 }
 
 - (void)ensureSection {

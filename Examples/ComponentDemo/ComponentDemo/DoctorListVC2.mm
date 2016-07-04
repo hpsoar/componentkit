@@ -46,11 +46,11 @@
 
     } else {
         if (self.doctorListOptions.page == 0) {
-            [self.tableViewUpdater removeSectionAtIndex:0];
+            [self.modelViewUpdater removeSectionAtIndex:0];
         }
         NSArray *doctors = result.model;
         if (doctors.count > 0) {
-            [self.tableViewUpdater addObjectsFromArray:doctors];
+            [self.modelViewUpdater addObjectsFromArray:doctors];
         }
 
         if (doctors.count == self.doctorListOptions.pageSize) {

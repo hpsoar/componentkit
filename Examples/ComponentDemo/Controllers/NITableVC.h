@@ -19,7 +19,7 @@
 @property (nonatomic, readonly) NIMutableTableViewModel *mutableTableViewModel;
 @property (nonatomic, strong) NICellFactory *cellFactory;
 @property (nonatomic, strong) NITableViewActions *tableViewActions;
-@property (nonatomic, strong) NIModelUpdater *tableViewUpdater;
+@property (nonatomic, strong) NIModelUpdater *modelViewUpdater;
 
 @end
 

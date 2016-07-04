@@ -17,6 +17,6 @@
 
 @property (nonatomic, strong) CKTableViewTransactionalDataSource *dataSource;
 @property (nonatomic, strong) CKTableViewTransactionalDataSourceCellConfiguration *cellConfiguration;
-@property (nonatomic, strong) NIModelUpdater *tableViewUpdater;
+@property (nonatomic, strong) NIModelUpdater *modelViewUpdater;
 
 @end
