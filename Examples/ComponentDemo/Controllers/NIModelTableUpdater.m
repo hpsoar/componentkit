@@ -25,21 +25,29 @@
 }
 
 - (NSArray *)addObject:(id)object {
+    [self ensureSection];
+    
     NSArray *indexPaths = [self.mutableTableViewModel addObject:object];
     return [self.tableUpdater insertObjects:object ? @[object] : @[] atIndexPaths:indexPaths];
 }
 
 - (NSArray *)addObject:(id)object toSection:(NSUInteger)section {
+    [self ensureSection];
+    
     NSArray *indexPaths = [self.mutableTableViewModel addObject:object toSection:section];
     return [self.tableUpdater insertObjects:object ? @[object] : @[] atIndexPaths:indexPaths];
 }
 
 - (NSArray *)addObjectsFromArray:(NSArray *)array {
+    [self ensureSection];
+    
     NSArray *indexPaths = [self.mutableTableViewModel addObjectsFromArray:array];
     return [self.tableUpdater insertObjects:array atIndexPaths:indexPaths];
 }
 
 - (NSArray *)insertObject:(id)object atRow:(NSUInteger)row inSection:(NSUInteger)section {
+    [self ensureSection];
+    
     NSArray *indexPaths = [self.mutableTableViewModel insertObject:object atRow:row inSection:section];
     return [self.tableUpdater insertObjects:object ? @[object] : @[] atIndexPaths:indexPaths];
 }
@@ -58,10 +66,20 @@
 }
 
 - (NSIndexSet *)removeSectionAtIndex:(NSUInteger)index {
-    if (index < [self.mutableTableViewModel numberOfSectionsInTableView:nil]) {
+    if ([self sectionExist:index]) {
         return [self.tableUpdater deleteSectionsAtIndexSet:[self.mutableTableViewModel removeSectionAtIndex:index]];
     }
     return nil;
+}
+
+- (BOOL)sectionExist:(NSUInteger)section {
+    return index < [self.mutableTableViewModel numberOfSectionsInTableView:nil];
+}
+
+- (void)ensureSection {
+    if (![self sectionExist:0]) {
+        [self addSectionWithTitle:nil];
+    }
 }
 
 @end
