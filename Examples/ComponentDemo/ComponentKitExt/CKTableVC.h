@@ -11,12 +11,12 @@
 #import <CKToolbox/CKTableViewTransactionalDataSource.h>
 #import <CKToolbox/CKTableViewSupplementaryDataSource.h>
 #import <CKToolbox/CKTableViewTransactionalDataSourceCellConfiguration.h>
-#import "NIModelTableUpdater.h"
+#import "NIModelUpdater.h"
 
 @interface CKTableVC : AATableVC <CKTableViewSupplementaryDataSource>
 
 @property (nonatomic, strong) CKTableViewTransactionalDataSource *dataSource;
 @property (nonatomic, strong) CKTableViewTransactionalDataSourceCellConfiguration *cellConfiguration;
-@property (nonatomic, strong) NIModelTableUpdater *tableViewUpdater;
+@property (nonatomic, strong) NIModelUpdater *tableViewUpdater;
 
 @end

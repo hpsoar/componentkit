@@ -9,7 +9,7 @@
 #import "AATableVC.h"
 #import <NimbusModels.h>
 #import "ModelRefresher.h"
-#import "NIModelTableUpdater.h"
+#import "NIModelUpdater.h"
 
 #pragma mark - ni table vc
 
@@ -19,7 +19,7 @@
 @property (nonatomic, readonly) NIMutableTableViewModel *mutableTableViewModel;
 @property (nonatomic, strong) NICellFactory *cellFactory;
 @property (nonatomic, strong) NITableViewActions *tableViewActions;
-@property (nonatomic, strong) NIModelTableUpdater *tableViewUpdater;
+@property (nonatomic, strong) NIModelUpdater *tableViewUpdater;
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  ModelTableUpdater.h
+//  AAModelViewUpdater.h
 //  ComponentDemo
 //
 //  Created by HuangPeng on 7/4/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TableUpdater <NSObject>
+@protocol AAModelViewUpdater <NSObject>
 
 - (NSArray *)insertObjects:(NSArray *)objects atIndexPaths:(NSArray *)indexPaths;
 - (NSArray *)deleteRowsAtIndexPaths:(NSArray *)indexPaths;
@@ -17,7 +17,7 @@
 
 @end
 
-@protocol ModelTableUpdater <NSObject>
+@protocol AAModelUpdater <NSObject>
 
 - (NSArray *)addObject:(id)object;
 - (NSArray *)addObject:(id)object toSection:(NSUInteger)section;

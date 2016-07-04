@@ -6,7 +6,7 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "ModelTableUpdater.h"
+#import "AAModelViewUpdater.h"
 #import <NimbusModels.h>
 #import <UIKit/UIKit.h>
 
@@ -17,8 +17,8 @@
  *  3. insert & delete & move
  *  4. tableView endUpdates
  *
- *  NIModelTableUpdater will update tableView every time you do model update by:
- *  [NIModelTableUpdater addObject:] etc.
+ *  NIModelUpdater will update tableView every time you do model update by:
+ *  [NIModelUpdater addObject:] etc.
  *  this class utility to bind dataSource update & tableView update
  *
  *  you can manually do the above steps
@@ -26,17 +26,17 @@
  *  TODO: add a changeset like ComponentKit to do batch update
  */
 
-@interface NIModelTableUpdater : NSObject <ModelTableUpdater>
+@interface NIModelUpdater : NSObject <AAModelUpdater>
 
 + (instancetype)newWithTableViewModel:(NIMutableTableViewModel *)tableViewModel
-                              updater:(id<TableUpdater>)updater;
+                              updater:(id<AAModelViewUpdater>)updater;
 
 @property(nonatomic, strong) NIMutableTableViewModel *mutableTableViewModel;
-@property(nonatomic, strong) id<TableUpdater> tableUpdater;
+@property(nonatomic, strong) id<AAModelViewUpdater> tableUpdater;
 
 @end
 
-@interface TableUpdater : NSObject <TableUpdater>
+@interface TableUpdater : NSObject <AAModelViewUpdater>
 
 + (instancetype)newWithTableView:(UITableView *)tableView;
 

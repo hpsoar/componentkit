@@ -6,13 +6,13 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "CKTableUpdater.h"
+#import "CKTableViewUpdater.h"
 
-@implementation CKTableUpdater
+@implementation CKTableViewUpdater
 
 + (instancetype)newWithDataSource:
     (CKTableViewTransactionalDataSource *)dataSource {
-    CKTableUpdater *updater = [self new];
+    CKTableViewUpdater *updater = [self new];
     updater.dataSource = dataSource;
     return updater;
 }

@@ -35,11 +35,11 @@
     return _dataSource;
 }
 
-- (NIModelTableUpdater *)tableViewUpdater {
+- (NIModelUpdater *)tableViewUpdater {
     if (_tableViewUpdater == nil) {
         CKCollectionViewUpdater *updater = [CKCollectionViewUpdater newWithDataSource:self.dataSource];
         updater.contrainedSize = [self.sizeRangeProvider sizeRangeForBoundingSize:self.collectionView.bounds.size];
-        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:nil updater:updater];
+        _tableViewUpdater = [NIModelUpdater newWithTableViewModel:nil updater:updater];
     }
     return _tableViewUpdater;
 }

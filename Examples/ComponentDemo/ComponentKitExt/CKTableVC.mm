@@ -7,7 +7,7 @@
 //
 
 #import "CKTableVC.h"
-#import "CKTableUpdater.h"
+#import "CKTableViewUpdater.h"
 
 @interface CKTableVC () <CKComponentProvider>
 @end
@@ -39,10 +39,10 @@
             sizeRange:sizeRange];
 }
 
-- (NIModelTableUpdater *)tableViewUpdater {
+- (NIModelUpdater *)tableViewUpdater {
     if (_tableViewUpdater == nil) {
-        CKTableUpdater *updater = [CKTableUpdater newWithDataSource:self.dataSource];
-        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:nil updater:updater];
+        CKTableViewUpdater *updater = [CKTableViewUpdater newWithDataSource:self.dataSource];
+        _tableViewUpdater = [NIModelUpdater newWithTableViewModel:nil updater:updater];
     }
     return _tableViewUpdater;
 }

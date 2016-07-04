@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "AAComponentExt.h"
-#import "ModelTableUpdater.h"
+#import "AAModelViewUpdater.h"
 
-@interface CKCollectionViewUpdater : NSObject <TableUpdater>
+@interface CKCollectionViewUpdater : NSObject <AAModelViewUpdater>
 
 + (instancetype)newWithDataSource:(CKCollectionViewDataSource *)dataSource;
     

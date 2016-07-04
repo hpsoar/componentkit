@@ -1,5 +1,5 @@
 //
-//  CKModelTableUpdater.h
+//  CKAAModelViewUpdater.h
 //  ComponentDemo
 //
 //  Created by HuangPeng on 7/4/16.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "AAComponentExt.h"
-#import "ModelTableUpdater.h"
+#import "AAModelViewUpdater.h"
 #import <CKToolbox/CKTableViewTransactionalDataSource.h>
 
-@interface CKTableUpdater : NSObject <TableUpdater>
+@interface CKTableViewUpdater : NSObject <AAModelViewUpdater>
 
 + (instancetype)newWithDataSource:(CKTableViewTransactionalDataSource *)dataSource;
 

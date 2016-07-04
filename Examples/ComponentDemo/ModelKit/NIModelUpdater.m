@@ -6,13 +6,13 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "NIModelTableUpdater.h"
+#import "NIModelUpdater.h"
 
-@implementation NIModelTableUpdater
+@implementation NIModelUpdater
 
 + (instancetype)newWithTableViewModel:(NIMutableTableViewModel *)tableViewModel
-                              updater:(id<TableUpdater>)updater {
-    NIModelTableUpdater *modelTableUpdater = [self new];
+                              updater:(id<AAModelViewUpdater>)updater {
+    NIModelUpdater *modelTableUpdater = [self new];
     modelTableUpdater.mutableTableViewModel = tableViewModel;
     modelTableUpdater.tableUpdater = updater;
     return modelTableUpdater;

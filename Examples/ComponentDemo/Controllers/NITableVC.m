@@ -65,10 +65,10 @@
     return _tableViewActions;
 }
 
-- (NIModelTableUpdater *)tableViewUpdater {
+- (NIModelUpdater *)tableViewUpdater {
     if (_tableViewUpdater == nil) {
         TableUpdater *updater = [TableUpdater newWithTableView:self.tableView];
-        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:self.mutableTableViewModel updater:updater];                        
+        _tableViewUpdater = [NIModelUpdater newWithTableViewModel:self.mutableTableViewModel updater:updater];                        
     }
     return _tableViewUpdater;
 }

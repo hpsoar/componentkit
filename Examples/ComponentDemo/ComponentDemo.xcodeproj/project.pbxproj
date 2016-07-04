@@ -33,9 +33,9 @@
 		12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543E1D2960D9006B1729 /* AACollectionVC.m */; };
 		12AF54421D296411006B1729 /* APIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54411D296411006B1729 /* APIKit.m */; };
 		12AF54921D2A212F006B1729 /* NITableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54911D2A212F006B1729 /* NITableVC.m */; };
-		12AF54991D2A5D14006B1729 /* CKTableUpdater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54981D2A5D14006B1729 /* CKTableUpdater.mm */; };
+		12AF54991D2A5D14006B1729 /* CKTableViewUpdater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54981D2A5D14006B1729 /* CKTableViewUpdater.mm */; };
 		12AF549C1D2A6809006B1729 /* CKCollectionViewUpdater.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12AF549B1D2A6809006B1729 /* CKCollectionViewUpdater.mm */; };
-		12CCDED71D2A7429000CF3F1 /* NIModelTableUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CCDED61D2A7429000CF3F1 /* NIModelTableUpdater.m */; };
+		12CCDED71D2A7429000CF3F1 /* NIModelUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CCDED61D2A7429000CF3F1 /* NIModelUpdater.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -111,13 +111,13 @@
 		12AF54411D296411006B1729 /* APIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIKit.m; sourceTree = "<group>"; };
 		12AF54901D2A212F006B1729 /* NITableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NITableVC.h; sourceTree = "<group>"; };
 		12AF54911D2A212F006B1729 /* NITableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NITableVC.m; sourceTree = "<group>"; };
-		12AF54971D2A5D14006B1729 /* CKTableUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTableUpdater.h; sourceTree = "<group>"; };
-		12AF54981D2A5D14006B1729 /* CKTableUpdater.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKTableUpdater.mm; sourceTree = "<group>"; };
+		12AF54971D2A5D14006B1729 /* CKTableViewUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTableViewUpdater.h; sourceTree = "<group>"; };
+		12AF54981D2A5D14006B1729 /* CKTableViewUpdater.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKTableViewUpdater.mm; sourceTree = "<group>"; };
 		12AF549A1D2A6809006B1729 /* CKCollectionViewUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCollectionViewUpdater.h; sourceTree = "<group>"; };
 		12AF549B1D2A6809006B1729 /* CKCollectionViewUpdater.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKCollectionViewUpdater.mm; sourceTree = "<group>"; };
-		12CCDED41D2A7429000CF3F1 /* ModelTableUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTableUpdater.h; sourceTree = "<group>"; };
-		12CCDED51D2A7429000CF3F1 /* NIModelTableUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIModelTableUpdater.h; sourceTree = "<group>"; };
-		12CCDED61D2A7429000CF3F1 /* NIModelTableUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIModelTableUpdater.m; sourceTree = "<group>"; };
+		12CCDED41D2A7429000CF3F1 /* AAModelViewUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAModelViewUpdater.h; sourceTree = "<group>"; };
+		12CCDED51D2A7429000CF3F1 /* NIModelUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIModelUpdater.h; sourceTree = "<group>"; };
+		12CCDED61D2A7429000CF3F1 /* NIModelUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIModelUpdater.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,8 +245,8 @@
 				12AF54241D2955F1006B1729 /* CKModelTableVC.mm */,
 				12AF54251D2955F1006B1729 /* CKTableVC.h */,
 				12AF54261D2955F1006B1729 /* CKTableVC.mm */,
-				12AF54971D2A5D14006B1729 /* CKTableUpdater.h */,
-				12AF54981D2A5D14006B1729 /* CKTableUpdater.mm */,
+				12AF54971D2A5D14006B1729 /* CKTableViewUpdater.h */,
+				12AF54981D2A5D14006B1729 /* CKTableViewUpdater.mm */,
 				12AF549A1D2A6809006B1729 /* CKCollectionViewUpdater.h */,
 				12AF549B1D2A6809006B1729 /* CKCollectionViewUpdater.mm */,
 			);
@@ -256,9 +256,9 @@
 		12AF54271D2955F1006B1729 /* ModelKit */ = {
 			isa = PBXGroup;
 			children = (
-				12CCDED41D2A7429000CF3F1 /* ModelTableUpdater.h */,
-				12CCDED51D2A7429000CF3F1 /* NIModelTableUpdater.h */,
-				12CCDED61D2A7429000CF3F1 /* NIModelTableUpdater.m */,
+				12CCDED41D2A7429000CF3F1 /* AAModelViewUpdater.h */,
+				12CCDED51D2A7429000CF3F1 /* NIModelUpdater.h */,
+				12CCDED61D2A7429000CF3F1 /* NIModelUpdater.m */,
 				12AF54281D2955F1006B1729 /* AAModelKit.h */,
 				12AF54291D2955F1006B1729 /* AAModelKit.m */,
 				12AF542A1D2955F1006B1729 /* ModelRefresher.h */,
@@ -490,7 +490,7 @@
 				12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */,
 				126E2FCD1D24C29300421358 /* HostViewVC.mm in Sources */,
 				12AF54351D2955F1006B1729 /* CKTableVC.mm in Sources */,
-				12CCDED71D2A7429000CF3F1 /* NIModelTableUpdater.m in Sources */,
+				12CCDED71D2A7429000CF3F1 /* NIModelUpdater.m in Sources */,
 				12AF54361D2955F1006B1729 /* AAModelKit.m in Sources */,
 				12AF54321D2955F1006B1729 /* CKComponent+HostingView.mm in Sources */,
 				12AF54371D2955F1006B1729 /* ModelRefresher.m in Sources */,
@@ -504,7 +504,7 @@
 				126E2F9D1D24C0FD00421358 /* AppDelegate.m in Sources */,
 				12605C441D2675D600396DC0 /* DoctorModel.m in Sources */,
 				12AF54381D2955F1006B1729 /* RefreshController.m in Sources */,
-				12AF54991D2A5D14006B1729 /* CKTableUpdater.mm in Sources */,
+				12AF54991D2A5D14006B1729 /* CKTableViewUpdater.mm in Sources */,
 				126E2F9A1D24C0FD00421358 /* main.m in Sources */,
 				12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */,
 				12AF54341D2955F1006B1729 /* CKModelTableVC.mm in Sources */,
