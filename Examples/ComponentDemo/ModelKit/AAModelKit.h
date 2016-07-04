@@ -6,8 +6,8 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "APIKit.h"
+#import <Foundation/Foundation.h>
 
 /**
  *  Loading status
@@ -39,15 +39,9 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 @interface AAModelOptions : NSObject
 
 - (void)reset;
-- (BOOL)canLoad;
-- (BOOL)failed;
-- (BOOL)loaded;
 
 // the model class used to parse raw data
 - (Class)modelClass;
-
-// loading status
-@property (atomic) AAModelLoadingStatus loadingStatus;
 
 @end
 
@@ -60,13 +54,13 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 + (instancetype)newWithJSON:(id)JSON model:(id)model error:(NSError *)error;
 
 // json data
-@property (nonatomic, strong) id JSON;
+@property(nonatomic, strong) id JSON;
 
 // json -> model (object/[object])
-@property (nonatomic, strong) id model;
+@property(nonatomic, strong) id model;
 
 // error
-@property (nonatomic, strong) NSError *error;
+@property(nonatomic, strong) NSError *error;
 
 @end
 
@@ -80,7 +74,8 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
  *
  *  for simplicity, each server API is treated as a independent data source
  *
- *  you can also use a data source for multiple API, in which case you need to provide API & method, etc. in request option
+ *  you can also use a data source for multiple API, in which case you need to
+ *  provide API & method, etc. in request option
  *
  *  data source return raw data: currently only JSON is supported
  *
@@ -88,14 +83,16 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 @protocol AAModelDataSource <NSObject>
 
-- (void)fetch:(AAModelOptions *)options callback:(void (^)(id JSON, NSError *error))callback;
+- (void)fetch:(AAModelOptions *)options
+     callback:(void (^)(id JSON, NSError *error))callback;
 
 @end
 
 /**
  * dataSource --(raw data)--> AAModelController --(model object(s))-->
- * why AAModelController? 
- * you may have many kind of data sources, usually you have only one mapper from raw data to model
+ * why AAModelController?
+ * you may have many kind of data sources, usually you have only one mapper from
+ * raw data to model
  * even if you have more than one, decouple mapper from data source is better
  */
 @interface AAModelController : NSObject
@@ -104,10 +101,17 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 - (instancetype)initWithDataSource:(id<AAModelDataSource>)dataSource;
 
-- (void)fetch:(AAModelOptions *)options callback:(void(^)(AAModelResult *result))callback;
+- (void)fetch:(AAModelOptions *)options
+     callback:(void (^)(AAModelResult *result))callback;
+
+- (BOOL)canLoad;
+- (BOOL)failed;
+- (BOOL)loaded;
+
+// loading status
+@property(atomic) AAModelLoadingStatus loadingStatus;
 
 @end
-
 
 /**
  *  remote API model options
@@ -115,15 +119,16 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 @interface AAURLModelOptions : AAModelOptions
 
-@property (nonatomic, strong) APIOptions *apiOptions;;
+@property(nonatomic, strong) APIOptions *apiOptions;
+;
 
 @end
-
 
 /**
  * remote API data source
  *
- * if you pass a AAURLModelOptions with apiOptions setup, then this apiOptions is used
+ * if you pass a AAURLModelOptions with apiOptions setup, then this apiOptions
+ * is used
  * by doing this, you can use an url data source for multiple API
  *
  * however, we recommend you use a url data source for each API
@@ -132,10 +137,12 @@ typedef NS_ENUM(NSInteger, AAModelLoadingStatus) {
 
 + (instancetype)newWithKit:(id<APIKit>)kit;
 + (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API;
-+ (instancetype)newWithKit:(id<APIKit>)kit API:(NSString *)API method:(NSString *)method;
++ (instancetype)newWithKit:(id<APIKit>)kit
+                       API:(NSString *)API
+                    method:(NSString *)method;
 + (instancetype)newWithKit:(id<APIKit>)kit options:(APIOptions *)apiOptions;
 
-@property (nonatomic, strong) APIOptions *apiOptions;
-@property (nonatomic, strong) id<APIKit> kit;
+@property(nonatomic, strong) APIOptions *apiOptions;
+@property(nonatomic, strong) id<APIKit> kit;
 
 @end

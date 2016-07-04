@@ -20,19 +20,7 @@
 }
 
 - (void)reset {
-    self.loadingStatus = AAModelLoadingStatusNone;
-}
-
-- (BOOL)canLoad {
-    return self.loadingStatus != AAModelLoadingStatusLoading;
-}
-
-- (BOOL)failed {
-    return self.loadingStatus == AAModelLoadingStatusFailed;
-}
-
-- (BOOL)loaded {
-    return self.loadingStatus == AAModelLoadingStatusSucceed;    
+    
 }
 
 @end
@@ -66,8 +54,11 @@
 }
 
 - (void)fetch:(AAModelOptions *)options callback:(void(^)(AAModelResult *result))callback {
+    self.loadingStatus = AAModelLoadingStatusLoading;
+    
     // request raw data
     [_dataSource fetch:options callback:^(id JSON, NSError *error) {
+        self.loadingStatus = error ? AAModelLoadingStatusFailed : AAModelLoadingStatusSucceed;
         // parse model
         id model = [self parseModel:JSON cls:[options modelClass]];
         
@@ -90,6 +81,18 @@
         return [cls mj_objectArrayWithKeyValuesArray:JSON];
     }
     return nil;
+}
+
+- (BOOL)canLoad {
+    return self.loadingStatus != AAModelLoadingStatusLoading;
+}
+
+- (BOOL)failed {
+    return self.loadingStatus == AAModelLoadingStatusFailed;
+}
+
+- (BOOL)loaded {
+    return self.loadingStatus == AAModelLoadingStatusSucceed;
 }
 
 @end

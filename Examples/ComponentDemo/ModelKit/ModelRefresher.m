@@ -30,7 +30,7 @@ BOOL isTopRefresh(ModelRefreshType type) { return type == ModelRefreshTypeTop; }
 }
 
 - (void)refresh:(ModelRefreshType)type {
-    if ([self.modelOptions canLoad] && [self shouldBeginLoadModel:type]) {
+    if ([self.modelController canLoad] && [self shouldBeginLoadModel:type]) {
 
         [self willBeginRefresh:type];
 
@@ -73,18 +73,8 @@ BOOL isTopRefresh(ModelRefreshType type) { return type == ModelRefreshTypeTop; }
 }
 
 - (void)loadModel:(void (^)(AAModelResult *result))callback {
-    self.modelOptions.loadingStatus = AAModelLoadingStatusLoading;
-
     [self.modelController fetch:self.modelOptions
-                       callback:^(AAModelResult *result) {
-                           self.modelOptions.loadingStatus =
-                               result.error ? AAModelLoadingStatusFailed
-                                            : AAModelLoadingStatusSucceed;
-
-                           if (callback) {
-                               callback(result);
-                           }
-                       }];
+                       callback:callback];
 }
 
 @end
