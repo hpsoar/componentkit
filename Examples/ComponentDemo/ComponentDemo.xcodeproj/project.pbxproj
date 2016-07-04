@@ -32,6 +32,7 @@
 		12AF543C1D2960CE006B1729 /* AATableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543B1D2960CE006B1729 /* AATableVC.m */; };
 		12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF543E1D2960D9006B1729 /* AACollectionVC.m */; };
 		12AF54421D296411006B1729 /* APIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54411D296411006B1729 /* APIKit.m */; };
+		12AF54921D2A212F006B1729 /* NITableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AF54911D2A212F006B1729 /* NITableVC.m */; };
 		12FE174D1D28C2DB005E6977 /* TestCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */; };
 		605F5FE90A351D95F4CAE91D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C77CE126ABB3711B7DA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,8 @@
 		12AF543E1D2960D9006B1729 /* AACollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACollectionVC.m; sourceTree = "<group>"; };
 		12AF54401D296411006B1729 /* APIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKit.h; sourceTree = "<group>"; };
 		12AF54411D296411006B1729 /* APIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIKit.m; sourceTree = "<group>"; };
+		12AF54901D2A212F006B1729 /* NITableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NITableVC.h; sourceTree = "<group>"; };
+		12AF54911D2A212F006B1729 /* NITableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NITableVC.m; sourceTree = "<group>"; };
 		12FE174B1D28C2DB005E6977 /* TestCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionVC.h; sourceTree = "<group>"; };
 		12FE174C1D28C2DB005E6977 /* TestCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionVC.m; sourceTree = "<group>"; };
 		519C77CE126ABB3711B7DA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +262,8 @@
 				12AF543B1D2960CE006B1729 /* AATableVC.m */,
 				12AF543D1D2960D9006B1729 /* AACollectionVC.h */,
 				12AF543E1D2960D9006B1729 /* AACollectionVC.m */,
+				12AF54901D2A212F006B1729 /* NITableVC.h */,
+				12AF54911D2A212F006B1729 /* NITableVC.m */,
 			);
 			path = Controllers;
 			sourceTree = SOURCE_ROOT;
@@ -461,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12AF54921D2A212F006B1729 /* NITableVC.m in Sources */,
 				12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */,
 				126E2FA01D24C0FD00421358 /* ViewController.mm in Sources */,
 				12AF543F1D2960D9006B1729 /* AACollectionVC.m in Sources */,
