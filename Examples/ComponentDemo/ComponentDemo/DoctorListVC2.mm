@@ -26,8 +26,6 @@
     
     [self.refreshController enableHeaderRefresh];
     
-    [self addSection];
-    
     [self.modelRefresher refresh:ModelRefreshTypeTop];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"test" style:UIBarButtonItemStyleDone target:self action:@selector(getTextField:)];
@@ -44,12 +42,11 @@
     }
     else {
         if (self.doctorListOptions.page == 0) {
-            [self clearSection];
-            [self addSection];
+            [self.tableViewUpdater removeSectionAtIndex:0];
         }
         NSArray *doctors = result.model;
         if (doctors.count > 0) {
-            [self addModels:doctors atIndex:self.doctorListOptions.page * self.doctorListOptions.pageSize];
+            [self.tableViewUpdater addObjectsFromArray:doctors];
         }
         
         if (doctors.count == self.doctorListOptions.pageSize) {

@@ -34,8 +34,6 @@
     
     [self.refreshController enableHeaderRefresh];
     
-    [self addSection];
-    
     [self registerHeaderClass:[TestHeaderView class]];
     
     [self.modelRefresher refresh:ModelRefreshTypeTop];
@@ -54,11 +52,11 @@
     }
     else {
         if (self.doctorListOptions.page == 0) {
-            [self clearSection];
+            [self.tableViewUpdater removeSectionAtIndex:0];
         }
         NSArray *doctors = result.model;
         if (doctors.count > 0) {
-            [self addModels:doctors atIndex:self.doctorListOptions.page * self.doctorListOptions.pageSize];
+            [self.tableViewUpdater addObjectsFromArray:doctors];
         }
         
         if (doctors.count == self.doctorListOptions.pageSize) {

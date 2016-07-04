@@ -7,6 +7,7 @@
 //
 
 #import "CKTableVC.h"
+#import "CKTableUpdater.h"
 
 @interface CKTableVC () <CKComponentProvider>
 @end
@@ -14,31 +15,7 @@
 @implementation CKTableVC {
 
 }
-
-#pragma mark - data source
-
-- (void)addSection {
-    CKTransactionalComponentDataSourceChangesetBuilder *builder = [CKTransactionalComponentDataSourceChangesetBuilder new];
-    [builder withInsertedSections:[NSIndexSet indexSetWithIndex:0]];
-    [self.dataSource applyChangeset:builder.build mode:CKUpdateModeSynchronous userInfo:nil];
-}
-
-- (void)clearSection {
-    CKTransactionalComponentDataSourceChangesetBuilder *builder = [CKTransactionalComponentDataSourceChangesetBuilder new];
-    [builder withRemovedSections:[NSIndexSet indexSetWithIndex:0]];
-    [self.dataSource applyChangeset:builder.build mode:CKUpdateModeSynchronous userInfo:nil];
-}
-
-- (void)addModels:(NSArray *)models atIndex:(NSInteger)index {
-    NSMutableDictionary <NSIndexPath *, id> *dictionary = [NSMutableDictionary dictionary];
-    for (NSUInteger i = 0; i < models.count; ++i) {
-        dictionary[[NSIndexPath indexPathForItem:i + index inSection:0]] = models[i];
-    }
-    CKTransactionalComponentDataSourceChangesetBuilder *builder = [CKTransactionalComponentDataSourceChangesetBuilder new];
-//    [builder withInsertedSections:[NSIndexSet indexSetWithIndex:0]];
-    [builder withInsertedItems:dictionary];
-    [self.dataSource applyChangeset:builder.build mode:CKUpdateModeSynchronous userInfo:nil];
-}
+@synthesize dataSource = _dataSource;
 
 - (CKTableViewTransactionalDataSource *)dataSource {
     if (_dataSource == nil) {
@@ -60,6 +37,14 @@
             initWithComponentProvider:[self class]
             context:nil
             sizeRange:sizeRange];
+}
+
+- (NIModelTableUpdater *)tableViewUpdater {
+    if (_tableViewUpdater == nil) {
+        CKTableUpdater *updater = [CKTableUpdater newWithDataSource:self.dataSource];
+        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:nil updater:updater];
+    }
+    return _tableViewUpdater;
 }
 
 #pragma mark - Component Provider

@@ -9,11 +9,35 @@
 #import "NITableVC.h"
 
 @implementation NITableVC
+@synthesize tableViewModel = _tableViewModel;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self.tableViewModel;
+}
+
+- (void)setTableViewModel:(NITableViewModel *)tableViewModel {
+    if (_tableViewModel != tableViewModel) {
+        _tableViewModel = tableViewModel;
+        
+        [self didChangeTableViewModel];
+    }
+}
+
+- (void)didChangeTableViewModel {
+    if (self.tableView.dataSource != nil) {
+        self.tableView.dataSource = self.tableViewModel;
+    }
+    
+    if (_tableViewUpdater != nil) {
+        _tableViewUpdater.mutableTableViewModel = self.mutableTableViewModel;
+    }
+}
 
 - (NITableViewModel *)tableViewModel {
     if (_tableViewModel == nil) {
         _tableViewModel = [[NIMutableTableViewModel alloc] initWithDelegate:self.cellFactory];
-        self.tableView.dataSource = _tableViewModel;
     }
     return _tableViewModel;
 }
@@ -41,6 +65,14 @@
     return _tableViewActions;
 }
 
+- (NIModelTableUpdater *)tableViewUpdater {
+    if (_tableViewUpdater == nil) {
+        TableUpdater *updater = [TableUpdater newWithTableView:self.tableView];
+        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:self.mutableTableViewModel updater:updater];                        
+    }
+    return _tableViewUpdater;
+}
+
 @end
 
 #pragma mark - NIModelTableVC
@@ -55,185 +87,14 @@
     return _modelRefresher;
 }
 
-@end
-
-#pragma mark - util
-
-@implementation NITableVC (Util)
-
-- (BOOL)isTableNoneEmpty {
-    return self.tableView.indexPathsForVisibleRows.count > 0;
-}
-
-
-/**
- *  clear the data in data source, reloadData is not called on tableView
- */
-- (void)clearData {
-    
-}
-
-/**
- *  add rows to section 0
- *
- *  @param items
- *
- *  @return @[ NSIndexPath ]
- */
-- (NSArray *)addItems:(NSArray *)items
-     withRowAnimation:(UITableViewRowAnimation)animation {
-    NSArray *indexPathes = [self.mutableTableViewModel addObjectsFromArray:items];
-    if (![self isTableNoneEmpty]) {
-        [self.tableView reloadData];
+- (void)setRefreshController:(RefreshController *)refreshController {
+    if (self.refreshController != refreshController) {
+        [super setRefreshController:refreshController];
+        
+        if (_modelRefresher != nil) {
+            _modelRefresher.refreshController = refreshController;
+        }
     }
-    else {
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:indexPathes withRowAnimation:animation];
-        [self.tableView endUpdates];
-    }
-    return indexPathes;
-}
-
-/**
- *
- *
- *  @param item
- *  @param animation
- *
- *  @return
- */
-- (NSIndexPath *)addItem:(id)item
-        withRowAnimation:(UITableViewRowAnimation)animation {
-    if (item) {
-        return [self addItems:@[item] withRowAnimation:animation].firstObject;
-    }
-    return nil;
-}
-
-/**
- *
- *
- *  @param item
- *  @param indexPath
- *  @param animation
- *
- *  @return
- */
-- (NSIndexPath *)insertItem:(id)item
-                atIndexPath:(NSIndexPath *)indexPath
-           withRowAnimation:(UITableViewRowAnimation)animation {
-    if (item) {
-        NSArray *indexPathes = [self.mutableTableViewModel insertObject:item atRow:indexPath.row inSection:indexPath.section];
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:indexPathes withRowAnimation:animation];
-        [self.tableView endUpdates];
-        return indexPathes.firstObject;
-    }
-    return nil;
-}
-
-- (void)reloadRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation {
-    if (indexPath && [self isTableNoneEmpty]) {
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
-    }
-}
-
-/**
- *  reload the row associated with item if item
- *
- *  @param item
- *  @param animation animation
- */
-- (void)reloadItem:(id)item withRowAnimation:(UITableViewRowAnimation)animation {
-    NSIndexPath *indexPath = [self.tableViewModel indexPathForObject:item];
-    [self reloadRowAtIndexPath:indexPath withRowAnimation:animation];
-}
-
-/**
- *  safely delete row at indexPath
- *
- *  @param indexPath
- *  @param animation
- */
-- (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath
-            withRowAnimation:(UITableViewRowAnimation)animation {
-    if (indexPath && [self isTableNoneEmpty]) {
-        [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
-        [self.tableView endUpdates];
-    }
-}
-
-- (void)deleteItem:(id)item withRowAnimation:(UITableViewRowAnimation)animation {
-    NSIndexPath *indexPath = [self.tableViewModel indexPathForObject:item];
-    [self deleteRowAtIndexPath:indexPath withRowAnimation:animation];
-}
-
-#pragma mark - convenient methods
-
-- (NSArray *)addItems:(NSArray *)items {
-    return [self addItems:items withRowAnimation:UITableViewRowAnimationNone];
-}
-
-/**
- *  add a row with item (model) to section 0,
- *  add a section if section 0 doesn't exist
- *
- *  @param item model
- *
- *  @return indexPath of the added item
- */
-- (NSIndexPath *)addItem:(id)item {
-    return [self addItem:item withRowAnimation:UITableViewRowAnimationNone];
-}
-
-/**
- *  safely insert item at a given indexPath
- *  will try to add a section if possible
- *
- *  @param item
- *  @param indexPath
- *
- *  @return indexPath if succeed, otherwise return nil
- */
-- (NSIndexPath *)insertItem:(id)item atIndexPath:(NSIndexPath *)indexPath {
-    return [self insertItem:item atIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
-}
-
-/**
- *  reload the row associated with item if item is find in section 0
- */
-- (void)reloadItem:(id)item {
-    [self reloadItem:item withRowAnimation:UITableViewRowAnimationNone];
-}
-
-
-/**
- *  safely reload row at indexPath
- *
- *  @param indexPath
- */
-- (void)reloadRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
-}
-
-/**
- *  delete the row associated with item if item is find in section 0
- *
- *  @param item model
- */
-- (void)deleteItem:(id)item {
-    [self deleteItem:item withRowAnimation:UITableViewRowAnimationNone];
-}
-
-/**
- *  safely delete row at indexPath
- *
- *  @param indexPath
- */
-- (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self deleteRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end
-

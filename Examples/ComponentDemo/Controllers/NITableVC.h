@@ -9,6 +9,7 @@
 #import "AATableVC.h"
 #import <NimbusModels.h>
 #import "ModelRefresher.h"
+#import "NIModelTableUpdater.h"
 
 #pragma mark - ni table vc
 
@@ -18,6 +19,7 @@
 @property (nonatomic, readonly) NIMutableTableViewModel *mutableTableViewModel;
 @property (nonatomic, strong) NICellFactory *cellFactory;
 @property (nonatomic, strong) NITableViewActions *tableViewActions;
+@property (nonatomic, strong) NIModelTableUpdater *tableViewUpdater;
 
 @end
 
@@ -25,13 +27,10 @@
 
 @interface NIModelTableVC : NITableVC <ModelRefresherDelegate>
 
+/**
+ *  if you set you changed your refreshController, you need to recreate modelRefresher
+ */
 @property (nonatomic, strong) ModelRefresher *modelRefresher;
-
-@end
-
-#pragma mark - util
-
-@interface NITableVC (Util) <AATableVCUtil>
 
 @end
 

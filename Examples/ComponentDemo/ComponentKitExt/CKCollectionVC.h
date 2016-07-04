@@ -8,6 +8,7 @@
 
 #import "AACollectionVC.h"
 #import "AAComponentExt.h"
+#import "NIModelTableUpdater.h"
 
 /*
  *  1. create your Model & ModelController
@@ -23,11 +24,8 @@
 
 @interface CKCollectionVC :  AACollectionVC
 
-- (void)addSection;
-- (void)clearSection;
-- (void)addModels:(NSArray *)models atIndex:(NSInteger)index;
-
 @property (nonatomic, strong) CKCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) NIModelTableUpdater *tableViewUpdater;
 
 @end
 

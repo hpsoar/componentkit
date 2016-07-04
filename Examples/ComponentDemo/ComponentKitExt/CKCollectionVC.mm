@@ -7,6 +7,7 @@
 //
 
 #import "CKCollectionVC.h"
+#import "CKCollectionViewUpdater.h"
 
 @interface CKCollectionVC () <CKComponentProvider, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) CKComponentFlexibleSizeRangeProvider *sizeRangeProvider;
@@ -23,32 +24,6 @@
     return _sizeRangeProvider;
 }
 
-- (void)addSection {
-    // Insert the initial section
-    CKArrayControllerSections sections;
-    sections.insert(0);
-    [self.dataSource enqueueChangeset:{sections, {}} constrainedSize:{}];
-}
-
-- (void)clearSection {
-    CKArrayControllerSections sections;
-    sections.remove(0);
-    [self.dataSource enqueueChangeset:{ sections, {} } constrainedSize:{}];
-    
-    [self addSection];
-}
-
-- (void)addModels:(NSArray *)models atIndex:(NSInteger)index {
-    // Convert the array of quotes to a valid changeset
-    CKArrayControllerInputItems items;
-    for (NSInteger i = 0; i < models.count; i++) {
-        items.insert([NSIndexPath indexPathForRow:index + i inSection:0], models[i]);
-    }
-    
-    [self.dataSource enqueueChangeset:{{}, items}
-                      constrainedSize:[self.sizeRangeProvider sizeRangeForBoundingSize:self.collectionView.bounds.size]];
-}
-
 - (CKCollectionViewDataSource *)dataSource {
     if (_dataSource == nil) {
         _dataSource = [[CKCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
@@ -58,6 +33,14 @@
                                                        cellConfigurationFunction:nil];
     }
     return _dataSource;
+}
+
+- (NIModelTableUpdater *)tableViewUpdater {
+    if (_tableViewUpdater == nil) {
+        CKCollectionViewUpdater *updater = [CKCollectionViewUpdater newWithDataSource:self.dataSource];
+        _tableViewUpdater = [NIModelTableUpdater newWithTableViewModel:nil updater:updater];
+    }
+    return _tableViewUpdater;
 }
 
 
