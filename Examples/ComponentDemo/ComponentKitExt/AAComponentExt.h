@@ -35,6 +35,10 @@ struct CKInsetComponentConfig {
 @interface CKInsetComponent (Util)
 
 + (instancetype)newWithConfig:(const CKInsetComponentConfig &)config;
+
++ (instancetype)newWithInsets:(UIEdgeInsets)insets
+                      child:(const CKComponentChild &)child;
+
 + (instancetype)newWithView:(const CKComponentViewConfiguration &)view
                      insets:(UIEdgeInsets)insets
                       child:(const CKComponentChild &)child;
@@ -94,3 +98,4 @@ struct CKButtonComponentConfig {
 + (instancetype)newWithConfig:(const CKButtonComponentConfig &)config;
 
 @end
+

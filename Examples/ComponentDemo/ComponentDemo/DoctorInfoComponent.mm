@@ -8,6 +8,7 @@
 
 #import "DoctorInfoComponent.h"
 #import <ComponentKit/CKComponentSubclass.h>
+#import "AALabelComponent.h"
 
 @interface DoctorNameTitleComponent : CKCompositeComponent
 
@@ -19,7 +20,7 @@
     
 }
 
-+ (instancetype)newWithDoctor:(DoctorModel *)doctor {
++ (instancetype)newWithDoctor:(DoctorModel *)doctor {   
     return [super newWithChild:{
         [CKStackLayoutComponent newWithView:{} size:{} style:{
             .direction = CKStackLayoutDirectionHorizontal,
@@ -27,18 +28,18 @@
             .alignItems = CKStackLayoutAlignItemsEnd,
         } children:{
             {   // name
-                .component = [CKLabelComponent newWithLabelAttributes:{
-                    .string = [NSString stringWithFormat:@"%@", doctor.name],
+                .component = [AALabelComponent newWithLabelAttributes:{
+                    .string = [NSString stringWithFormat:@"1 %@", doctor.name],
                     .font = [UIFont systemFontOfSize:16],
                     .color = [UIColor redColor],
                 } viewAttributes:{} size:{}],
             },
             {   // title
-                .component = [CKLabelComponent newWithLabelAttributes:{
+                .component = [AALabelComponent newWithLabelAttributes:{
                     .string = doctor.title,
                     .font = [UIFont systemFontOfSize:12],
                     .color = [UIColor blueColor],
-                }viewAttributes:{} size:{}],
+                } viewAttributes:{} size:{}],
             }
         }],
     }];

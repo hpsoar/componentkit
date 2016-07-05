@@ -16,6 +16,10 @@
                    component:config.component];
 }
 
++ (instancetype)newWithInsets:(UIEdgeInsets)insets child:(const CKComponentChild &)child {
+    return [self newWithView:{} insets:insets child:child];
+}
+
 + (instancetype)newWithView:(const CKComponentViewConfiguration &)view
                      insets:(UIEdgeInsets)insets
                       child:(const CKComponentChild &)child {
