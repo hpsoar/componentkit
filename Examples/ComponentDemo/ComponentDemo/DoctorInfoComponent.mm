@@ -28,14 +28,14 @@
             .alignItems = CKStackLayoutAlignItemsEnd,
         } children:{
             {   // name
-                .component = [AALabelComponent newWithLabelAttributes:{
+                [AALabelComponent newWithLabelAttributes:{
                     .string = [NSString stringWithFormat:@"1 %@", doctor.name],
                     .font = [UIFont systemFontOfSize:16],
                     .color = [UIColor redColor],
                 } viewAttributes:{} size:{}],
             },
             {   // title
-                .component = [AALabelComponent newWithLabelAttributes:{
+                [AALabelComponent newWithLabelAttributes:{
                     .string = doctor.title,
                     .font = [UIFont systemFontOfSize:12],
                     .color = [UIColor blueColor],
@@ -70,41 +70,41 @@
             .spacing = 5,
             .alignItems = CKStackLayoutAlignItemsEnd,
         }children:{
-            {
-                // clinic
-                .component = [CKLabelComponent newWithLabelAttributes:{
+            {   // clinic
+                [CKLabelComponent newWithLabelAttributes:{
                     .string = doctor.clinic,
                     .font = [UIFont systemFontOfSize:12],
                     .color = [UIColor blackColor],
                 }viewAttributes:{} size:{}],
             },
-            {
-                // hospital
-                .component = [CKLabelComponent newWithLabelAttributes:{
+            {   // hospital
+                [CKLabelComponent newWithLabelAttributes:{
                     .string = doctor.hospital,
                     .font = [UIFont systemFontOfSize:12],
                     .color = [UIColor blackColor],
                 }viewAttributes:{} size:{}]
             },           
-            {
-                .component = [CKButtonComponent newWithTitles:{
-                    { UIControlStateNormal, @"hello" },
-                }titleColors:{
-                    { UIControlStateNormal, [UIColor greenColor], }
-                }images:{} backgroundImages:{} titleFont:{} selected:NO enabled:YES action:@selector(tap:) size:{
-                    .width = 80,
-                    .height = 30
-                } attributes:{
-                    { @selector(setBackgroundColor:), [UIColor lightGrayColor] },
-                    { CKComponentViewAttribute::LayerAttribute(@selector(setCornerRadius:)), @4 },
-                } accessibilityConfiguration:{}]
-            }
+            {   helloBtn(), },
         }],
     }];
     
     c->_doctor = doctor;
     
     return c;
+}
+
+static CKComponent *helloBtn() {
+    return [CKButtonComponent newWithTitles:{
+        { UIControlStateNormal, @"hello" },
+    }titleColors:{
+        { UIControlStateNormal, [UIColor greenColor], }
+    }images:{} backgroundImages:{} titleFont:{} selected:NO enabled:YES action:@selector(tap:) size:{
+        .width = 80,
+        .height = 30
+    } attributes:{
+        { @selector(setBackgroundColor:), [UIColor lightGrayColor] },
+        { CKComponentViewAttribute::LayerAttribute(@selector(setCornerRadius:)), @4 },
+    } accessibilityConfiguration:{}];
 }
 
 - (void)tap:(id)sender {
@@ -128,46 +128,52 @@
             { @selector(setClipsToBounds:), YES },
         }
     } child:{
-        [CKInsetComponent newWithView:{} insets:UIEdgeInsetsMake(5, 10, 5, 10) child:{
-            [CKStackLayoutComponent newWithView:{} size:{} style:{
-                .spacing = 8,
-            }children:{
-                {   // name & title
-                    .component = [DoctorNameTitleComponent newWithDoctor:doctor],
+        [CKStackLayoutComponent newWithConfig:{
+            .children = {
+                {   // body                    
+                    [CKInsetComponent newWithView:{} insets:UIEdgeInsetsMake(5, 10, 5, 10) child:{
+                        [CKStackLayoutComponent newWithView:{} size:{} style:{
+                            .spacing = 8,
+                        }children:{
+                            {   // name & title
+                                [DoctorNameTitleComponent newWithDoctor:doctor],
+                            },
+                            {   // clinic & hospital
+                                [DoctorClinicHospitalComponent newWithDoctor:doctor],
+                            },
+                            {   // good at
+                                [CKLabelComponent newWithLabelAttributes:{
+                                    .string = doctor.goodAt,
+                                    .font = [UIFont systemFontOfSize:12],
+                                    .color = [UIColor grayColor],
+                                    .maximumNumberOfLines = 4,
+                                    .truncationString = @"...",
+                                    .lineHeightMultiple = 1.2,
+                                }viewAttributes:{} size:{}],
+                            },
+                        }]
+                    }]
                 },
-                {
-                    // clinic & hospital
-                    .component = [DoctorClinicHospitalComponent newWithDoctor:doctor],
+                {   // sep
+                    .spacingBefore = 10,
+                    .component = hairlineComponent(),
                 },
-                {
-                    // good at
-                    .component = [CKLabelComponent newWithLabelAttributes:{
-                        .string = doctor.goodAt,
-                        .font = [UIFont systemFontOfSize:12],
-                        .color = [UIColor grayColor],
-                        .maximumNumberOfLines = 4,
-                        .truncationString = @"...",
-                        .lineHeightMultiple = 1.2,
-                    }viewAttributes:{} size:{}],
-                },
-                {
-                    .component = [CKComponent newWithView:{
-                        [UIView class],
-                        {
-                            {@selector(setBackgroundColor:), [UIColor greenColor] },
-                        },
-                        {
-                            .isAccessibilityElement = @(YES),
-                            .accessibilityIdentifier = [NSString stringWithFormat:@"%@ %zi", doctor.name, doctor.Id],
-                        }
-                        } size:{
-                            .width = 300,
-                            .height = 40,
-                        }],
-                }
-            }]
+            }
         }]
     }];
+}
+
+static CKComponent *hairlineComponent()
+{
+    return [CKComponent
+            newWithView:{
+                [UIView class],
+                {{@selector(setBackgroundColor:), [UIColor lightGrayColor]}}
+            }
+            size:{
+                .height = 1/[UIScreen mainScreen].scale,
+                .minWidth = 320,
+            }];
 }
 
 + (CKComponent *)componentForModel:(id)doctor context:(id<NSObject>)context {
