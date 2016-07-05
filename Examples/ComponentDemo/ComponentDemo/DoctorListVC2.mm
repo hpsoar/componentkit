@@ -34,14 +34,6 @@
                                          style:UIBarButtonItemStyleDone
                                         target:self
                                         action:@selector(getTextField:)];
-    
-    UILabel *tLabel = [UILabel new];
-    tLabel.font = [UIFont systemFontOfSize:16];
-    tLabel.text = @"李四";
-    [tLabel sizeToFit];
-    
-    CGSize size = [tLabel.text boundingRectWithSize:CGSizeMake(1000, 100) options:0 attributes:@{ NSFontAttributeName: [UIFont systemFontOfSize:16] } context:nil].size;
-    
 }
 
 - (void)getTextField:(id)sender {

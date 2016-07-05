@@ -168,11 +168,14 @@ static CKComponent *hairlineComponent()
     return [CKComponent
             newWithView:{
                 [UIView class],
-                {{@selector(setBackgroundColor:), [UIColor lightGrayColor]}}
+                {
+                    {@selector(setBackgroundColor:), [UIColor lightGrayColor]},
+                    {@selector(setAutoresizingMask:), UIViewAutoresizingFlexibleWidth }
+                }
             }
             size:{
                 .height = 1/[UIScreen mainScreen].scale,
-                .minWidth = 320,
+                .minWidth = 700,
             }];
 }
 
