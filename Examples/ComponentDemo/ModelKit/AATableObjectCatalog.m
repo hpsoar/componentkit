@@ -7,6 +7,7 @@
 //
 
 #import "AATableObjectCatalog.h"
+#import "UIView+AAKit.h"
 
 @implementation AATableObject
 @synthesize cellHeight = _cellHeight;
@@ -85,41 +86,6 @@
 
 @end
 
-@interface LayerProp : NSObject <NSCopying>
-
-+ (instancetype)newWithSelector:(SEL)selector;
-
-@property (nonatomic) SEL selector;
-
-@end
-
-@implementation LayerProp
-
-+ (instancetype)newWithSelector:(SEL)selector {
-    LayerProp *p = [self new];
-    p.selector = selector;
-    return p;
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    LayerProp *p = [[self class] newWithSelector:self.selector];
-    return p;
-}
-
-@end
-
-@interface ViewProp : LayerProp
-
-@end
-
-@implementation ViewProp
-
-
-@end
-
-#define aa_viewProp(a) [ViewProp newWithSelector:@selector(a)]
-#define aa_layerProp(a) [LayerProp newWithSelector:@selector(a)]
-
 @implementation DoctorInfoTableCell {
     UILabel *_nameLabel;
     UILabel *_titleLabel;
@@ -140,10 +106,11 @@
             _goodAtLabel = [UILabel new],
         ]];
         
-        NSDictionary *style = @{ aa_viewProp(setBackgroundColor:) : [UIColor redColor],
-                                 aa_viewProp(setFont:) : [UIFont systemFontOfSize:16],
-                                 aa_layerProp(setCornerRadius:): @5,
-                                };
+        NSArray *styles = @[
+                            viewPropBackColor.bind([UIColor redColor]),
+                            layerPropCornerRadius.bindFloat(5),
+                            labelPropFont.bind([UIFont systemFontOfSize:16]),                                                        
+                            ];        
     }
     return self;
 }
