@@ -7,6 +7,3 @@
 [submodule "Carthage/Checkouts/ios-snapshot-test-case"]
 	path = Carthage/Checkouts/ios-snapshot-test-case
 	url = https://github.com/facebook/ios-snapshot-test-case.git
-[submodule "AAKit"]
-	path = AAKit
-	url = https://git.oschina.net/hpsoar/AAKit.git
