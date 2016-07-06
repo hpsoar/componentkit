@@ -8,6 +8,7 @@
 
 #import "AATableObjectCatalog.h"
 #import "UIView+AAKit.h"
+#import "ComponentDemo-Swift.h"
 
 @implementation AATableObject
 @synthesize cellHeight = _cellHeight;
@@ -59,29 +60,6 @@
 - (void)layoutForItem:(id)item
             indexPath:(NSIndexPath *)indexPath
             tableView:(UITableView *)tableView {
-}
-
-@end
-
-@interface UIView (Util)
-
-- (instancetype)aa_addToSuperview:(UIView *)superView;
-
-@end
-
-@implementation UIView (Util)
-
-- (instancetype)aa_addToSuperview:(UIView *)superview {
-    [superview addSubview:self];
-    return self;
-}
-
-- (instancetype)aa_addSubviews:(NSArray *)subviews {
-    [subviews enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx,
-                                           BOOL *_Nonnull stop) {
-        [self addSubview:obj];
-    }];
-    return self;
 }
 
 @end
