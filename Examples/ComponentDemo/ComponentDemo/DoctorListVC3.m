@@ -28,7 +28,7 @@
     [self.modelRefresher refresh:ModelRefreshTypeTop];
 }
 
-- (void)refresher:(ModelRefresher *)refresher
+- (void)refresher:(AAModelRefresher *)refresher
 didFinishLoadWithType:(ModelRefreshType)type
            result:(AAModelResult *)result {
     if (result.error) {

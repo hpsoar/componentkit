@@ -6,8 +6,8 @@
 //  Copyright © 2016 Beacon. All rights reserved.
 //
 
-#import "CKModelTableVC.h"
+#import "CKTableVC.h"
 
-@interface DoctorListVC2 : CKModelTableVC
+@interface DoctorListVC2 : CKTableVC
 
 @end

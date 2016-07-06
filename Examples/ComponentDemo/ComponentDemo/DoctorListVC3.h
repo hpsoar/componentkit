@@ -8,6 +8,6 @@
 
 #import "NITableVC.h"
 
-@interface DoctorListVC3 : NIModelTableVC
+@interface DoctorListVC3 : NITableVC
 
 @end

@@ -46,7 +46,7 @@
     
 }
 
-- (void)refresher:(ModelRefresher *)refresher didFinishLoadWithType:(ModelRefreshType)type result:(AAModelResult *)result {
+- (void)refresher:(AAModelRefresher *)refresher didFinishLoadWithType:(ModelRefreshType)type result:(AAModelResult *)result {
     if (result.error) {
         
     }
