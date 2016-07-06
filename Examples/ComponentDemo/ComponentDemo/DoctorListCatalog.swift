@@ -9,17 +9,28 @@
 import UIKit
 
 class DoctorListLayout {
-    var nameNode: AALabelNode?
-    var titleNode: AALabelNode?
-    var clinicNode: AALabelNode?
-    var hospitalNode: AALabelNode?
-    var goodAtNode: AALabelNode?
-    var rootNode: AAStackNode?
+    var nameNode = AALabelNode()
+    var titleNode = AALabelNode()
+    var clinicNode = AALabelNode()
+    var hospitalNode = AALabelNode()
+    var goodAtNode = AALabelNode()
+    var rootNode: AAStackNode
     
     init() {
-        // build a layout structure and embed concrete nodes, which is responsible for its own size
-        nameNode = AALabelNode()
-        titleNode = AALabelNode()
+        nameNode.textColor = UIColor.redColor()
+        nameNode.fontSize = 16
+        
+        titleNode.textColor = UIColor.grayColor()
+        titleNode.fontSize = 12
+        
+        clinicNode.fontSize = 12
+        clinicNode.hexColor = 0x439322
+        
+        hospitalNode.fontSize = 12
+        hospitalNode.textColor = UIColor.grayColor()
+        
+        goodAtNode.fontSize = 12
+        hospitalNode.textColor = UIColor.grayColor()
         
         rootNode = AAStackNode()
             .direction(.Vertical)
@@ -36,8 +47,8 @@ class DoctorListLayout {
                                 .spacing(5)
                                 .direction(.Horizontal)
                                 .children([
-                                    AAStackNodeChild().node(nameNode!),
-                                    AAStackNodeChild().node(titleNode!),
+                                    AAStackNodeChild().node(nameNode),
+                                    AAStackNodeChild().node(titleNode),
                                 ])
                         ),
                         AAStackNodeChild()
@@ -46,19 +57,19 @@ class DoctorListLayout {
                                 .spacing(5)
                                 .direction(.Horizontal)
                                 .children([
-                                    AAStackNodeChild().node(clinicNode!),
-                                    AAStackNodeChild().node(hospitalNode!)
+                                    AAStackNodeChild().node(clinicNode),
+                                    AAStackNodeChild().node(hospitalNode)
                                     ])
                                 ),
-                        AAStackNodeChild() .node(goodAtNode!)
+                        AAStackNodeChild() .node(goodAtNode)
                         ])
                     )
                     )
             ])
     }
     
-    func layoutIfNeeded() {
-        rootNode?.layoutIfNeeded()
+    func layoutIfNeeded(constrainedSize: AASizeRange) {
+        rootNode.layoutIfNeeded(constrainedSize)
     }
 }
 
@@ -87,12 +98,15 @@ class DoctorListItem: AATableObject {
     override func layoutForItem(item: AnyObject!, indexPath: NSIndexPath!, tableView: UITableView!) {
         //let doctorListItem = item as! DoctorListItem
         let doctor = (item as! DoctorListItem).doctor
-        layout.nameNode?.text = doctor.name
-        layout.titleNode?.text = doctor.title
-        layout.clinicNode?.text = doctor.clinic
-        layout.hospitalNode?.text = doctor.hospital
-        layout.goodAtNode?.text = doctor.goodAt
-        layout.layoutIfNeeded()
+        layout.nameNode.text = doctor.name
+        layout.titleNode.text = doctor.title
+        layout.clinicNode.text = doctor.clinic
+        layout.hospitalNode.text = doctor.hospital
+        layout.goodAtNode.text = doctor.goodAt
+        
+        let contrainedSize = AASizeRange(max: CGSizeMake(tableView.width, CGFloat.max))
+        layout.layoutIfNeeded(contrainedSize)
+        cellHeight = layout.rootNode.size.height
     }
 }
 
@@ -137,13 +151,11 @@ class DoctorListItemCell : AATableCell {
         
         let item = object as! DoctorListItem
         
-        item.layout.layoutIfNeeded()
-        
-        item.layout.nameNode?.setup(nameLabel)
-        item.layout.titleNode?.setup(titleLabel)
-        item.layout.clinicNode?.setup(clinicLabel)
-        item.layout.hospitalNode?.setup(hospitalLabel)
-        item.layout.goodAtNode?.setup(goodAtLabel)
+        item.layout.nameNode.setup(nameLabel)
+        item.layout.titleNode.setup(titleLabel)
+        item.layout.clinicNode.setup(clinicLabel)
+        item.layout.hospitalNode.setup(hospitalLabel)
+        item.layout.goodAtNode.setup(goodAtLabel)
         
         return true
     }

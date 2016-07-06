@@ -34,7 +34,7 @@ class DoctorListVC4 : NITableVC {
             
             let doctors = result.model as! [AnyObject!]
             if (doctors.count > 0) {
-                modelViewUpdater.addObjectsFromArray(doctors)
+                modelViewUpdater.addObjectsFromArray(DoctorListItem.itemsWithDoctors(doctors) as [AnyObject])
             }
             
             if (doctors.count == doctorListOptions.pageSize) {

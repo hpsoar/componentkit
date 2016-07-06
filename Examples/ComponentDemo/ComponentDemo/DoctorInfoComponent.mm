@@ -29,7 +29,7 @@
         } children:{
             {   // name
                 [AALabelComponent newWithLabelAttributes:{
-                    .string = [NSString stringWithFormat:@"1 %@", doctor.name],
+                    .string = [NSString stringWithFormat:@"1点撒大是大非顺丰速递发撒的发撒的发水电费的时范德萨方是撒手富士达发生的 %@", doctor.name],
                     .font = [UIFont systemFontOfSize:16],
                     .color = [UIColor redColor],
                 } viewAttributes:{} size:{}],

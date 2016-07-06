@@ -8,32 +8,81 @@
 
 import UIKit
 
+struct AASizeRange {
+    init(max: CGSize) {
+        self.max = max
+    }
+    
+    init() {
+    }
+    
+    var min = CGSize(width: 0, height: 0)
+    var max = CGSize(width: CGFloat(Float.infinity), height:CGFloat(Float.infinity))
+}
+
+extension UIEdgeInsets {
+    func aa_negate() -> UIEdgeInsets {
+        return UIEdgeInsets(top: -top, left: -left, bottom: -bottom, right: -right)
+    }
+}
+
+extension CGSize {
+    func aa_insets(insets: UIEdgeInsets) -> CGSize {
+        var size = self
+        if size.width.isFinite {
+            size.width += insets.left + insets.right
+        }
+        if size.height.isFinite {
+            size.height += insets.top + insets.bottom
+        }
+        return size
+    }
+    
+    func aa_nonnegative() -> CGSize {
+        return CGSize(width: max(0.0, self.width), height: max(0.0, self.height))
+    }
+    
+    func aa_min(size: CGSize) -> CGSize {
+        return CGSize(width: min(self.width, size.width), height: min(self.height, size.height))
+    }
+    
+    func aa_max(size: CGSize) -> CGSize {
+        return CGSize(width: max(self.width, size.width), height: max(self.height, size.height))
+    }
+}
+
 class AAUINode {
     var hidden = false
     var position = CGPointZero
     var size = CGSizeZero
-    var minSize = CGSizeZero
-    var maxSize = CGSizeZero
     var frame = CGRectZero
+    
+    var sizeRange = AASizeRange()
+    
     //var isParentOfChild = false
+    
+    func sizeRange(sizeRange: AASizeRange) -> Self {
+        self.sizeRange = sizeRange
+        return self
+    }
     
     func setup(view: UIView) {
         view.frame = frame
         view.hidden = hidden
     }
     
-    func layoutIfNeeded() -> Void {
-        calculateSizeIfNeeded()
+    func layoutIfNeeded(constrainedSize: AASizeRange) -> Void {
+        let sizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
+        calculateSizeIfNeeded(sizeRange)
+        calculateFrameIfNeeded()
+    }
+    
+    func calculateSizeIfNeeded(constrainedSize: AASizeRange) -> Void {
+        
+    }
+    
+    func calculateFrameIfNeeded() -> Void {
         frame = CGRectMake(position.x, position.y, size.width, size.height)
-        calculateFrameIfNeeded(frame)
-    }
-    
-    func calculateSizeIfNeeded() -> Void {
-        
-    }
-    
-    func calculateFrameIfNeeded(frame: CGRect) -> Void {
-        
     }
 }
 
@@ -57,6 +106,61 @@ enum AAStackNodeChildAlignment {
     case End
     case Stretch
 }
+
+extension CGSize {
+    func stackDimension(direction: AAStackNodeDirection) -> CGFloat {
+        return direction == .Horizontal ? self.width : self.height
+    }
+    
+    func crossDimension(direction: AAStackNodeDirection) -> CGFloat {
+        return direction == .Horizontal ? self.height : self.width
+    }
+    
+    func shrinkStackDimension(direction: AAStackNodeDirection, value: CGFloat) -> CGSize {
+        var stackDimension = self.stackDimension(direction)
+        if stackDimension.isFinite && value.isFinite {
+            stackDimension += value
+        }
+        return CGSize.sizeWithStackCrossDimension(direction, stack: stackDimension, cross: crossDimension(direction))
+    }
+    
+    mutating func stackDimension(direction: AAStackNodeDirection, stack: CGFloat) {
+        self = CGSize.sizeWithStackCrossDimension(direction, stack: stack, cross: crossDimension(direction))
+    }
+    
+    mutating func crossDimension(direction: AAStackNodeDirection, cross: CGFloat) {
+        self = CGSize.sizeWithStackCrossDimension(direction, stack: stackDimension(direction), cross: cross)
+    }
+    
+    static func sizeWithStackCrossDimension(direction: AAStackNodeDirection, stack: CGFloat, cross: CGFloat) -> CGSize {
+        if direction == .Horizontal {
+            return CGSizeMake(stack, cross)
+        }
+        else {
+            return CGSizeMake(cross, stack)
+        }
+    }
+}
+
+extension CGPoint {
+    func stackOrigin(direction: AAStackNodeDirection) -> CGFloat {
+        return direction == .Horizontal ? self.x : self.y
+    }
+    
+    func crossOrigin(direction: AAStackNodeDirection) -> CGFloat {
+        return direction == .Horizontal ? self.y : self.x
+    }
+    
+    static func pointWithStackCrossOrigin(direction: AAStackNodeDirection, stack: CGFloat, cross: CGFloat) -> CGPoint {
+        if direction == .Horizontal {
+            return CGPointMake(stack, cross)
+        }
+        else {
+            return CGPointMake(cross, stack)
+        }
+    }
+}
+
 
 class AAStackNodeChild {
     var node: AAUINode!
@@ -95,48 +199,6 @@ class AAStackNodeChild {
         self.flexShrink = flexShrink
         return self
     }
-    
-    func stackDim(direction: AAStackNodeDirection) -> CGFloat {
-        return direction == .Horizontal ? node.size.height : node.size.width
-    }
-    
-    func crossDim(direction: AAStackNodeDirection) -> CGFloat {
-        return direction == .Horizontal ? node.size.width : node.size.height
-    }
-    
-    func stackSpan(direction: AAStackNodeDirection) -> CGFloat {
-        return stackDim(direction) + spacingAfter + spacingBefore
-    }
-    func crossSpan(direction: AAStackNodeDirection) -> CGFloat {
-        return crossDim(direction)
-    }
-    
-    func updateCrossDim(dim: CGFloat, direction: AAStackNodeDirection) {
-        if direction == .Horizontal {
-            node.size.height = dim
-        }
-        else {
-            node.size.width = dim
-        }
-    }
-    
-    func updateStackPosition(position: CGFloat, direction: AAStackNodeDirection) {
-        if (direction == .Horizontal) {
-            node.position.x = position
-        }
-        else {
-            node.position.y = position
-        }
-    }
-    
-    func updateCrossPosition(position: CGFloat, direction: AAStackNodeDirection) {
-        if (direction == .Horizontal) {
-            node.position.y = position
-        }
-        else {
-            node.position.x = position
-        }
-    }
 }
 
 class AAStackNode: AAUINode {
@@ -171,42 +233,37 @@ class AAStackNode: AAUINode {
         return self
     }
     
-    override func calculateSizeIfNeeded() {
+    override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
+        let stackSizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
+        
+        var usedStackSize: CGFloat = 0.0
+        
         for child in children {
-            child.node.calculateSizeIfNeeded()
+            usedStackSize += child.spacingBefore
+            let sizeRange = AASizeRange(max: stackSizeRange.max.shrinkStackDimension(direction, value: usedStackSize))
+            child.node.calculateSizeIfNeeded(sizeRange)
+            usedStackSize += child.node.size.stackDimension(direction) + spacing + child.spacingAfter
         }
         
-        if direction == .Horizontal {
-            self.size.width = stackDimension()
-            self.size.height = crossDimension()
-        }
-        else {
-            self.size.height = stackDimension()
-            self.size.width = crossDimension()
-        }
+        self.size = CGSize.sizeWithStackCrossDimension(direction, stack: calculateStackDimension(), cross: calculateCrossDimension())
     }
     
-    override func calculateFrameIfNeeded(frame: CGRect) {
-        self.frame = frame
+    override func calculateFrameIfNeeded() {
+        super.calculateFrameIfNeeded()
         
-        let position = self.frame.origin
-        var space = CGFloat(0)
-        var stackPosition = direction == .Horizontal ? position.x : position.y
-        let crossStart = direction == .Horizontal ? position.y : position.x
+        var stackPosition = position.stackOrigin(direction)
+        let crossStart = position.crossOrigin(direction)
         for child in children {
-            stackPosition += space + child.spacingBefore
-            child.updateStackPosition(stackPosition, direction: direction)
-            stackPosition += child.spacingAfter
+            stackPosition += child.spacingBefore
             
             let crossPosition = crossPositionforChild(child) + crossStart
-            child.updateCrossDim(crossPosition, direction: direction)
             
-            space = spacing
+            child.node.position = CGPoint.pointWithStackCrossOrigin(direction, stack: stackPosition, cross: crossPosition)
+            
+            child.node.calculateFrameIfNeeded()
+            
+            stackPosition += spacing + child.spacingAfter
         }
-    }
-    
-    func crossDimension(direction: AAStackNodeDirection) -> CGFloat {
-        return direction == .Horizontal ? size.height : size.width
     }
     
     func crossPositionforChild(child: AAStackNodeChild) -> CGFloat {
@@ -220,7 +277,7 @@ class AAStackNode: AAUINode {
         case .End:
             return crossPositionForChild(child, alignment: .End)
         case .Stretch:
-            child.updateCrossDim(crossDimension(), direction: direction)
+            child.node.size.crossDimension(direction, cross: size.crossDimension(direction))
             return crossPositionForChild(child, alignment: .Start)
         }
     }
@@ -230,26 +287,26 @@ class AAStackNode: AAUINode {
         case .Start:
             return CGFloat(0)
         case .Center:
-            return (crossDimension() - child.crossDim(direction)) / 2.0
+            return (size.crossDimension(direction) - child.node.size.crossDimension(direction)) / 2.0
         case .End:
-            return crossDimension() - child.crossDim(direction)
+            return size.crossDimension(direction) - child.node.size.crossDimension(direction)
         }
     }
     
-    func stackDimension() -> CGFloat {
+    func calculateStackDimension() -> CGFloat {
         var dim = CGFloat(0)
         var space = CGFloat(0)
         for child in children {
-            dim += space + child.stackDim(direction)
+            dim += space + child.node.size.stackDimension(direction)
             space = spacing
         }
         return dim
     }
     
-    func crossDimension() -> CGFloat {
+    func calculateCrossDimension() -> CGFloat {
         var dim = CGFloat(0)
         for child in children {
-            dim = max(dim, child.crossDim(direction))
+            dim = max(dim, child.node.size.crossDimension(direction))
         }
         return dim
     }
@@ -271,19 +328,22 @@ class AAInsetNode: AAUINode {
         return self
     }
     
-    override func calculateSizeIfNeeded() {
-        child!.calculateSizeIfNeeded()
-        size.width = child!.size.width + insets.left + insets.right
-        size.height = child!.size.height + insets.top + insets.bottom
+    override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
+        let maxSize = self.sizeRange.max.aa_min(constrainedSize.max)
+        
+        let sizeRange = AASizeRange(max: maxSize.aa_insets(insets.aa_negate()).aa_nonnegative())
+        
+        child!.calculateSizeIfNeeded(sizeRange)
+        size = child!.size.aa_insets(insets)
     }
     
-    override func calculateFrameIfNeeded(frame: CGRect) {
-        self.frame = frame
+    override func calculateFrameIfNeeded() {
+        super.calculateFrameIfNeeded()
         
-        var f = frame
-        f.origin.x += insets.left
-        f.origin.y += insets.top
-        child!.calculateFrameIfNeeded(f)
+        child!.position.x += insets.left
+        child!.position.y += insets.top
+        
+        child!.calculateFrameIfNeeded()
     }
 }
 
@@ -292,23 +352,56 @@ class AAInsetNode: AAUINode {
 class AALabelNode: AAUINode {
     var text: NSString = ""
     var attributedText: NSAttributedString? = nil
-    
-    override func layoutIfNeeded() {
-        // do layout: compute size
+    var font: UIFont? {
+        get {
+            return _font != nil ? _font : UIFont.systemFontOfSize(fontSize)
+        }
+        set {
+            _font = newValue
+        }
     }
     
-    override func calculateSizeIfNeeded() {
+    var fontSize: CGFloat = 0.0
+    
+    var textColor: UIColor? {
+        get {
+            return (_textColor != nil) ? _textColor : UIColor.hexColor(self.hexColor)
+        }
+        set {
+            _textColor = newValue
+        }
+    }
+    private var _textColor: UIColor?
+    private var _font: UIFont?
+    
+    var hexColor: NSInteger = 0
+    
+    override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
+        let maxSize = self.sizeRange.max.aa_min(constrainedSize.max)
+        
         if attributedText != nil {
             size = attributedText!.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil).size
         }
         else {
-            let attributes = [ NSFontAttributeName: UIFont.systemFontOfSize(16) ]
+            let attributes = [ NSFontAttributeName: font! ]
             size = text.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
         }
     }
     
-    override func calculateFrameIfNeeded(frame: CGRect) {
-        self.frame = frame
+    override func setup(view: UIView) {
+        super.setup(view)
+        
+        let label = view as! UILabel
+        
+        label.textColor = textColor!
+        label.font = font!
+        
+        if attributedText != nil {
+            label.attributedText = attributedText
+        }
+        else {
+            label.text = text as String
+        }
     }
 }
 

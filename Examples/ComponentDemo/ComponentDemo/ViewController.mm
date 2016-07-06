@@ -11,6 +11,7 @@
 #import "DoctorListVC.h"
 #import "TestCollectionVC.h"
 #import "DoctorListVC2.h"
+#import "ComponentDemo-Swift.h"
 
 @interface ViewController ()
 
@@ -27,6 +28,7 @@
     [self.view addSubview:[self btnWithTitle:@"ck collection" sel:@selector(collectionViewDemo:)]];
     [self.view addSubview:[self btnWithTitle:@"normal collection" sel:@selector(collectionViewDemo2:)]];
     [self.view addSubview:[self btnWithTitle:@"ck table" sel:@selector(ckTableVCDemo:)]];
+    [self.view addSubview:[self btnWithTitle:@"ni table" sel:@selector(niTableVCDemo:)]];
     
 }
 
@@ -58,6 +60,11 @@
 
 - (void)collectionViewDemo2:(id)sender {
     TestCollectionVC *vc = [TestCollectionVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)niTableVCDemo:(id)sender {
+    DoctorListVC4 *vc = [DoctorListVC4 new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
