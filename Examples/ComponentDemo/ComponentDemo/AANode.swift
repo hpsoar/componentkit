@@ -262,7 +262,7 @@ class AAStackNode: AAUINode {
             
             child.node.calculateFrameIfNeeded()
             
-            stackPosition += spacing + child.spacingAfter
+            stackPosition += child.node.size.stackDimension(direction) + spacing + child.spacingAfter
         }
     }
     

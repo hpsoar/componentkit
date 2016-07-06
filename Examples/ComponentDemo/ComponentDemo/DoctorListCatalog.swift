@@ -35,12 +35,12 @@ class DoctorListLayout {
         rootNode = AAStackNode()
             .direction(.Vertical)
             .spacing(5)
-            .alignItems(.Center)
+            .alignItems(.Start)
             .children([
             AAStackNodeChild()
                 .node(AAInsetNode()
                     .insets(UIEdgeInsetsMake(10, 10, 10, 10))
-                    .child(AAStackNode().direction(.Vertical).spacing(5).alignItems(.Center).children([
+                    .child(AAStackNode().direction(.Vertical).spacing(5).alignItems(.Start).children([
                         AAStackNodeChild()
                             .node(AAStackNode()
                                 .alignItems(.End)
