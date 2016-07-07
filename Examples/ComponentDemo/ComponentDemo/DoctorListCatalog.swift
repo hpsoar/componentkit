@@ -22,35 +22,16 @@ class DoctorListLayout {
     }
     
     init(doctor: DoctorModel?) {
-        nameNode
-            .config
-            .textColor(UIColor.redColor())
-            .fontSize(16)
-            .text(doctor?.name)
+        nameNode.config(16, hexColor: 0xff0000, text: doctor?.name)
         
-        titleNode
-            .config
-            .textColor(UIColor.grayColor())
-            .fontSize(12)
-            .text(doctor?.title)
+        titleNode.config(16, hexColor: 0x666666, text: doctor?.title)
         
-        clinicNode
-            .config
-            .hexColor(0x439322)
-            .fontSize(12)
-            .text(doctor?.clinic)
+        clinicNode.config(12, hexColor: 0x439322, text: doctor?.clinic)
         
-        hospitalNode
-            .config
-            .fontSize(12)
-            .textColor(UIColor.grayColor())
-            .text(doctor?.hospital)
+        hospitalNode.config(12, hexColor: 0x666666, text: doctor?.hospital)
         
-        goodAtNode.config
-        .fontSize(12)
-        .textColor(UIColor.grayColor())
-        .maximumNumberOfLines(2)
-        .text(doctor?.goodAt)
+        goodAtNode.config(12, hexColor: 0x666666, text: doctor?.goodAt)
+            .maximumNumberOfLines(2)
         
         let firstRow = AAHorizontalStackNode()
             .alignItems(.End)

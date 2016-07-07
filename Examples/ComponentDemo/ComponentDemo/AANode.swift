@@ -705,6 +705,13 @@ class AALabelNode: AAUINode {
     }
 }
 
+extension AALabelNode {
+    func config(fontSize: CGFloat, hexColor: NSInteger, text: String?) -> AALabelAttributes {
+        self.config.fontSize(fontSize).hexColor(hexColor).text(text)
+        return self.config
+    }
+}
+
 /// MARK: - label node work for UILabel & its subclasses due to size calculator
 
 class AAUILabelNode : AALabelNode {
