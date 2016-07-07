@@ -33,6 +33,7 @@
 		121793971D2CE36A006E8F00 /* NSArray_AAKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121793961D2CE36A006E8F00 /* NSArray_AAKit.swift */; };
 		1217939A1D2CEC16006E8F00 /* AAComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 121793991D2CEC16006E8F00 /* AAComponent.mm */; };
 		1217939C1D2D099B006E8F00 /* AANode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217939B1D2D099B006E8F00 /* AANode.swift */; };
+		1217939E1D2E1A8B006E8F00 /* AsyncDisplayKitDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217939D1D2E1A8B006E8F00 /* AsyncDisplayKitDemo.swift */; };
 		12605C411D2674BF00396DC0 /* DoctorListVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12605C401D2674BF00396DC0 /* DoctorListVC.mm */; };
 		12605C441D2675D600396DC0 /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12605C431D2675D600396DC0 /* DoctorModel.m */; };
 		126E2F9A1D24C0FD00421358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 126E2F991D24C0FD00421358 /* main.m */; };
@@ -117,6 +118,7 @@
 		121793981D2CEC16006E8F00 /* AAComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAComponent.h; sourceTree = "<group>"; };
 		121793991D2CEC16006E8F00 /* AAComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAComponent.mm; sourceTree = "<group>"; };
 		1217939B1D2D099B006E8F00 /* AANode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AANode.swift; sourceTree = "<group>"; };
+		1217939D1D2E1A8B006E8F00 /* AsyncDisplayKitDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncDisplayKitDemo.swift; sourceTree = "<group>"; };
 		12605C3F1D2674BF00396DC0 /* DoctorListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC.h; sourceTree = "<group>"; };
 		12605C401D2674BF00396DC0 /* DoctorListVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DoctorListVC.mm; sourceTree = "<group>"; };
 		12605C421D2675D600396DC0 /* DoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorModel.h; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				1217938F1D2CDE13006E8F00 /* DoctorListVC4.swift */,
 				121793941D2CE0FB006E8F00 /* DoctorListCatalog.swift */,
 				1217939B1D2D099B006E8F00 /* AANode.swift */,
+				1217939D1D2E1A8B006E8F00 /* AsyncDisplayKitDemo.swift */,
 			);
 			path = ComponentDemo;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				1217939A1D2CEC16006E8F00 /* AAComponent.mm in Sources */,
 				1217937C1D2CDC92006E8F00 /* CKTableVC.mm in Sources */,
 				121793971D2CE36A006E8F00 /* NSArray_AAKit.swift in Sources */,
+				1217939E1D2E1A8B006E8F00 /* AsyncDisplayKitDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

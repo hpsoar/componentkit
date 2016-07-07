@@ -428,12 +428,12 @@ class AALabelNode: AAUINode {
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         let maxSize = self.sizeRange.max.aa_min(constrainedSize.max)
         
-        let node = ASTextNode()
-        node.attributedText = attributedText
-        node.truncationMode = style.lineBreakMode
-        node.maximumNumberOfLines = style.maximumNumberOfLines
-        node.measure(maxSize)
-        size = node.calculatedSize        
+        if attributedText != nil {
+            size = NISizeOfAttributedStringConstrainedToSize(attributedText, maxSize, Int(style.maximumNumberOfLines))
+        }
+        else {
+            size = CGSizeZero
+        }
     }
     
     func buildAttributedString(text: String?) -> NSAttributedString? {
@@ -447,19 +447,28 @@ class AALabelNode: AAUINode {
     override func setup(view: UIView) {
         super.setup(view)
         
+        // the size calculation only works for NIAttributedLabel
+        // to use
         let label = view as! UILabel
         
-        if text != nil {
-            label.textColor = style.textColor!
-            label.font = style.font
-            label.text = attributedText?.string
-        }
-        else {
-            label.attributedText = attributedText
-        }
+        label.attributedText = attributedText
         
         label.lineBreakMode = style.lineBreakMode
         label.numberOfLines = Int(style.maximumNumberOfLines)
+    }
+}
+
+class AAUILabelNode : AALabelNode {
+    override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
+        struct Sizer {
+            static let sizeLabel = UILabel()
+        }
+        
+        let maxSize = self.sizeRange.max.aa_min(constrainedSize.max)
+        
+        Sizer.sizeLabel.numberOfLines = Int(style.maximumNumberOfLines)
+        Sizer.sizeLabel.attributedText = attributedText
+        size = Sizer.sizeLabel.sizeThatFits(maxSize)
     }
 }
 

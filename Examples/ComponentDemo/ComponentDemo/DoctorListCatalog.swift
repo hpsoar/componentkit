@@ -116,11 +116,11 @@ class DoctorListItem: AATableObject {
 }
 
 class DoctorListItemCell : AATableCell {
-    let nameLabel = UILabel()
-    let titleLabel = UILabel()
-    let clinicLabel = UILabel()
-    let hospitalLabel = UILabel()
-    let goodAtLabel = UILabel()
+    let nameLabel = NIAttributedLabel()
+    let titleLabel = NIAttributedLabel()
+    let clinicLabel = NIAttributedLabel()
+    let hospitalLabel = NIAttributedLabel()
+    let goodAtLabel = NIAttributedLabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

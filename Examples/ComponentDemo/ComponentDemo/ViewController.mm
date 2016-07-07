@@ -29,6 +29,7 @@
     [self.view addSubview:[self btnWithTitle:@"normal collection" sel:@selector(collectionViewDemo2:)]];
     [self.view addSubview:[self btnWithTitle:@"ck table" sel:@selector(ckTableVCDemo:)]];
     [self.view addSubview:[self btnWithTitle:@"ni table" sel:@selector(niTableVCDemo:)]];
+    [self.view addSubview:[self btnWithTitle:@"asyncdisplay kit" sel:@selector(asyncDisplayDemo:)]];
     
 }
 
@@ -65,6 +66,11 @@
 
 - (void)niTableVCDemo:(id)sender {
     DoctorListVC4 *vc = [DoctorListVC4 new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)asyncDisplayDemo:(id)sender {
+    AsyncDisplayKitDemo *vc = [AsyncDisplayKitDemo new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
