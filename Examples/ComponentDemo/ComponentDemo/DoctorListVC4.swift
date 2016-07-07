@@ -32,9 +32,8 @@ class DoctorListVC4 : NITableVC {
                 modelViewUpdater.removeSectionAtIndex(0)
             }
             
-            var doctors = result.model as! [AnyObject!]
+            let doctors = result.model as! [AnyObject!]
             if (doctors.count > 0) {
-                doctors = [doctors.first]
                 modelViewUpdater.addObjectsFromArray(DoctorListItem.itemsWithDoctors(doctors)  as [AnyObject])
             }
             
@@ -42,9 +41,7 @@ class DoctorListVC4 : NITableVC {
                 self.doctorListOptions.page += 1;
             }
             
-            if type == .Bottom {
-                refreshController.endFooterRefreshing()
-            }
+            refreshController.enableFooterRefresh()
         }
     }
 }

@@ -82,12 +82,16 @@
 }
 
 + (NSArray *)goodAts {
-    return @[ @"吃饭、睡觉、打豆豆", @"无所不会、无所不能", @"什么都不会。", @"发斯蒂芬森的大沙发垫是发撒的发水电费是打发撒的发水电费点撒辅导书发撒的发水电费撒东方时代发撒撒旦法算法大师安师大发撒的发水电费撒旦法" ];
+    return @[ @"吃饭、睡觉、打豆豆",
+              @"无所不会、无所不能",
+              @"什么都不会。",
+              @"发斯蒂芬森的大沙发垫是发撒的发水电费是打发撒的发水电费点撒辅导书发撒的发水电费撒东方时代发撒撒旦法算法大师安师大发撒的发水电费撒旦法阿凡达萨阿德沙发上东方大厦范德萨范德萨发生的发生的发生的发生的发生的发撒的发水电费撒",
+              @"dsfasdfasdfsadfsafsadfasdfasdfas sdfsadfasdf asdfasdfasdfsad asdfsadfasdf asdfasdfasdfsadf asdfadsfsadf  asdfasdfdsfasdd   asdfasdfsafd"];
 }
 
 + (NSString *)randomGoodAt {
     static int r = 0;
-    r = r == 0 ? 3 : 0;
+    r = arc4random() % 5;
     return [self goodAts][r];
 }
 

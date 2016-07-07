@@ -17,20 +17,21 @@ class DoctorListLayout {
     var rootNode: AAStackNode
     
     init() {
-        nameNode.textColor = UIColor.redColor()
-        nameNode.fontSize = 16
+        nameNode.style.textColor = UIColor.redColor()
+        nameNode.style.fontSize = 16
         
-        titleNode.textColor = UIColor.grayColor()
-        titleNode.fontSize = 12
+        titleNode.style.textColor = UIColor.grayColor()
+        titleNode.style.fontSize = 12
         
-        clinicNode.fontSize = 12
-        clinicNode.hexColor = 0x439322
+        clinicNode.style.fontSize = 12
+        clinicNode.style.hexColor = 0x439322
         
-        hospitalNode.fontSize = 12
-        hospitalNode.textColor = UIColor.grayColor()
+        hospitalNode.style.fontSize = 12
+        hospitalNode.style.textColor = UIColor.grayColor()
         
-        goodAtNode.fontSize = 12
-        hospitalNode.textColor = UIColor.grayColor()
+        goodAtNode.style.fontSize = 12
+        goodAtNode.style.textColor = UIColor.grayColor()
+        goodAtNode.style.maximumNumberOfLines = 2
         
         rootNode = AAStackNode()
             .direction(.Vertical)
@@ -40,9 +41,13 @@ class DoctorListLayout {
             AAStackNodeChild()
                 .node(AAInsetNode()
                     .insets(UIEdgeInsetsMake(10, 10, 10, 10))
-                    .child(AAStackNode().direction(.Vertical).spacing(5).alignItems(.Start).children([
-                        AAStackNodeChild()
-                            .node(AAStackNode()
+                    .child(AAStackNode()
+                        .direction(.Vertical)
+                        .spacing(5)
+                        .alignItems(.Start)
+                        .children([
+                            AAStackNodeChild()
+                                .node(AAStackNode()
                                 .alignItems(.End)
                                 .spacing(5)
                                 .direction(.Horizontal)
@@ -50,9 +55,9 @@ class DoctorListLayout {
                                     AAStackNodeChild().node(nameNode),
                                     AAStackNodeChild().node(titleNode),
                                 ])
-                        ),
-                        AAStackNodeChild()
-                            .node(AAStackNode()
+                            ),
+                            AAStackNodeChild()
+                                .node(AAStackNode()
                                 .alignItems(.End)
                                 .spacing(5)
                                 .direction(.Horizontal)
@@ -61,7 +66,7 @@ class DoctorListLayout {
                                     AAStackNodeChild().node(hospitalNode)
                                     ])
                                 ),
-                        AAStackNodeChild() .node(goodAtNode)
+                            AAStackNodeChild().node(goodAtNode)
                         ])
                     )
                     )
@@ -127,19 +132,6 @@ class DoctorListItemCell : AATableCell {
             hospitalLabel,
             goodAtLabel,
             ])
-        
-        nameLabel .aa_styleBlock { (v) in
-            v.textColor = UIColor.redColor()
-            v.font = UIFont.systemFontOfSize(16)
-        }
-        
-        titleLabel.aa_styleBlock { (v) in
-            v.textColor = UIColor.grayColor()
-            v.aa_fontSize(12)
-        }
-        
-        clinicLabel.aa_fontSize(12)
-            .aa_textHexColor(0x439322)
     }
     
     required init?(coder aDecoder: NSCoder) {

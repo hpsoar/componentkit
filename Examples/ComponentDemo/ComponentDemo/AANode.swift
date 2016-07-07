@@ -350,43 +350,98 @@ class AAInsetNode: AAUINode {
 
 /// MARK - label node
 
-class AALabelNode: AAUINode {
-    var text: NSString = ""
-    var attributedText: NSAttributedString? = nil
-    var font: UIFont? {
+class AALabelAttributes {
+    var fontSize: CGFloat = 0.0
+    var font: UIFont {
         get {
-            return _font != nil ? _font : UIFont.systemFontOfSize(fontSize)
+            return _font != nil ? _font! : UIFont.systemFontOfSize(fontSize)
         }
         set {
             _font = newValue
         }
     }
+    private var _font: UIFont?
     
-    var fontSize: CGFloat = 0.0
-    
-    var textColor: UIColor? {
+    var hexColor: NSInteger = 0
+    var textColor: UIColor! {
         get {
-            return (_textColor != nil) ? _textColor : UIColor.hexColor(self.hexColor)
+            return (_textColor != nil) ? _textColor! : UIColor.hexColor(self.hexColor)
         }
         set {
             _textColor = newValue
         }
     }
     private var _textColor: UIColor?
-    private var _font: UIFont?
     
-    var hexColor: NSInteger = 0
+    var lineBreakMode = NSLineBreakMode.ByTruncatingTail
+    var maximumNumberOfLines: UInt = 0
+    
+    var alignment = NSTextAlignment.Left
+    var firstLineHeadIndent: CGFloat = 0.0
+    var headIndent: CGFloat = 0.0
+    var tailIndent: CGFloat = 0.0
+    var lineHeightMultiple: CGFloat = 0.0
+    var maximumLineHeight: CGFloat = 0.0
+    var minimumLineHeight: CGFloat = 0.0
+    var lineSpacing: CGFloat = 0.0
+    var paragraphSpacing: CGFloat = 0.0
+    var paragraphSpacingBefore: CGFloat = 0.0
+    
+    func stringAttributes() -> Dictionary<String, AnyObject> {
+        var attributes = [NSFontAttributeName: font,
+                          NSForegroundColorAttributeName: textColor ]
+        attributes[NSParagraphStyleAttributeName] = paragraphStyle()
+        return attributes;
+    }
+    
+    func paragraphStyle() -> NSParagraphStyle {
+        let ps = NSMutableParagraphStyle()
+        ps.alignment = alignment;
+        ps.firstLineHeadIndent = firstLineHeadIndent;
+        ps.headIndent = headIndent;
+        ps.tailIndent = tailIndent;
+        ps.lineHeightMultiple = lineHeightMultiple;
+        ps.maximumLineHeight = maximumLineHeight;
+        ps.minimumLineHeight = minimumLineHeight;
+        ps.lineSpacing = lineSpacing;
+        ps.paragraphSpacing = paragraphSpacing;
+        ps.paragraphSpacingBefore = paragraphSpacingBefore;
+        
+        return ps;
+    }
+}
+
+class AALabelNode: AAUINode {
+    var text: String? = nil
+    var attributedText: NSAttributedString? {
+        get {
+            return _attributedText != nil ? _attributedText : buildAttributedString(text)
+        }
+        set {
+            _attributedText = newValue
+        }
+    }
+    private var _attributedText: NSAttributedString? = nil
+    
+    var style = AALabelAttributes()
     
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         let maxSize = self.sizeRange.max.aa_min(constrainedSize.max)
         
-        if attributedText != nil {
-            size = attributedText!.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil).size
+        let node = ASTextNode()
+        node.attributedText = attributedText
+        node.truncationMode = style.lineBreakMode
+        node.maximumNumberOfLines = style.maximumNumberOfLines
+        node.measure(maxSize)
+        size = node.calculatedSize        
+    }
+    
+    func buildAttributedString(text: String?) -> NSAttributedString? {
+        guard text != nil else {
+            return nil
         }
-        else {
-            let attributes = [ NSFontAttributeName: font! ]
-            size = text.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
-        }
+        
+        return NSAttributedString(string: text!, attributes: style.stringAttributes())
     }
     
     override func setup(view: UIView) {
@@ -394,15 +449,20 @@ class AALabelNode: AAUINode {
         
         let label = view as! UILabel
         
-        label.textColor = textColor!
-        label.font = font!
-        
-        if attributedText != nil {
-            label.attributedText = attributedText
+        if text != nil {
+            label.textColor = style.textColor!
+            label.font = style.font
+            label.text = attributedText?.string
         }
         else {
-            label.text = text as String
+            label.attributedText = attributedText
         }
+        
+        label.lineBreakMode = style.lineBreakMode
+        label.numberOfLines = Int(style.maximumNumberOfLines)
     }
+}
+
+class AATextKit {
 }
 

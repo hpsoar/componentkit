@@ -146,7 +146,7 @@ static CKComponent *helloBtn() {
                                     .string = doctor.goodAt,
                                     .font = [UIFont systemFontOfSize:12],
                                     .color = [UIColor grayColor],
-                                    .maximumNumberOfLines = 4,
+                                    .maximumNumberOfLines = 2,
                                     .truncationString = @"...",
                                     .lineHeightMultiple = 1.2,
                                 }viewAttributes:{} size:{}],
