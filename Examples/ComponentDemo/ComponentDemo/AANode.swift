@@ -51,6 +51,8 @@ extension CGSize {
     }
 }
 
+/// MARK: - Base Node
+
 class AAUINode {
     var hidden = false
     var position = CGPointZero
@@ -87,7 +89,7 @@ class AAUINode {
     }
 }
 
-/// MARK - stack node
+/// MARK: - stack node types
 
 enum AAStackNodeAlignment {
     case Start
@@ -107,6 +109,8 @@ enum AAStackNodeChildAlignment {
     case End
     case Stretch
 }
+
+// MARK: - CGSize extension for stack
 
 extension CGSize {
     func stackDimension(direction: AAStackNodeDirection) -> CGFloat {
@@ -143,6 +147,8 @@ extension CGSize {
     }
 }
 
+// MARK: - CGPoint exension for stack
+
 extension CGPoint {
     func stackOrigin(direction: AAStackNodeDirection) -> CGFloat {
         return direction == .Horizontal ? self.x : self.y
@@ -162,6 +168,7 @@ extension CGPoint {
     }
 }
 
+/// MARK: - AAStackNodeChild
 
 class AAStackNodeChild {
     var node: AAUINode!
@@ -202,11 +209,12 @@ class AAStackNodeChild {
     }
 }
 
+/// MARK: - AAStackNode
+
 class AAStackNode: AAUINode {
     var direction: AAStackNodeDirection = .Horizontal
     var spacing: CGFloat = 0.0
     var alignItems: AAStackNodeAlignment = .End
-    
     var children = [AAStackNodeChild]()
     
     func direction(direction: AAStackNodeDirection) -> Self {
@@ -233,6 +241,9 @@ class AAStackNode: AAUINode {
         self.children.append(child)
         return self
     }
+    
+    
+    /// MARK: - calculate layout
     
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         let stackSizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
@@ -313,7 +324,7 @@ class AAStackNode: AAUINode {
     }
 }
 
-/// MARK - inset node
+/// MARK: - inset node
 
 class AAInsetNode: AAUINode {
     var child : AAUINode?
@@ -348,7 +359,7 @@ class AAInsetNode: AAUINode {
     }
 }
 
-/// MARK - label node
+/// MARK: - label node attributes
 
 class AALabelAttributes {
     var fontSize: CGFloat = 0.0
@@ -411,6 +422,8 @@ class AALabelAttributes {
     }
 }
 
+/// MARK: - label node works for NIAttributedLabel only due to the size calculator
+
 class AALabelNode: AAUINode {
     var text: String? = nil
     var attributedText: NSAttributedString? {
@@ -458,6 +471,8 @@ class AALabelNode: AAUINode {
     }
 }
 
+/// MARK: - label node work for UILabel & its subclasses due to size calculator
+
 class AAUILabelNode : AALabelNode {
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         struct Sizer {
@@ -472,6 +487,4 @@ class AAUILabelNode : AALabelNode {
     }
 }
 
-class AATextKit {
-}
 
