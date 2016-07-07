@@ -189,6 +189,12 @@ class AAStackNodeChild {
     var flexShrink = false
     var alignSelf: AAStackNodeChildAlignment = .Auto
     
+    class func newWithConfig(block: (AAStackNodeChild) -> Void) -> AAStackNodeChild {
+        let o = AAStackNodeChild()
+        block(o)
+        return o
+    }
+    
     func node(node: AAUINode) -> Self {
         self.node = node
         return self
@@ -227,6 +233,15 @@ class AAStackNode: AAUINode {
     var spacing: CGFloat = 0.0
     var alignItems: AAStackNodeAlignment = .End
     var children = [AAStackNodeChild]()
+    
+    func config(block: (AAStackNode) -> Void) -> Self {
+        block(self)
+        return self
+    }
+    
+    func config(spacing spacing: CGFloat, alignItems: AAStackNodeAlignment) -> Self {
+        return self.spacing(spacing).alignItems(alignItems)
+    }
     
     func direction(direction: AAStackNodeDirection) -> Self {
         self.direction = direction
@@ -500,6 +515,16 @@ class AAInsetNode: AAUINode {
     }
 }
 
+extension AAUINode {
+    func stackChild() -> AAStackNodeChild {
+        return AAStackNodeChild().node(self)
+    }
+    
+    func insetNode(insets: UIEdgeInsets) -> AAInsetNode {
+        return AAInsetNode(insets: insets).child(self)
+    }
+}
+
 /// MARK: - label node attributes
 
 class AALabelAttributes {
@@ -706,7 +731,7 @@ class AALabelNode: AAUINode {
 }
 
 extension AALabelNode {
-    func config(fontSize: CGFloat, hexColor: NSInteger, text: String?) -> AALabelAttributes {
+    func config(fontSize fontSize: CGFloat, hexColor: NSInteger, text: String?) -> AALabelAttributes {
         self.config.fontSize(fontSize).hexColor(hexColor).text(text)
         return self.config
     }
