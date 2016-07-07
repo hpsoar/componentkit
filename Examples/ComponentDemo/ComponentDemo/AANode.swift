@@ -9,6 +9,11 @@
 import UIKit
 
 struct AASizeRange {
+    init(min: CGSize, max: CGSize) {
+        self.min = min
+        self.max = max
+    }
+    
     init(max: CGSize) {
         self.max = max
     }
@@ -247,7 +252,12 @@ class AAStackNode: AAUINode {
     
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         let stackSizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
+        calculateChildrenSizesIfNeeded(stackSizeRange)
         
+        size = CGSize.sizeWithStackCrossDimension(direction, stack: calculateStackDimension(), cross: calculateCrossDimension())
+    }
+    
+    func calculateChildrenSizesIfNeeded(stackSizeRange: AASizeRange) {
         var usedStackSize: CGFloat = 0.0
         
         for child in children {
@@ -256,8 +266,6 @@ class AAStackNode: AAUINode {
             child.node.calculateSizeIfNeeded(sizeRange)
             usedStackSize += child.node.size.stackDimension(direction) + spacing + child.spacingAfter
         }
-        
-        self.size = CGSize.sizeWithStackCrossDimension(direction, stack: calculateStackDimension(), cross: calculateCrossDimension())
     }
     
     override func calculateFrameIfNeeded() {
@@ -321,6 +329,22 @@ class AAStackNode: AAUINode {
             dim = max(dim, child.node.size.crossDimension(direction))
         }
         return dim
+    }
+}
+
+/// MARK: - static node, simply modify AAStackNode
+
+class AAStaticNode : AAStackNode {
+    var staticSize: CGSize = CGSizeZero {
+        didSet {
+            sizeRange = AASizeRange(min: staticSize, max: staticSize)
+        }
+    }
+    
+    override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
+        let stackSizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
+        calculateChildrenSizesIfNeeded(stackSizeRange)
+        size = staticSize
     }
 }
 
