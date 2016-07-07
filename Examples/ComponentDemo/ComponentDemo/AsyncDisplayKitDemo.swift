@@ -13,7 +13,7 @@ class AsyncDisplayKitDemo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.whiteColor()                
 
         let node = ASTextNode()
         let font = UIFont.systemFontOfSize(16)

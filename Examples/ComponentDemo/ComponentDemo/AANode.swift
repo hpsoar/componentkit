@@ -60,16 +60,22 @@ extension CGSize {
 
 class AAUINode {
     var hidden = false
+    
     var position = CGPointZero
     var size = CGSizeZero
     var frame = CGRectZero
     
     var sizeRange = AASizeRange()
     
-    //var isParentOfChild = false
-    
     func sizeRange(sizeRange: AASizeRange) -> Self {
         self.sizeRange = sizeRange
+        return self
+    }
+    
+    // for static view node, simply set its size
+    // eg. a button with static size
+    func size(size: CGSize) -> Self {
+        self.size = size
         return self
     }
     
