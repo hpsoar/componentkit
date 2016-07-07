@@ -32,9 +32,10 @@ class DoctorListVC4 : NITableVC {
                 modelViewUpdater.removeSectionAtIndex(0)
             }
             
-            let doctors = result.model as! [AnyObject!]
+            var doctors = result.model as! [AnyObject!]
             if (doctors.count > 0) {
-                modelViewUpdater.addObjectsFromArray(DoctorListItem.itemsWithDoctors(doctors) as [AnyObject])
+                doctors = [doctors.first]
+                modelViewUpdater.addObjectsFromArray(DoctorListItem.itemsWithDoctors(doctors)  as [AnyObject])
             }
             
             if (doctors.count == doctorListOptions.pageSize) {

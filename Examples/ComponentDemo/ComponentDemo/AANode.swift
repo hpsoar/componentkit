@@ -72,6 +72,7 @@ class AAUINode {
     }
     
     func layoutIfNeeded(constrainedSize: AASizeRange) -> Void {
+        position = CGPointZero
         let sizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
         calculateSizeIfNeeded(sizeRange)
         calculateFrameIfNeeded()
@@ -340,8 +341,8 @@ class AAInsetNode: AAUINode {
     override func calculateFrameIfNeeded() {
         super.calculateFrameIfNeeded()
         
-        child!.position.x += insets.left
-        child!.position.y += insets.top
+        child!.position.x = position.x + insets.left
+        child!.position.y = position.y + insets.top
         
         child!.calculateFrameIfNeeded()
     }
