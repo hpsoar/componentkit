@@ -266,6 +266,9 @@ class AAStackNode: AAUINode {
             child.node.calculateSizeIfNeeded(sizeRange)
             usedStackSize += child.node.size.stackDimension(direction) + spacing + child.spacingAfter
         }
+        
+        // if there's no enough place, need to shrink children with flexShrink = YES
+        // if there's extra space, need to expand children with flexGrow = YES
     }
     
     override func calculateFrameIfNeeded() {
