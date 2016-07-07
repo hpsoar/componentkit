@@ -258,6 +258,7 @@ class AAStackNode: AAUINode {
     
     override func calculateSizeIfNeeded(constrainedSize: AASizeRange) {
         let stackSizeRange = AASizeRange(max: self.sizeRange.max.aa_min(constrainedSize.max))
+        
         calculateChildrenSizesIfNeeded(stackSizeRange)
         
         size = CGSize.sizeWithStackCrossDimension(direction, stack: calculateStackDimension(), cross: calculateCrossDimension())
@@ -266,15 +267,94 @@ class AAStackNode: AAUINode {
     func calculateChildrenSizesIfNeeded(stackSizeRange: AASizeRange) {
         var usedStackSize: CGFloat = 0.0
         
-        for child in children {
-            usedStackSize += child.spacingBefore
-            let sizeRange = AASizeRange(max: stackSizeRange.max.shrinkStackDimension(direction, value: usedStackSize))
-            child.node.calculateSizeIfNeeded(sizeRange)
-            usedStackSize += child.node.size.stackDimension(direction) + spacing + child.spacingAfter
+        usedStackSize = layoutChildren(stackSizeRange, usedStackSize: usedStackSize, filter: { (child) -> (Bool) in
+            return !child.flexShrink
+        })
+        
+        usedStackSize = layoutChildren(stackSizeRange, usedStackSize: usedStackSize, filter: { (child) -> (Bool) in
+            return child.flexShrink
+        })
+        
+        flexChildrenAlongStackDimension(usedStackSize, stackSizeRange: stackSizeRange)
+    }
+    
+    func flexChildrenAlongStackDimension(usedStackSize: CGFloat, stackSizeRange: AASizeRange) {
+        let violation = computeViolation(direction, stackSizeRange: stackSizeRange, usedStackSize: usedStackSize)
+        
+        let kViolationEpsilon: CGFloat = 0.1;
+        guard abs(violation) > kViolationEpsilon else {
+            return
         }
         
-        // if there's no enough place, need to shrink children with flexShrink = YES
-        // if there's extra space, need to expand children with flexGrow = YES
+        let flexChildren = self.flexChildren(violation)
+        
+        guard flexChildren.count > 0 else {
+            return
+        }
+        
+        let violationPerChild = violation / CGFloat(flexChildren.count)
+        let remainViolation = violation - violationPerChild * CGFloat(flexChildren.count)
+        
+        var isFirstFlex = true
+        for child in flexChildren {
+            let shrink = isFirstFlex ? (violationPerChild + remainViolation) : violationPerChild
+            child.node.size.shrinkStackDimension(direction, value: shrink)
+            isFirstFlex = false
+        }
+    }
+    
+    func flexChildren(violation: CGFloat) -> [AAStackNodeChild] {
+        return children.filter { (child) -> Bool in
+            if violation > 0 && child.flexGrow {
+                return true
+            }
+            if violation < 0 && child.flexShrink {
+                return true
+            }
+            return false
+        }
+    }
+    
+    func computeViolation(direction: AAStackNodeDirection, stackSizeRange: AASizeRange, usedStackSize: CGFloat) -> CGFloat {
+        let minStackDimension = stackSizeRange.min.stackDimension(direction)
+        let maxStackDimension = stackSizeRange.max.stackDimension(direction)
+        if (usedStackSize < minStackDimension) {
+            return minStackDimension - usedStackSize
+        }
+        else if (usedStackSize > maxStackDimension) {
+            return maxStackDimension - usedStackSize
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+//    func flexShrinkChildCount() -> NSInteger {
+//    }
+//    
+//    func flexGrowChildCount() -> NSInteger {
+//        children.reduce(<#T##initial: T##T#>, combine: <#T##(T, AAStackNodeChild) throws -> T#>)
+//    }
+    
+    func layoutChildren(stackSizeRange:AASizeRange, usedStackSize: CGFloat, filter: (AAStackNodeChild) -> (Bool)) -> CGFloat {
+        var usedStackSize = usedStackSize
+        
+        for child in children {
+            usedStackSize += child.spacingBefore
+            
+            if !child.flexShrink {
+                usedStackSize += layoutChild(child, stackSizeRange: stackSizeRange, usedStackSize: usedStackSize)
+            }
+            
+            usedStackSize += spacing + child.spacingAfter
+        }
+        return usedStackSize
+    }
+    
+    func layoutChild(child: AAStackNodeChild, stackSizeRange: AASizeRange, usedStackSize: CGFloat) -> CGFloat {
+        let sizeRange = AASizeRange(max: stackSizeRange.max.shrinkStackDimension(direction, value: usedStackSize))
+        child.node.calculateSizeIfNeeded(sizeRange)
+        return child.node.size.stackDimension(direction)
     }
     
     override func calculateFrameIfNeeded() {
